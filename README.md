@@ -1,4 +1,4 @@
-# client
+# Mentors International Trainiing Reminders Client
 
 ## About
 
