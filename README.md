@@ -6,7 +6,7 @@ This is the front-end for the Mentors International Training Reminders project, 
 
 
 ## Spec
-
+- [Technical Design Document](https://docs.google.com/document/d/1z0V5Pd-xpcnwu_Ox1gpsEGakYTFS9E0Y2nK-jzCwaKk/edit?usp=sharing)
 - [Wire Frame](https://balsamiq.cloud/sw751l9/pgofw0d)
 - [Mentors International](https://mentorsinternational.org/)
 
