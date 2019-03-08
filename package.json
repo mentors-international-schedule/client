@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "dev": "nodemon",
     "build": "cd app && yarn install && yarn build"
   },
   "heroku-run-build-script": true,
@@ -26,5 +27,8 @@
   "homepage": "https://github.com/mentors-international-schedule/client#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
