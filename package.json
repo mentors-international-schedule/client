@@ -6,9 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "cd app && yarn build"
+    "build": "cd app && yarn install && yarn build"
   },
   "heroku-run-build-script": true,
+  "cacheDirectories": [
+    "app/node_modules",
+    "node_modules"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mentors-international-schedule/client.git"
