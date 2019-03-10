@@ -8,9 +8,10 @@
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
-    "redux-forms": "^1.0.0-3",
+    "redux-form": "^8.1.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.1.3"
   },

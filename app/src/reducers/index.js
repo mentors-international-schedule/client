@@ -1,6 +1,7 @@
 // import all the reduces
-import { reducer as formReducer } from "redux-form";
+import { form } from "./forms";
+
 // export all reducers as object
-const reducers = {};
+const reducers = { form };
 
 export default reducers;
