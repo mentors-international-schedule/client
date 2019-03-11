@@ -49,6 +49,7 @@
 }
 
 .our-reach {
+  padding-bottom: 80px;
   .title {
     padding-bottom: 30px;
     h2 {
@@ -74,8 +75,8 @@
     .box {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-start;
+      align-items: flex-start;
       width: 383px;
       height: 402px;
       background: @white;
@@ -83,8 +84,29 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
       font-size: 2.3rem;
       line-height: 1.35;
-      padding: 80px;
       text-align: center;
+      padding: 5px;
+
+      .top-content {
+        background: @white;
+        width: 100%;
+        height: 181px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 20px;
+      }
+
+      .bottom-content {
+        background: @white;
+        width: 100%;
+        height: 181px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 80px;
+      }
 
       h3 {
         color: @dodger-blue;

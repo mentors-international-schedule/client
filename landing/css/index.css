@@ -231,6 +231,9 @@ header .header nav a {
   outline: none;
   font-weight: 500;
 }
+.our-reach {
+  padding-bottom: 80px;
+}
 .our-reach .title {
   padding-bottom: 30px;
 }
@@ -255,8 +258,8 @@ header .header nav a {
 .our-reach .reach-boxes .box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 383px;
   height: 402px;
   background: #ffffff;
@@ -264,8 +267,27 @@ header .header nav a {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
   font-size: 2.3rem;
   line-height: 1.35;
-  padding: 80px;
   text-align: center;
+  padding: 5px;
+}
+.our-reach .reach-boxes .box .top-content {
+  background: #ffffff;
+  width: 100%;
+  height: 181px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+.our-reach .reach-boxes .box .bottom-content {
+  background: #ffffff;
+  width: 100%;
+  height: 181px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 80px;
 }
 .our-reach .reach-boxes .box h3 {
   color: #17bcff;
