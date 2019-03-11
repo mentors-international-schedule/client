@@ -25,7 +25,7 @@
   height: 230px;
 
   h2 {
-    font-size: 5.4rem;
+    font-size: 4.4rem;
     position: relative;
     line-height: 1.25;
     padding: 0;
@@ -41,10 +41,11 @@
     width: 200px;
     height: 56px;
     border-radius: 30px;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     cursor: pointer;
     outline: none;
     font-weight: 500;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -53,11 +54,11 @@
   .title {
     padding-bottom: 30px;
     h2 {
-      font-size: 4.4rem;
+      font-size: 3rem;
       padding: 0;
 
       .o-brand {
-        color: @dodger-blue;
+        color: @title-underline;
       }
     }
     .underline-o-upper {
@@ -124,11 +125,13 @@
   background: @white;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   width: 100%;
   height: auto;
+  margin-bottom: 80px;
 
   .content {
-    padding-top: 3%;
+    padding-top: 3.5%;
     padding-right: 5%;
     padding-left: 5%;
 
@@ -136,30 +139,63 @@
 
     p {
       font-size: 1.6rem;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .title {
       padding-bottom: 20px;
       h2 {
-        font-size: 4.4rem;
+        font-size: 3rem;
         padding: 0;
+        width: 600px;
 
         .o-brand {
-          color: @dodger-blue;
+          color: @title-underline;
         }
-      }
-      .underline-o-lower {
-        width: 30px;
-        height: 6px;
-        background: @title-underline;
-        border-radius: 3px;
-        margin-left: 208px;
       }
     }
 
     .btn-primary {
       .btn-outline();
+    }
+  }
+}
+
+.success-stories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  .title {
+    padding-bottom: 30px;
+    h2 {
+      font-size: 3rem;
+      padding: 0;
+
+      .o-brand {
+        color: @title-underline;
+      }
+    }
+  }
+
+  .testimonials {
+    display: flex;
+    justify-content: space-around;
+    .test-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 530px;
+      height: 468px;
+      background: @white;
+      border-radius: 5px;
+      box-shadow: 0 0 30px rgba(23, 188, 255, 0.1);
+      font-size: 2.3rem;
+      line-height: 1.35;
+      text-align: center;
+      padding: 5px;
     }
   }
 }

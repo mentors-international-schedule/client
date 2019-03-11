@@ -210,7 +210,7 @@ header .header nav a {
   height: 230px;
 }
 .showcase h2 {
-  font-size: 5.4rem;
+  font-size: 4.4rem;
   position: relative;
   line-height: 1.25;
   padding: 0;
@@ -225,10 +225,11 @@ header .header nav a {
   width: 200px;
   height: 56px;
   border-radius: 30px;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   cursor: pointer;
   outline: none;
   font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 .our-reach {
   padding-bottom: 80px;
@@ -237,11 +238,11 @@ header .header nav a {
   padding-bottom: 30px;
 }
 .our-reach .title h2 {
-  font-size: 4.4rem;
+  font-size: 3rem;
   padding: 0;
 }
 .our-reach .title h2 .o-brand {
-  color: #17bcff;
+  color: #f5a623;
 }
 .our-reach .title .underline-o-upper {
   width: 35px;
@@ -299,35 +300,31 @@ header .header nav a {
   background: #ffffff;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   width: 100%;
   height: auto;
+  margin-bottom: 80px;
 }
 .difference .content {
-  padding-top: 3%;
+  padding-top: 3.5%;
   padding-right: 5%;
   padding-left: 5%;
   width: 38%;
 }
 .difference .content p {
   font-size: 1.6rem;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .difference .content .title {
   padding-bottom: 20px;
 }
 .difference .content .title h2 {
-  font-size: 4.4rem;
+  font-size: 3rem;
   padding: 0;
+  width: 600px;
 }
 .difference .content .title h2 .o-brand {
-  color: #17bcff;
-}
-.difference .content .title .underline-o-lower {
-  width: 30px;
-  height: 6px;
-  background: #f5a623;
-  border-radius: 3px;
-  margin-left: 208px;
+  color: #f5a623;
 }
 .difference .content .btn-primary {
   width: 120px;
@@ -340,4 +337,39 @@ header .header nav a {
   font-weight: 500;
   cursor: pointer;
   outline: none;
+}
+.success-stories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.success-stories .title {
+  padding-bottom: 30px;
+}
+.success-stories .title h2 {
+  font-size: 3rem;
+  padding: 0;
+}
+.success-stories .title h2 .o-brand {
+  color: #f5a623;
+}
+.success-stories .testimonials {
+  display: flex;
+  justify-content: space-around;
+}
+.success-stories .testimonials .test-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 530px;
+  height: 468px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(23, 188, 255, 0.1);
+  font-size: 2.3rem;
+  line-height: 1.35;
+  text-align: center;
+  padding: 5px;
 }
