@@ -112,6 +112,16 @@ class MemberBox extends Component {
     }
   }
 
+  selectNone = () => {
+    let updatedMembers = [...this.state.members]
+    updatedMembers.map(member => member.isChecked = false)
+
+    let checkboxes = document.getElementsByName('checkbox');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = false;
+    }
+  }
+
   render() {
     const members = this.state.members.map((member, index) => 
       <span key={index} style={{marginBottom: '10px',}}>
@@ -138,10 +148,12 @@ class MemberBox extends Component {
             onClick={() => this.toggleMemberForm()} >
             add member
           </button>
-          <button onClick={() => this.selectAll()}>
+          <button 
+            onClick={() => this.selectAll()} >
             select all
           </button>
-          <button>
+          <button
+            onClick={() => this.selectNone()} >
             select none
           </button>
           <button 
