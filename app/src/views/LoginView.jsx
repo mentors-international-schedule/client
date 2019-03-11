@@ -1,6 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+
 import LoginForm from "../components/LoginForm";
+
+import styled from "styled-components";
 
 const StyledLoginView = styled.div`
   width: 100vw;
@@ -8,6 +10,7 @@ const StyledLoginView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   .container {
     margin-bottom: 15vh;
     width: 500px;
