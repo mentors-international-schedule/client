@@ -18,7 +18,6 @@ const StyledGroupsJoined = styled.div`
 
 const tempListOfGroups = ["FBI", "BAF", "puppy club"];
 export default function GroupsJoined(props) {
-  const { name } = props;
   return (
     <StyledGroupsJoined>
       <h3>Joined Groups </h3>
