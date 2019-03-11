@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 
+import styled from 'styled-components';
+
+// STYLED COMPONENTS
+const MemerBoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+`;
+
+// INLINE COMPONENTS
+const AddMemberForm = {
+  flexDirection: "column",
+  border: "1px solid lightgray",
+  marginTop: "20px",
+  width: "150px",
+  display: "none",
+}
+
 const groupMembers = [
   {name: 'Frodo Baggins', phone: 123, isChecked: false}, 
   {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
-  {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false}, {name: 'Samwise Gamgee', phone: 123456, isChecked: false}
+  {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false}, 
+  {name: 'Samwise Gamgee', phone: 123456, isChecked: false}
 ]
 
 class MemberBox extends Component {
@@ -20,7 +39,7 @@ class MemberBox extends Component {
     })
   }
 
-  toggle = (phone) => {
+  toggleCheckbox = (phone) => {
     let updatedMembers = [...this.state.members];
 
     updatedMembers.map(member => {
@@ -34,21 +53,36 @@ class MemberBox extends Component {
     })
   }
 
+  toggleMemberForm = () => {
+    let memberForm = document.querySelector('.addMemberForm');
+    if (memberForm.style.display === "none") {
+      memberForm.style.display = "flex";
+    } else {
+      memberForm.style.display = "none";
+    }
+  }
+
   render() {
+    const memberList = this.state.members.map((member, index) => 
+      <span key={index}>
+        <input 
+          type="checkbox" 
+          onClick={() => this.toggleCheckbox(member.phone)} />
+        <label>
+          {member.name}
+        </label>
+      </span>
+    )
+
     return (
-      <div>
+      <MemerBoxContainer>
         <p>Your group members will appear here. Uncheck the box to remove someone from the message chain.</p>
+        
+        {memberList}
+
         <div>
-          {this.state.members.map((member, index) => 
-            <span>
-              <input 
-                key={index} 
-                type="checkbox" 
-                onClick={() => this.toggle(member.phone)} />
-              <label>{member.name}:{JSON.stringify(member.isChecked)}</label>
-            </span>
-          )}
-          <button>
+          <button
+            onClick={() => this.toggleMemberForm()} >
             add member
           </button>
           <button>
@@ -57,8 +91,22 @@ class MemberBox extends Component {
           <button>
             select none
           </button>
+          <button 
+            onClick={() => console.log(this.state.members)} >
+            log state
+          </button>
         </div>
-      </div>
+
+        <form 
+          style={AddMemberForm}
+          className="addMemberForm">
+          <input type="text"
+            placeholder="...Full Name" />
+          <input type="text"
+            placeholder="...Phone Number" />
+          <button>Submit</button>
+        </form>
+      </MemerBoxContainer>
     )
   }
 }
