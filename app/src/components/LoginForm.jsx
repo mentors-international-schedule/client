@@ -4,7 +4,13 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { login } from "../actions/loginActions";
-const StyledLoginForm = styled.form``;
+const StyledLoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  h2 {
+    text-align: center;
+  }
+`;
 
 export class LoginForm extends React.Component {
   state = {
@@ -30,26 +36,28 @@ export class LoginForm extends React.Component {
   render() {
     return (
       <StyledLoginForm onSubmit={this.handleSubmit}>
+        <h2>Login</h2>
+
+        <label htmlFor="email">Email</label>
+        <input
+          onChange={this.onEmailChange}
+          name="email"
+          type="text"
+          value={this.state.inputEmail}
+        />
+
+        <label htmlFor="password">Password</label>
+        <input
+          onChange={this.onPasswordChange}
+          name="password"
+          type="password"
+          value={this.state.inputPassword}
+        />
+
         <div>
-          <label htmlFor="email">Email</label>
-          <input
-            onChange={this.onEmailChange}
-            name="email"
-            type="text"
-            value={this.state.inputEmail}
-          />
+          <button>Login</button>
+          <button onClick={this.handleSignUp}> Signup</button>
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={this.onPasswordChange}
-            name="password"
-            type="password"
-            value={this.state.inputPassword}
-          />
-        </div>
-        <button>Login</button>
-        <button onClick={this.handleSignUp}> Signup</button>
       </StyledLoginForm>
     );
   }

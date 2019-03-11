@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 const StyledCreateAccount = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   p {
     width: 100%;
     text-align: center;
@@ -26,22 +29,22 @@ export default function CreateAccount({
   console.log(inputEmail);
   return (
     <StyledCreateAccount>
-      <div>
-        <input
-          name="email"
-          type="text"
-          placeholder="Enter your phone number or email"
-          value={inputEmail}
-          onChange={event => {
-            changeEmail(event.target.value);
-          }}
-        />
-        <button onClick={moveToNextForm}>Continue</button>
-        <p>
-          <span>OR</span>
-        </p>
-        <button>Sign up with Google</button>
-      </div>
+      <h2>Create an Account</h2>
+
+      <input
+        name="email"
+        type="text"
+        placeholder="Enter your phone number or email"
+        value={inputEmail}
+        onChange={event => {
+          changeEmail(event.target.value);
+        }}
+      />
+      <button onClick={moveToNextForm}>Continue</button>
+      <p>
+        <span>OR</span>
+      </p>
+      <button>Sign up with Google</button>
     </StyledCreateAccount>
   );
 }
