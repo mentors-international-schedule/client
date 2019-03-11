@@ -1,8 +1,8 @@
 import axios from "axios";
-import { LOGIN, LOGGINGIN } from "./actionTypes";
+import { LOGIN, LOGGING_IN } from "./actionTypes";
 
 
 export const login = (email, password) => dispatch => {
-  dispatch({ type: LOGGINGIN });
+  dispatch({ type: LOGGING_IN });
   // add login request
 };

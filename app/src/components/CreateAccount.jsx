@@ -18,15 +18,23 @@ const StyledCreateAccount = styled.div`
   }
 `;
 
-export function CreateAccount({ moveToNextForm }) {
+export default function CreateAccount({
+  moveToNextForm,
+  inputEmail,
+  changeEmail
+}) {
+  console.log(inputEmail);
   return (
     <StyledCreateAccount>
       <div>
-        <Field
+        <input
           name="email"
-          component="input"
           type="text"
           placeholder="Enter your phone number or email"
+          value={inputEmail}
+          onChange={event => {
+            changeEmail(event.target.value);
+          }}
         />
         <button onClick={moveToNextForm}>Continue</button>
         <p>
@@ -37,12 +45,3 @@ export function CreateAccount({ moveToNextForm }) {
     </StyledCreateAccount>
   );
 }
-
-const mstp = state => {};
-
-const ConnectedCreateAccount = connect(
-  mstp,
-  {}
-)(CreateAccount);
-
-export default reduxForm({ form: "signUpEmail" })(ConnectedCreateAccount);

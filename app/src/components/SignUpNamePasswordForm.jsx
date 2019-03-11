@@ -5,33 +5,46 @@ import { Field, reduxForm } from "redux-form";
 
 const StyledSignUpNamePasswordForm = styled.div``;
 
-export function SignUpNamePasswordForm(props) {
+export default function SignUpNamePasswordForm(props) {
+  const {
+    inputFirstName,
+    inputLastName,
+    inputPassword,
+    changeFirstName,
+    changeLastName,
+    changePassword,
+    handleSignUp
+  } = props;
   return (
     <StyledSignUpNamePasswordForm>
       <div>
         <label htmlFor="firstName">First Name</label>
-        <Field name="firstName" component="input" type="text" />
+        <input
+          name="firstName"
+          type="text"
+          value={inputFirstName}
+          onChange={event => changeFirstName(event.target.value)}
+        />
       </div>
       <div>
         <label htmlFor="lastName">Last Name</label>
-        <Field name="lastName" component="input" type="text" />
+        <input
+          name="lastName"
+          type="text"
+          value={inputLastName}
+          onChange={event => changeLastName(event.target.value)}
+        />
       </div>
       <div>
         <label htmlFor="password">Password</label>
-        <Field name="password" component="input" type="password" />
+        <input
+          name="password"
+          type="password"
+          value={inputPassword}
+          onChange={event => changePassword(event.target.value)}
+        />
       </div>
-      <button>Complete Sign Up</button>
+      <button onClick={handleSignUp}>Complete Sign Up</button>
     </StyledSignUpNamePasswordForm>
   );
 }
-
-const mstp = state => {};
-
-const ConnectedSignUpNamePasswordForm = connect(
-  mstp,
-  {}
-)(SignUpNamePasswordForm);
-
-export default reduxForm({ form: "signUpNamePassword" })(
-  ConnectedSignUpNamePasswordForm
-);
