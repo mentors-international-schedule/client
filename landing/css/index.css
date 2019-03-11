@@ -192,7 +192,6 @@ header .header nav a {
   width: 100%;
   height: 684px;
   background: url('../img/hero-shot.jpg') no-repeat center center / cover;
-  opacity: 0.9;
   color: #ffffff;
   margin-bottom: 80px;
 }
@@ -264,7 +263,7 @@ header .header nav a {
   height: 402px;
   background: #ffffff;
   border-radius: 5px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 30px rgba(23, 188, 255, 0.1);
   font-size: 2.3rem;
   line-height: 1.35;
   text-align: center;
@@ -292,4 +291,53 @@ header .header nav a {
 .our-reach .reach-boxes .box h3 {
   color: #17bcff;
   font-size: 2.6rem;
+}
+.our-reach .reach-boxes .box p {
+  font-size: 1.8rem;
+}
+.difference {
+  background: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+.difference .content {
+  padding-top: 3%;
+  padding-right: 5%;
+  padding-left: 5%;
+  width: 38%;
+}
+.difference .content p {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+.difference .content .title {
+  padding-bottom: 20px;
+}
+.difference .content .title h2 {
+  font-size: 4.4rem;
+  padding: 0;
+}
+.difference .content .title h2 .o-brand {
+  color: #17bcff;
+}
+.difference .content .title .underline-o-lower {
+  width: 30px;
+  height: 6px;
+  background: #f5a623;
+  border-radius: 3px;
+  margin-left: 208px;
+}
+.difference .content .btn-primary {
+  width: 120px;
+  height: 46px;
+  background: none;
+  border-radius: 30px;
+  border: 1px solid #17bcff;
+  color: #17bcff;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
 }
