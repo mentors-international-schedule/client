@@ -1,0 +1,95 @@
+//  Section: Hero
+
+.hero {
+  width: 100%;
+  height: 684px;
+  background: url('../img/hero-shot.jpg') no-repeat center center/cover;
+  opacity: 0.9;
+  color: @white;
+  margin-bottom: 80px;
+
+  .header {
+    margin-bottom: 230px;
+  }
+}
+
+.showcase {
+  color: @white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 80px;
+  margin-top: 0px;
+  top: 300px;
+  height: 230px;
+
+  h2 {
+    font-size: 5.4rem;
+    position: relative;
+    line-height: 1.25;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .call-to-action {
+    text-decoration: none;
+    text-align: center;
+    color: @white;
+    background: @dodger-blue;
+    border: none;
+    width: 200px;
+    height: 56px;
+    border-radius: 30px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+  }
+}
+
+.our-reach {
+  .title {
+    padding-bottom: 30px;
+    h2 {
+      font-size: 4.4rem;
+      padding: 0;
+
+      .o-brand {
+        color: @dodger-blue;
+      }
+    }
+    .underline-o-upper {
+      width: 35px;
+      height: 6px;
+      background: @title-underline;
+      border-radius: 3px;
+    }
+  }
+  .reach-boxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 383px;
+      height: 402px;
+      background: @white;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
+      font-size: 2.3rem;
+      line-height: 1.35;
+      padding: 80px;
+      text-align: center;
+
+      h3 {
+        color: @dodger-blue;
+        font-size: 2.6rem;
+      }
+    }
+  }
+}

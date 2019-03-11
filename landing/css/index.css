@@ -1,0 +1,273 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  color: #313a3d;
+}
+html,
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background: #fafafa;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.2rem;
+  padding-bottom: 10px;
+}
+h4 {
+  font-size: 2.5rem;
+  padding-bottom: 10px;
+}
+p {
+  line-height: 1.5;
+  font-size: 1.6rem;
+  padding-bottom: 10px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+header .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  padding: 20px 20px;
+  top: 0;
+}
+header .header nav {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+}
+header .header nav a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.hero {
+  width: 100%;
+  height: 684px;
+  background: url('../img/hero-shot.jpg') no-repeat center center / cover;
+  opacity: 0.9;
+  color: #ffffff;
+  margin-bottom: 80px;
+}
+.hero .header {
+  margin-bottom: 230px;
+}
+.showcase {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 80px;
+  margin-top: 0px;
+  top: 300px;
+  height: 230px;
+}
+.showcase h2 {
+  font-size: 5.4rem;
+  position: relative;
+  line-height: 1.25;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.showcase .call-to-action {
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  background: #17bcff;
+  border: none;
+  width: 200px;
+  height: 56px;
+  border-radius: 30px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+}
+.our-reach .title {
+  padding-bottom: 30px;
+}
+.our-reach .title h2 {
+  font-size: 4.4rem;
+  padding: 0;
+}
+.our-reach .title h2 .o-brand {
+  color: #17bcff;
+}
+.our-reach .title .underline-o-upper {
+  width: 35px;
+  height: 6px;
+  background: #f5a623;
+  border-radius: 3px;
+}
+.our-reach .reach-boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.our-reach .reach-boxes .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 383px;
+  height: 402px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
+  font-size: 2.3rem;
+  line-height: 1.35;
+  padding: 80px;
+  text-align: center;
+}
+.our-reach .reach-boxes .box h3 {
+  color: #17bcff;
+  font-size: 2.6rem;
+}
