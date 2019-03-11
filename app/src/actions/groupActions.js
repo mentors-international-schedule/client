@@ -15,7 +15,7 @@ export const createGroup =(groupName, currentLoggedInUser) => dispatch => {
   console.log(groupName)
   axios(URL,{groupName})
     .then(res=> dispatch({type:SUCCESS_CREATE_GROUP, payload:res.data}))
-    .catch(err => dispatch({typr:FAIL_CREATE_GROUP, payload:err }))
+    .catch(err => dispatch({type:FAIL_CREATE_GROUP, payload:err }))
 }
 
 export const deleteGroup = (groupName) => dispatch => {

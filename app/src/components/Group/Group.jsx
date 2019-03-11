@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Route, NavLink } from "react-router-dom";
 import GroupHeader from "./GroupHeader";
-
+import NewMessageView from "../../views/NewMessageView";
 const StyledGroup = styled.div`
   width: 100%;
   padding: 0 10px;
@@ -33,7 +33,7 @@ export default function Group(props) {
       </div>
       <Route
         path={`/app/${"curentGroup"}/newMessage`}
-        component={() => <div>New message</div>}
+        component={NewMessageView}
       />
       <Route
         path={`/app/${"curentGroup"}/scheduler`}
