@@ -9,6 +9,16 @@ const MemerBoxContainer = styled.div`
   width: 250px;
 `;
 
+const MemberList = styled.div`
+  display: flex;
+  flex-direction: column;
+  float: left;
+  width: 250px;
+  overflow-y: auto;
+  height: 200px;
+  margin-bottom: 20px;
+`;
+
 // INLINE COMPONENTS
 const AddMemberForm = {
   flexDirection: "column",
@@ -19,10 +29,14 @@ const AddMemberForm = {
 }
 
 const groupMembers = [
-  {name: 'Frodo Baggins', phone: 123, isChecked: false}, 
+  {name: 'Frodo Baggins', phone: 123444, isChecked: false}, 
   {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
   {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false}, 
-  {name: 'Samwise Gamgee', phone: 123456, isChecked: false}
+  {name: 'Famwise Gamgee', phone: 123456, isChecked: false},
+  {name: 'Wrodo Baggins', phone: 1258883, isChecked: false}, 
+  {name: 'Reregrin  Took', phone: 825485, isChecked: false}, 
+  {name: 'Seriadoc Brandybuck', phone: 66672, isChecked: false}, 
+  {name: 'Ramwise Gamgee', phone: 235235, isChecked: false}
 ]
 
 class MemberBox extends Component {
@@ -89,8 +103,8 @@ class MemberBox extends Component {
   }
 
   render() {
-    const memberList = this.state.members.map((member, index) => 
-      <span key={index}>
+    const members = this.state.members.map((member, index) => 
+      <span key={index} style={{marginBottom: '10px',}}>
         <input 
           type="checkbox" 
           onClick={() => this.toggleCheckbox(member.phone)} />
@@ -104,7 +118,9 @@ class MemberBox extends Component {
       <MemerBoxContainer>
         <p>Your group members will appear here. Uncheck the box to remove someone from the message chain.</p>
         
-        {memberList}
+        <MemberList>
+          {members}
+        </MemberList>
 
         <div>
           <button
