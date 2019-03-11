@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import URL from './AJAX_URL'
 import {
   CREATING_GROUP,
   SUCCESS_CREATE_GROUP, 
@@ -13,10 +13,13 @@ import {
 export const createGroup =(groupName, currentLoggedInUser) => dispatch => { 
   dispatch({type:CREATING_GROUP});
   console.log(groupName)
-  // axios request to create a group
+  axios(URL,{groupName})
+    .then(res=> dispatch({type:SUCCESS_CREATE_GROUP, payload:res.data}))
+    .catch(err => dispatch({typr:FAIL_CREATE_GROUP, payload:err }))
 }
 
 export const deleteGroup = (groupName) => dispatch => {
   dispatch({type:DELETEING_GROUP})
   // axios request to delete group
+  
 }

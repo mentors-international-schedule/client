@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN, LOGGING_IN } from "./actionTypes";
+import { LOGGING_IN, SUCCESS_LOGIN, FAIL_LOGIN } from "./actionTypes";
 
 
 export const login = (email, password) => dispatch => {

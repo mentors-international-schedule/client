@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Route } from "react-router";
 import SideBar from "../components/SideBar/SideBar";
-import Group from "../components/Group";
+import Group from "../components/Group/Group";
 const StyledAppView = styled.div`
   display: flex;
 `;
