@@ -184,12 +184,12 @@ header .header {
     padding: 20px 2%;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   header .header {
     flex-direction: column;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   header .header img {
     margin-bottom: 20px;
   }
@@ -594,7 +594,7 @@ header .header nav a {
 }
 @media (max-width: 780px) {
 }
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   .footer .footer-links {
     flex-direction: column;
     justify-content: space-between;
@@ -615,7 +615,7 @@ header .header nav a {
   display: flex;
   justify-content: space-evenly;
 }
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   .footer .footer-links .social-media .icons {
     justify-content: flex-start;
   }
