@@ -13,7 +13,7 @@ export default function AddAGroup() {
   return (
     <StyledAddAGroup>
       <div>+ </div>
-      <input placeholder="add a group" />
+      <input placeholder="Join a group" />
     </StyledAddAGroup>
   );
 }

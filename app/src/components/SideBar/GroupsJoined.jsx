@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import AddAGroup from "./AddAGroup";
+import JoinAGroup from "./JoinAGroup";
 import { NavLink } from "react-router-dom";
 
-const StyledGroupsOwned = styled.div`
+const StyledGroupsJoined = styled.div`
   a {
     color: black;
     display: block;
@@ -16,16 +16,16 @@ const StyledGroupsOwned = styled.div`
   }
 `;
 
-const tempListOfGroups = ["Pie", "Fireball", "red"];
-export default function GroupsOwned(props) {
+const tempListOfGroups = ["FBI", "BAF", "puppy club"];
+export default function GroupsJoined(props) {
   const { name } = props;
   return (
-    <StyledGroupsOwned>
-      <h3>Groups Owned </h3>
-      <AddAGroup />
+    <StyledGroupsJoined>
+      <h3>Joined Groups </h3>
+      <JoinAGroup />
       {tempListOfGroups.map(group => (
         <NavLink to={`/app/${group}`}>{group}</NavLink>
       ))}
-    </StyledGroupsOwned>
+    </StyledGroupsJoined>
   );
 }
