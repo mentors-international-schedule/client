@@ -312,8 +312,7 @@ header .header nav a {
   width: 38%;
 }
 .difference .content p {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 .difference .content .title {
   padding-bottom: 20px;
@@ -354,11 +353,15 @@ header .header nav a {
 .success-stories .title h2 .o-brand {
   color: #f5a623;
 }
-.success-stories .testimonials {
+.success-stories .boxes {
+  padding-bottom: 80px;
+}
+.success-stories .boxes .testimonials {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 40px;
 }
-.success-stories .testimonials .test-box {
+.success-stories .boxes .testimonials .test-box {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -371,5 +374,53 @@ header .header nav a {
   font-size: 2.3rem;
   line-height: 1.35;
   text-align: center;
-  padding: 5px;
+}
+.success-stories .boxes .testimonials .test-box img {
+  border-radius: 5px 5px 0 0;
+}
+.success-stories .boxes .testimonials .test-box .quote {
+  padding: 25px;
+  color: #dde1e6;
+}
+.success-stories .boxes .testimonials .test-box .bottom-text {
+  display: flex;
+}
+.success-stories .boxes .testimonials .test-box .bottom-text .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  text-align: left;
+  padding: 10px 40px 40px 10px;
+  margin-top: 20px;
+}
+.success-stories .boxes .testimonials .test-box .bottom-text .content p {
+  font-size: 1.8rem;
+}
+.success-stories .boxes .testimonials .test-box .bottom-text span {
+  font-weight: 800;
+}
+.success-stories .boxes .testimonials .test-box .bottom-text .btn-read-more {
+  margin-top: 10px;
+  width: 100px;
+  background: none;
+  border: none;
+  color: #17bcff;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+.success-stories .btn-primary {
+  width: 120px;
+  height: 46px;
+  background: none;
+  border-radius: 30px;
+  border: 1px solid #17bcff;
+  color: #17bcff;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
 }
