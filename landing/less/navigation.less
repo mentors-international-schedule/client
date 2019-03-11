@@ -9,10 +9,28 @@ header {
     // z-index: 1;
     top: 0;
 
+    @media @tablet {
+      padding: 20px 2%;
+    }
+
+    @media @phone {
+      flex-direction: column;
+    }
+
+    img {
+      @media @phone {
+        margin-bottom: 20px;
+      }
+    }
+
     nav {
       display: flex;
       width: 400px;
       justify-content: space-between;
+
+      @media @phone {
+        justify-content: space-around;
+      }
       a {
         text-decoration: none;
         color: @white;

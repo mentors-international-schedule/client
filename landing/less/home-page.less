@@ -7,9 +7,31 @@
   // opacity: 0.9;
   color: @white;
   margin-bottom: 80px;
+  padding-left: 2%;
+  padding-right: 2%;
+  top: 0;
+  left: 0;
+
+  @media @tablet {
+    width: 100%;
+    // height: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @media @phone {
+    width: 100%;
+  }
+  // @media @phone {
+  //   padding: 0;
+  // }
 
   .header {
     margin-bottom: 230px;
+
+    @media @tablet {
+      margin-bottom: 180px;
+    }
   }
 }
 
@@ -24,12 +46,28 @@
   top: 300px;
   height: 230px;
 
+  @media @tablet {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+    margin-top: 0px;
+    // top: 100px;
+    height: auto;
+    text-align: center;
+  }
+
   h2 {
     font-size: 4.4rem;
     position: relative;
     line-height: 1.25;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+
+    @media @tablet {
+      font-size: 3.8rem;
+      width: 90%;
+      padding-bottom: 20px;
+    }
   }
 
   .call-to-action {
@@ -46,11 +84,22 @@
     outline: none;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
+
+    @media @tablet {
+      height: 46px;
+    }
   }
 }
 
 .our-reach {
   padding-bottom: 80px;
+  padding-left: 2%;
+  padding-right: 2%;
+
+  @media @tablet {
+    padding: 0 2%;
+  }
+
   .title {
     padding-bottom: 30px;
     h2 {
@@ -71,15 +120,20 @@
   .reach-boxes {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    // align-items: center;
+
+    @media @tablet {
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
     .box {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      width: 383px;
-      height: 402px;
+      width: 32%;
+      height: auto;
       background: @white;
       border-radius: 5px;
       box-shadow: 0 0 30px rgba(23, 188, 255, 0.1);
@@ -87,6 +141,16 @@
       line-height: 1.35;
       text-align: center;
       padding: 5px;
+
+      @media @tablet {
+        width: 100%;
+        margin-bottom: 30px;
+        justify-content: center;
+      }
+
+      @media @phone {
+        width: 100%;
+      }
 
       .top-content {
         background: @white;
@@ -106,7 +170,7 @@
         justify-content: flex-start;
         flex-direction: column;
         align-items: center;
-        padding: 0 80px;
+        padding: 0 20%;
       }
 
       h3 {
@@ -126,13 +190,25 @@
   margin-bottom: 80px;
   width: 100%;
 
-  .side-img {
-    // width: 55%;
+  @media (max-width: 1280px) {
+    flex-direction: column;
   }
 
   .right-empty {
     width: 10%;
     background: transparent;
+
+    @media (max-width: 1280px) {
+      display: none;
+    }
+  }
+  .side-img {
+    img {
+      @media (max-width: 1280px) {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
   }
 
   .content {
@@ -141,20 +217,27 @@
     justify-content: center;
     align-items: flex-start;
     justify-items: center;
-    padding-top: 30px;
+    // padding-top: 30px;
     padding-left: 2%;
+    padding-right: 2%;
     width: 35%;
 
-    p {
-      font-size: 1.8rem;
+    @media (max-width: 1280px) {
+      width: 100%;
       padding-bottom: 20px;
     }
 
+    p {
+      font-size: 1.8rem;
+      padding-bottom: 30px;
+    }
+
     .title {
-      padding-bottom: 20px;
+      padding-bottom: 30px;
       h2 {
         font-size: 3rem;
         padding: 0;
+        line-height: 1.25;
         // width: 600px;
 
         .o-brand {
@@ -175,6 +258,17 @@
   justify-content: center;
   text-align: center;
 
+  @media (max-width: 960px) {
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  @media @tablet {
+    padding: 0 2%;
+  }
+  @media @phone {
+  }
+
   .title {
     padding-bottom: 30px;
     h2 {
@@ -194,12 +288,13 @@
       display: flex;
       justify-content: space-around;
       padding-bottom: 40px;
+
       .test-box {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        width: 530px;
+        width: 45%;
         height: 468px;
         background: @white;
         border-radius: 5px;
@@ -208,8 +303,23 @@
         line-height: 1.35;
         text-align: center;
 
+        @media @tablet {
+          width: 92%;
+          height: auto;
+          justify-content: center;
+        }
+
+        .top-img {
+          @media @tablet {
+            width: 100%;
+          }
+        }
+
         img {
           border-radius: 5px 5px 0 0;
+          @media @tablet {
+            width: 100%;
+          }
         }
 
         .quote {
@@ -244,31 +354,69 @@
         }
       }
     }
-  }
-  .btn-primary {
-    .btn-outline(@width: 120px, @height: 46px);
+    .btn-primary {
+      .btn-outline(@width: 120px, @height: 46px);
+    }
+    #testimonials2 {
+      @media @tablet {
+        display: none;
+      }
+    }
   }
 }
 
 .footer {
+  padding: 0 2%;
   padding-top: 80px;
   background: @footer-bg;
   color: @footer-text;
+  width: 100%;
+
+  @media @tablet {
+    padding-top: 40px;
+  }
+
   img {
     margin-bottom: 20px;
   }
-  h2 {
-    font-size: 2.5rem;
-    padding-bottom: 20px;
-  }
+
   .footer-links {
     display: flex;
     justify-content: space-between;
     font-size: 1.6rem;
+
+    @media @tablet {
+      //
+    }
+
+    @media @phone {
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      padding-bottom: 20px;
+
+      @media @tablet {
+        font-size: 1.8rem;
+        padding-bottom: 5px;
+      }
+    }
+
     .social-media {
       .icons {
         display: flex;
         justify-content: space-evenly;
+
+        @media @phone {
+          justify-content: flex-start;
+
+          i {
+            margin-right: 20px;
+          }
+        }
       }
     }
   }
