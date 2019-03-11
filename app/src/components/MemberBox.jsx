@@ -29,7 +29,9 @@ class MemberBox extends Component {
   constructor() {
     super();
     this.state = {
-      members: []
+      members: [],
+      name: '',
+      phone: '',
     }
   }
 
@@ -60,6 +62,30 @@ class MemberBox extends Component {
     } else {
       memberForm.style.display = "none";
     }
+  }
+
+  handleChange = e => {
+    this.setState({[e.target.name]: e.target.value});
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    let newMember = {
+      name: this.state.name, 
+      phone: parseInt(this.state.phone), 
+      isChecked: false
+    };
+
+    let updatedMembers = [...this.state.members];
+
+    updatedMembers.push(newMember);
+
+    this.setState({
+      members: updatedMembers,
+      name: '',
+      phone: '',
+    })
   }
 
   render() {
@@ -99,11 +125,18 @@ class MemberBox extends Component {
 
         <form 
           style={AddMemberForm}
-          className="addMemberForm">
+          className="addMemberForm"
+          onSubmit={this.handleSubmit} >
           <input type="text"
-            placeholder="...Full Name" />
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+            placeholder="...full name" />
           <input type="text"
-            placeholder="...Phone Number" />
+            name="phone"
+            value={this.state.phone}
+            onChange={this.handleChange}
+            placeholder="...phone number" />
           <button>Submit</button>
         </form>
       </MemerBoxContainer>
