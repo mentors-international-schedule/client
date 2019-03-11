@@ -102,11 +102,22 @@ class MemberBox extends Component {
     })
   }
 
+  selectAll = () => {
+    let updatedMembers = [...this.state.members]
+    updatedMembers.map(member => member.isChecked = true)
+
+    let checkboxes = document.getElementsByName('checkbox');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = true;
+    }
+  }
+
   render() {
     const members = this.state.members.map((member, index) => 
       <span key={index} style={{marginBottom: '10px',}}>
         <input 
-          type="checkbox" 
+          type="checkbox"
+          name="checkbox" 
           onClick={() => this.toggleCheckbox(member.phone)} />
         <label>
           {member.name}
@@ -127,7 +138,7 @@ class MemberBox extends Component {
             onClick={() => this.toggleMemberForm()} >
             add member
           </button>
-          <button>
+          <button onClick={() => this.selectAll()}>
             select all
           </button>
           <button>
