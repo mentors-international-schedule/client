@@ -21,7 +21,7 @@ export default function ProfileHeader(props) {
   return (
     <StyledProfileHeader>
       <img src={imageURL || defaultUser} />
-      <h3> name </h3>
+      <h3> {name} </h3>
     </StyledProfileHeader>
   );
 }
