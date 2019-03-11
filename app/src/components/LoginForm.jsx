@@ -26,8 +26,7 @@ export class LoginForm extends React.Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    console.log(event.target);
-    this.props.login(this.state.email, this.state.password);
+    this.props.login(this.state.inputEmail, this.state.inputPassword);
   };
   handleSignUp = event => {
     event.preventDefault();
