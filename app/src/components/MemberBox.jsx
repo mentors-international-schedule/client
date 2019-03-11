@@ -20,12 +20,17 @@ const MemberList = styled.div`
 `;
 
 // INLINE COMPONENTS
-const AddMemberForm = {
+const addMemberForm = {
   flexDirection: "column",
-  border: "1px solid lightgray",
   marginTop: "20px",
   width: "150px",
   display: "none",
+}
+
+const formError = {
+  color: 'red',
+  fontSize: '0.9rem',
+  display: 'none',
 }
 
 const groupMembers = [
@@ -71,6 +76,7 @@ class MemberBox extends Component {
 
   toggleMemberForm = () => {
     let memberForm = document.querySelector('.addMemberForm');
+
     if (memberForm.style.display === "none") {
       memberForm.style.display = "flex";
     } else {
@@ -85,21 +91,27 @@ class MemberBox extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    let newMember = {
-      name: this.state.name, 
-      phone: parseInt(this.state.phone), 
-      isChecked: false
-    };
+    if (this.state.name === "" || this.state.phone === "") {
+      document.querySelector('.formError').style.display = 'block';
+    } else {
+      document.querySelector('.formError').style.display = 'none';
 
-    let updatedMembers = [...this.state.members];
+      let newMember = {
+        name: this.state.name, 
+        phone: parseInt(this.state.phone), 
+        isChecked: false
+      };
 
-    updatedMembers.push(newMember);
+      let updatedMembers = [...this.state.members];
 
-    this.setState({
-      members: updatedMembers,
-      name: '',
-      phone: '',
-    })
+      updatedMembers.push(newMember);
+  
+      this.setState({
+        members: updatedMembers,
+        name: '',
+        phone: '',
+      })
+    }
   }
 
   selectAll = () => {
@@ -163,20 +175,29 @@ class MemberBox extends Component {
         </div>
 
         <form 
-          style={AddMemberForm}
+          style={addMemberForm}
           className="addMemberForm"
           onSubmit={this.handleSubmit} >
-          <input type="text"
+          <input 
+            type="text"
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
             placeholder="...full name" />
-          <input type="text"
+          <input 
+            type="text"
             name="phone"
             value={this.state.phone}
             onChange={this.handleChange}
             placeholder="...phone number" />
-          <button>Submit</button>
+          <button>
+            Submit
+          </button>
+          <p 
+            className="formError"
+            style={formError}>
+            Error: please do not leave any fields blank.
+          </p>
         </form>
       </MemerBoxContainer>
     )
