@@ -1,0 +1,40 @@
+// Section: Navigation
+header {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.6rem;
+    padding: 20px 20px;
+    // z-index: 1;
+    top: 0;
+
+    @media @tablet {
+      padding: 20px 2%;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+
+    img {
+      @media (max-width: 600px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    nav {
+      display: flex;
+      width: 400px;
+      justify-content: space-between;
+
+      @media @phone {
+        justify-content: space-around;
+      }
+      a {
+        text-decoration: none;
+        color: @white;
+      }
+    }
+  }
+}
