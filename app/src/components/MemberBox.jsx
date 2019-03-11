@@ -16,15 +16,44 @@ const MemberList = styled.div`
   width: 250px;
   overflow-y: auto;
   height: 200px;
-  margin-bottom: 20px;
+  margin: 10px 0;
 `;
 
-// INLINE COMPONENTS
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Button = styled.button`
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  color: blue; 
+  text-decoration: underline;
+
+  &:hover{
+    color: darkblue;
+  }
+`;
+
+const Input = styled.input`
+  padding: 5px 8px;
+`;
+
+// INLINE COMPONENTS (ONLY FOR TOGGLING)
 const addMemberForm = {
   flexDirection: "column",
   marginTop: "20px",
-  width: "150px",
   display: "none",
+  height: "120px",
+  border: "1px solid lightgray",
+  justifyContent: "space-between",
+  padding: "10px 20px",
+  background: "whitesmoke"
 }
 
 const formError = {
@@ -33,6 +62,7 @@ const formError = {
   display: 'none',
 }
 
+// TEMPORARY CONSTANT (REPLACED BY AJAX REQUEST)
 const groupMembers = [
   {name: 'Frodo Baggins', phone: 123444, isChecked: false}, 
   {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
@@ -55,6 +85,7 @@ class MemberBox extends Component {
   }
 
   componentDidMount() {
+    // GET request goes here:
     this.setState({
       members: groupMembers,
     })
@@ -155,41 +186,38 @@ class MemberBox extends Component {
           {members}
         </MemberList>
 
-        <div>
-          <button
+        <ButtonContainer>
+          <Button
             onClick={() => this.toggleMemberForm()} >
             add member
-          </button>
-          <button 
+          </Button>
+          <Button 
             onClick={() => this.selectAll()} >
             select all
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => this.selectNone()} >
             select none
-          </button>
-          <button 
-            onClick={() => console.log(this.state.members)} >
-            log state
-          </button>
-        </div>
+          </Button>
+        </ButtonContainer>
 
         <form 
           style={addMemberForm}
           className="addMemberForm"
           onSubmit={this.handleSubmit} >
-          <input 
+          <label>Add New Member: </label>
+          <Input
             type="text"
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
-            placeholder="...full name" />
-          <input 
+            placeholder="Full Name" />
+          <Input
             type="text"
             name="phone"
             value={this.state.phone}
             onChange={this.handleChange}
-            placeholder="...phone number" />
+            placeholder="Phone Number" />
           <button>
             Submit
           </button>
