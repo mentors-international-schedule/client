@@ -18,4 +18,5 @@ export const createGroup =(groupName, currentLoggedInUser) => dispatch => {
 
 export const deleteGroup = (groupName) => dispatch => {
   dispatch({type:DELETEING_GROUP})
+  // axios request to delete group
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import { createGroup } from "../../actions/groupActions";
+import {} from "../../actions/groupActions";
 const StyledAddAGroup = styled.div`
   display: flex;
   align-items: baseline;
@@ -15,9 +15,7 @@ export function AddAGroup(props) {
   function handleChange(event) {
     setInputValue(event.target.value);
   }
-  function createNewGroup() {
-    props.createGroup(inputValue);
-  }
+  function createNewGroup() {}
   return (
     <StyledAddAGroup>
       <div onClick={createNewGroup}>+ </div>
@@ -32,5 +30,5 @@ export function AddAGroup(props) {
 
 export default connect(
   () => {},
-  { createGroup }
+  {}
 )(AddAGroup);
