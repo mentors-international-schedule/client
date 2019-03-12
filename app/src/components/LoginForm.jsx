@@ -31,7 +31,7 @@ export class LoginForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.login(this.state.inputEmail, this.state.inputPassword, () => this.props.history.push("/app"));
+    this.props.login(this.state.inputEmail, this.state.inputPassword, () => this.props.history.push("/"));
   };
 
   handleSignUp = event => {

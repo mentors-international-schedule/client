@@ -13,7 +13,7 @@ export default class AppView extends React.Component {
       <StyledAppView>
         <SideBar />
         <MemberBox />
-        <Route path={`/app/:group`} component={Group} />
+        <Route path={`/:group`} component={Group} />
       </StyledAppView>
     );
   }
