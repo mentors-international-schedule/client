@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router";
-
 import LoginView from "./views/LoginView";
 import SignUpView from './views/SignUpView';
 import AppView from './views/AppView'

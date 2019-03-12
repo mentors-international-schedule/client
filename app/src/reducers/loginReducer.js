@@ -3,7 +3,8 @@ import {
   SUCCESS_LOGIN,
   FAIL_LOGIN,
   SUCCESS_SIGN_UP,
-  SET_USER
+  SET_USER,
+  LOG_OUT
 } from "../actions/actionTypes";
 
 const initState = {
@@ -20,11 +21,23 @@ export function loginReducer(stateOfLogin = initState, action) {
     case LOGGING_IN:
       return { ...stateOfLogin, loggingIn: true };
     case SUCCESS_LOGIN:
-      return { ...stateOfLogin, loggingIn: false, currentUser: action.payload, organization: !!action.payload.organization };
+      return {
+        ...stateOfLogin,
+        loggingIn: false,
+        currentUser: action.payload,
+        organization: !!action.payload.organization
+      };
     case FAIL_LOGIN:
       return { ...stateOfLogin, loggingIn: false, error: action.payload };
-    case SET_USER: 
-      return { ...stateOfLogin, loggingIn: false, currentUser: action.payload, organization: !!action.payload.organization };
+    case SET_USER:
+      return {
+        ...stateOfLogin,
+        loggingIn: false,
+        currentUser: action.payload,
+        organization: !!action.payload.organization
+      };
+    case LOG_OUT:
+      return initState;
     default:
       return stateOfLogin;
   }

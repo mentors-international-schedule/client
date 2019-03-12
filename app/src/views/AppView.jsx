@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { Route } from "react-router";
+import { Route, Redirect } from "react-router";
 import { connect } from "react-redux";
+import axios from "axios";
 import SideBar from "../components/SideBar/SideBar";
 import MemberBox from "../components/MemberBox";
 import Group from "../components/Group/Group";
-
+import JoinOrganizationView from "./JoinOrganizationView";
 import { setUser } from "../actions/loginActions";
 const StyledAppView = styled.div`
   display: flex;
@@ -13,9 +14,11 @@ const StyledAppView = styled.div`
 
 export class AppView extends React.Component {
   componentDidMount() {
-    const user = localStorage.getItem("user");
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       this.props.setUser(user);
+      debugger;
+      axios.defaults.headers.common["Authorization"] = user.token;
     } else {
       localStorage.clear();
       const { history } = this.props;
@@ -23,8 +26,11 @@ export class AppView extends React.Component {
     }
   }
   render() {
+    if (!this.props.currentUser) {
+      return <Redirect to="/login" />;
+    }
     if (!this.props.isOrganization) {
-      return <div>Join an organization</div>;
+      return <JoinOrganizationView />;
     }
     return (
       <StyledAppView>
@@ -37,7 +43,8 @@ export class AppView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isOrganization: state.loginReducer.organization
+  isOrganization: state.loginReducer.organization,
+  currentUser: state.loginReducer.currentUser
 });
 export default connect(
   mapStateToProps,
