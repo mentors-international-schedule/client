@@ -25,8 +25,8 @@ export const getGroups =() => dispatch => {
   debugger;
   dispatch({type:GETTING_GROUPS});
   axios.get(`${URL}api/groups`)
-    .then(res=> {debugger; dispatch({type:SUCCESS_GET_GROUPS, payload:res.data})})
-    .catch(err => {debugger; dispatch({type:FAIL_GET_GROUPS, payload:err })})
+    .then(res=> {dispatch({type:SUCCESS_GET_GROUPS, payload:res.data})})
+    .catch(err => { dispatch({type:FAIL_GET_GROUPS, payload:err })})
 }
 
 export const deleteGroup = (groupName) => dispatch => {
