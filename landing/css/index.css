@@ -629,6 +629,14 @@ header .header nav a {
   height: 410px;
   background: url('../img/about-hero.jpg') no-repeat center center / cover;
 }
+@media (max-width: 780px) {
+  .about-hero .showcase h2 {
+    margin-top: 65px;
+  }
+}
+.team-backend {
+  padding: 0 2%;
+}
 .team-backend h2 {
   margin-top: 80px;
   margin-bottom: 24px;
@@ -636,6 +644,11 @@ header .header nav a {
 .team-backend .backend {
   display: flex;
   justify-content: flex-start;
+}
+@media (max-width: 540px) {
+  .team-backend .backend {
+    flex-direction: column;
+  }
 }
 .team-backend .backend .box {
   margin-right: 24px;
@@ -655,6 +668,27 @@ header .header nav a {
 .team-backend .backend .box h3 {
   color: #17bcff;
   font-size: 1.8rem;
+}
+@media (max-width: 950px) {
+  .team-backend .backend .box {
+    width: 35%;
+  }
+}
+@media (max-width: 830px) {
+  .team-backend .backend .box {
+    width: 40%;
+  }
+}
+@media (max-width: 650px) {
+  .team-backend .backend .box {
+    width: 46%;
+  }
+}
+@media (max-width: 540px) {
+  .team-backend .backend .box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 .team-backend .backend .box img {
   width: 100%;
@@ -681,6 +715,9 @@ header .header nav a {
   text-decoration: none;
   color: #313a3d;
 }
+.team-frontend {
+  padding: 0 2%;
+}
 .team-frontend h2 {
   margin-top: 80px;
   margin-bottom: 24px;
@@ -689,6 +726,19 @@ header .header nav a {
   display: flex;
   justify-content: space-between;
   margin-bottom: 80px;
+}
+@media (max-width: 950px) {
+  .team-frontend .frontend {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 650px) {
+}
+@media (max-width: 540px) {
+  .team-frontend .frontend {
+    flex-direction: column;
+  }
 }
 .team-frontend .frontend .box {
   display: flex;
@@ -707,6 +757,31 @@ header .header nav a {
 .team-frontend .frontend .box h3 {
   color: #17bcff;
   font-size: 1.8rem;
+}
+@media (max-width: 950px) {
+  .team-frontend .frontend .box {
+    width: 35%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 830px) {
+  .team-frontend .frontend .box {
+    width: 40%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 650px) {
+  .team-frontend .frontend .box {
+    width: 46%;
+  }
+}
+@media (max-width: 540px) {
+  .team-frontend .frontend .box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 .team-frontend .frontend .box img {
   width: 100%;
