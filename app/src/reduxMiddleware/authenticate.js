@@ -5,12 +5,12 @@ const authenticate = store => next => action => {
     localStorage.setItem("token", action.payload.token);
     localStorage.setItem("user", JSON.stringify(action.payload));
   }
-
   if (
     action.payload !== undefined &&
     action.payload.response !== undefined &&
     action.payload.response.status === 401
   ) {
+    debugger;
     localStorage.clear();
     action.type = LOG_OUT;
   }

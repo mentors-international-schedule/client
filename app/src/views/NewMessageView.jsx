@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import MemberBox from "../components/MemberBox";
 import ComposeMessageField from "../components/Group/ComposeMessageField";
-
+import ComposeMessageDisplay from "../components/Group/ComposeMessageDisplay";
 const StyledNewMessageView = styled.div`
   display: flex;
 `;
@@ -13,11 +13,7 @@ export function NewMessageView(props) {
   return (
     <StyledNewMessageView>
       <div>
-        {messageInput ? (
-          <div>currently composing message</div>
-        ) : (
-          <div>message History</div>
-        )}
+        {messageInput ? <ComposeMessageDisplay /> : <div>message History</div>}
 
         <ComposeMessageField />
       </div>
