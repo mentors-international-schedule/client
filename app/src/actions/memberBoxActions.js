@@ -10,7 +10,7 @@ import {
   SUCCESS_CREATING_CONTACT
 } from "./actionTypes";
 
-export const getContacts = (groupId) = dispatch => {
+export const getContacts = (groupId) => dispatch => {
   dispatch({ type: GETTING_CONTACTS });
   axios
     .get(`${URL}api/contacts/:id`, { groupId })
@@ -28,7 +28,7 @@ export const getContacts = (groupId) = dispatch => {
     );
 }
 
-export const createContact = (name, phone_number, group_id) = dispatch => {
+export const createContact = (name, phone_number, group_id) => dispatch => {
   dispatch({ type: CREATING_CONTACT });
   axios
     .post(`${URL}api/contacts`, { name, phone_number, group_id })

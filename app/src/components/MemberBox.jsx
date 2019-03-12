@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { getContacts } from '../actions/memberBoxActions'; 
+
 import styled from 'styled-components';
 
 // STYLED COMPONENTS
@@ -68,16 +71,16 @@ const formError = (toggleFlag) => {
 }
 
 // TEMPORARY CONSTANT (REPLACED BY AJAX REQUEST)
-const groupMembers = [
-  {name: 'Frodo Baggins', phone: 123444, isChecked: false}, 
-  {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
-  {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false}, 
-  {name: 'Famwise Gamgee', phone: 123456, isChecked: false},
-  {name: 'Wrodo Baggins', phone: 1258883, isChecked: false}, 
-  {name: 'Reregrin  Took', phone: 825485, isChecked: false}, 
-  {name: 'Seriadoc Brandybuck', phone: 66672, isChecked: false}, 
-  {name: 'Ramwise Gamgee', phone: 235235, isChecked: false}
-]
+// const groupMembers = [
+//   {name: 'Frodo Baggins', phone: 123444, isChecked: false}, 
+//   {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
+//   {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false}, 
+//   {name: 'Famwise Gamgee', phone: 123456, isChecked: false},
+//   {name: 'Wrodo Baggins', phone: 1258883, isChecked: false}, 
+//   {name: 'Reregrin  Took', phone: 825485, isChecked: false}, 
+//   {name: 'Seriadoc Brandybuck', phone: 66672, isChecked: false}, 
+//   {name: 'Ramwise Gamgee', phone: 235235, isChecked: false}
+// ]
 
 class MemberBox extends Component {
   constructor() {
@@ -94,7 +97,7 @@ class MemberBox extends Component {
 
   componentDidMount() {
     // GET request goes here:
-    this.props.getGroupContacts()
+    this.props.getContacts("NEED GROUP ID HERE");
 
     // this.setState({
     //   members: groupMembers,
@@ -263,4 +266,11 @@ class MemberBox extends Component {
   }
 }
 
-export default MemberBox
+const mapStateToProps = state => ({
+  contacts: state.memberBoxReducer.contacts,
+  gettingContacts: state.memberBoxReducer.gettingContacts,
+  creatingContact: state.memberBoxReducer.creatingContact,
+  error: state.memberBoxReducer.error,
+});
+
+export default connect(mapStateToProps, { getContacts })(MemberBox);
