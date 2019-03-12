@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import CreateAccount from "../components/CreateAccount";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
 import SignUpNamePasswordForm from "../components/SignUpNamePasswordForm";
 import { signUp } from "../actions/signUpActions";
 
@@ -46,7 +47,11 @@ export class SignUpView extends React.Component {
       this.state.inputPassword
     );
   };
+
   render() {
+    if (this.props.isLoggedIn) {
+      return <Redirect to="/" />;
+    }
     return (
       <StyledSignUpView>
         <div className="container">
@@ -73,7 +78,9 @@ export class SignUpView extends React.Component {
   }
 }
 
-const mstp = state => {};
+const mstp = state => ({
+  isLoggedIn: !!state.loginReducer.currentUser
+});
 export default connect(
   mstp,
   { signUp }

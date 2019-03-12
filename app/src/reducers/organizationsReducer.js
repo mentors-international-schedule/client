@@ -6,7 +6,7 @@ import {
 
 const initState = {
   gettingOrgs: false,
-  organizations: [],
+  organizations: {},
   error: null
 };
 

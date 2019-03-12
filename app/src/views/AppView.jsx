@@ -26,7 +26,7 @@ export class AppView extends React.Component {
       return <Redirect to="/login" />;
     }
     // if does not belong to org takes user to screen to join or create an org
-    if (!this.props.isOrganization) {
+    if (!!this.props.currentUser && !this.props.currentUser.organization) {
       return <JoinOrganizationView />;
     }
     return (
@@ -40,7 +40,6 @@ export class AppView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isOrganization: state.loginReducer.organization,
   currentUser: state.loginReducer.currentUser
 });
 export default connect(
