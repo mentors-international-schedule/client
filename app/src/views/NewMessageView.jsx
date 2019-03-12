@@ -6,15 +6,26 @@ import ComposeMessageField from "../components/Group/ComposeMessageField";
 import ComposeMessageDisplay from "../components/Group/ComposeMessageDisplay";
 const StyledNewMessageView = styled.div`
   display: flex;
+  height: 600px;
+  justify-content: space-between;
+  .message-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
 export function NewMessageView(props) {
   const { messageInput } = props;
   console.log(messageInput);
   return (
     <StyledNewMessageView>
-      <div>
-        {messageInput ? <ComposeMessageDisplay /> : <div>message History</div>}
-
+      <div className="message-body">
+        {!!messageInput ? (
+          <ComposeMessageDisplay message={messageInput} />
+        ) : (
+          <div>message History</div>
+        )}
         <ComposeMessageField />
       </div>
       <MemberBox />
