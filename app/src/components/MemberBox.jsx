@@ -94,9 +94,11 @@ class MemberBox extends Component {
 
   componentDidMount() {
     // GET request goes here:
-    this.setState({
-      members: groupMembers,
-    })
+    this.props.getGroupContacts()
+
+    // this.setState({
+    //   members: groupMembers,
+    // })
   }
 
   toggleCheckbox = (phone) => {
