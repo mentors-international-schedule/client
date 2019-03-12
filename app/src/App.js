@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router";
+import { Route, Redirect, Switch } from "react-router";
 
 import LoginView from "./views/LoginView";
 import SignUpView from './views/SignUpView';
@@ -27,9 +27,11 @@ class App extends Component {
   render() {
     return (
       <StyledApp>
-        <Route path='/login' component={LoginView} />
-        <Route path='/signup' component={SignUpView} />
-        <PrivateRoute exact path='/' component={AppView} />
+        <Switch>
+          <Route path='/login' component={LoginView} />
+          <Route path='/signup' component={SignUpView} />
+          <PrivateRoute path='/' component={AppView} />
+        </Switch>
       </StyledApp>
     );
   }
