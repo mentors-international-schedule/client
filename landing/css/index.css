@@ -595,8 +595,6 @@ header .header nav a {
   justify-content: space-between;
   font-size: 1.6rem;
 }
-@media (max-width: 780px) {
-}
 @media (max-width: 600px) {
   .footer .footer-links {
     flex-direction: column;
@@ -625,4 +623,113 @@ header .header nav a {
   .footer .footer-links .social-media .icons i {
     margin-right: 20px;
   }
+}
+.about-hero {
+  width: 100%;
+  height: 410px;
+  background: url('../img/about-hero.jpg') no-repeat center center / cover;
+}
+.team-backend h2 {
+  margin-top: 80px;
+  margin-bottom: 24px;
+}
+.team-backend .backend {
+  display: flex;
+  justify-content: flex-start;
+}
+.team-backend .backend .box {
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32%;
+  height: 331px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(23, 188, 255, 0.1);
+  font-size: 2.3rem;
+  line-height: 1.35;
+  text-align: center;
+}
+.team-backend .backend .box h3 {
+  color: #17bcff;
+  font-size: 1.8rem;
+}
+.team-backend .backend .box img {
+  width: 100%;
+  border-radius: 100px;
+  border: 1px solid #17bdff1b;
+}
+.team-backend .backend .box .top-content {
+  background: #ffffff;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  margin-bottom: 20px;
+}
+.team-backend .backend .box .bottom-content {
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10%;
+}
+.team-backend .backend .box .bottom-content a {
+  text-decoration: none;
+  color: #313a3d;
+}
+.team-frontend h2 {
+  margin-top: 80px;
+  margin-bottom: 24px;
+}
+.team-frontend .frontend {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+.team-frontend .frontend .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32%;
+  height: 331px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(23, 188, 255, 0.1);
+  font-size: 2.3rem;
+  line-height: 1.35;
+  text-align: center;
+}
+.team-frontend .frontend .box h3 {
+  color: #17bcff;
+  font-size: 1.8rem;
+}
+.team-frontend .frontend .box img {
+  width: 100%;
+  border-radius: 100px;
+  border: 1px solid 17bdff1b;
+}
+.team-frontend .frontend .box .top-content {
+  background: #ffffff;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  margin-bottom: 20px;
+}
+.team-frontend .frontend .box .bottom-content {
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10%;
+}
+.team-frontend .frontend .box .bottom-content a {
+  text-decoration: none;
+  color: #313a3d;
 }
