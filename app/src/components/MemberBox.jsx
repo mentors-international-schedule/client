@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 // STYLED COMPONENTS
-const MemerBoxContainer = styled.div`
+const MemberBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -45,21 +45,26 @@ const Input = styled.input`
 `;
 
 // INLINE COMPONENTS (ONLY FOR TOGGLING)
-const addMemberForm = {
-  flexDirection: "column",
-  marginTop: "20px",
-  display: "none",
-  height: "120px",
-  border: "1px solid lightgray",
-  justifyContent: "space-between",
-  padding: "10px 20px",
-  background: "whitesmoke"
+const addMemberForm = (toggleFlag) => {
+  return ({
+    flexDirection: "column",
+    marginTop: "20px",
+    minHeight: "200px",
+    border: "1px solid lightgray",
+    borderRadius: "5px",
+    justifyContent: "space-evenly",
+    padding: "0 20px",
+    background: "whitesmoke",
+    display: toggleFlag ? 'flex' : 'none',
+  })
 }
 
-const formError = {
-  color: 'red',
-  fontSize: '0.9rem',
-  display: 'none',
+const formError = (toggleFlag) => {
+  return ({
+    color: 'red',
+    fontSize: '0.9rem',
+    display: toggleFlag ? 'block' : 'none',
+  })
 }
 
 // TEMPORARY CONSTANT (REPLACED BY AJAX REQUEST)
@@ -81,6 +86,9 @@ class MemberBox extends Component {
       members: [],
       name: '',
       phone: '',
+      memberFormToggle: false,
+      blankFormError: false,
+      duplicateMemberError: false,
     }
   }
 
@@ -106,13 +114,19 @@ class MemberBox extends Component {
   }
 
   toggleMemberForm = () => {
-    let memberForm = document.querySelector('.addMemberForm');
+    // USING DOM MANIPULATION (Don't do this)
+    // let memberForm = document.querySelector('.addMemberForm');
 
-    if (memberForm.style.display === "none") {
-      memberForm.style.display = "flex";
-    } else {
-      memberForm.style.display = "none";
-    }
+    // if (memberForm.style.display === "none") {
+    //   memberForm.style.display = "flex";
+    // } else {
+    //   memberForm.style.display = "none";
+    // }
+
+    // USING REACT STATE 
+    this.setState(prevState => ({ 
+      memberFormToggle: !prevState.memberFormToggle
+    }) );
   }
 
   handleChange = e => {
@@ -123,9 +137,26 @@ class MemberBox extends Component {
     e.preventDefault();
 
     if (this.state.name === "" || this.state.phone === "") {
-      document.querySelector('.formError').style.display = 'block';
+      // USING DOM MANIPULATION (Don't do this)
+      // document.querySelector('.formError').style.display = 'block';
+
+      this.setState({ 
+        blankFormError: true,
+        duplicateMemberError: false, 
+      })
+    } else if (this.state.members.filter(member => member.phone === parseInt(this.state.phone)).length > 0) {
+      this.setState({ 
+        duplicateMemberError: true,
+        blankFormError: false,
+      })
     } else {
-      document.querySelector('.formError').style.display = 'none';
+      // USING DOM MANIPULATION (Don't do this)
+      // document.querySelector('.formError').style.display = 'none';
+
+      this.setState({ 
+        blankFormError: false,
+        duplicateMemberError: false,
+      })
 
       let newMember = {
         name: this.state.name, 
@@ -145,29 +176,23 @@ class MemberBox extends Component {
     }
   }
 
-  selectAll = () => {
+  selectToggle = (bool) => {
     let updatedMembers = [...this.state.members]
-    updatedMembers.map(member => member.isChecked = true)
+    updatedMembers.map(member => member.isChecked = bool)
 
     let checkboxes = document.getElementsByName('checkbox');
     for(var i=0, n=checkboxes.length;i<n;i++) {
-      checkboxes[i].checked = true;
+      checkboxes[i].checked = bool;
     }
-  }
-
-  selectNone = () => {
-    let updatedMembers = [...this.state.members]
-    updatedMembers.map(member => member.isChecked = false)
-
-    let checkboxes = document.getElementsByName('checkbox');
-    for(var i=0, n=checkboxes.length;i<n;i++) {
-      checkboxes[i].checked = false;
-    }
+    
+    this.setState({
+      members: updatedMembers,
+    })
   }
 
   render() {
     const members = this.state.members.map((member, index) => 
-      <span key={index} style={{marginBottom: '10px',}}>
+      <span key={member.phone} style={{marginBottom: '10px',}}>
         <input 
           type="checkbox"
           name="checkbox" 
@@ -179,7 +204,7 @@ class MemberBox extends Component {
     )
 
     return (
-      <MemerBoxContainer>
+      <MemberBoxContainer>
         <p>Your group members will appear here. Uncheck the box to remove someone from the message chain.</p>
         
         <MemberList>
@@ -188,21 +213,21 @@ class MemberBox extends Component {
 
         <ButtonContainer>
           <Button
-            onClick={() => this.toggleMemberForm()} >
+            onClick={this.toggleMemberForm} >
             add member
           </Button>
           <Button 
-            onClick={() => this.selectAll()} >
+            onClick={() => this.selectToggle(true)} >
             select all
           </Button>
           <Button
-            onClick={() => this.selectNone()} >
+            onClick={() => this.selectToggle(false)} >
             select none
           </Button>
         </ButtonContainer>
 
         <form 
-          style={addMemberForm}
+          style={addMemberForm(this.state.memberFormToggle)}
           className="addMemberForm"
           onSubmit={this.handleSubmit} >
           <label>Add New Member: </label>
@@ -221,13 +246,17 @@ class MemberBox extends Component {
           <button>
             Submit
           </button>
-          <p 
+          <label
             className="formError"
-            style={formError}>
+            style={formError(this.state.blankFormError)} >
             Error: please do not leave any fields blank.
-          </p>
+          </label>
+          <label
+            style={formError(this.state.duplicateMemberError)} >
+            Error: phone number already exists.
+          </label>
         </form>
-      </MemerBoxContainer>
+      </MemberBoxContainer>
     )
   }
 }
