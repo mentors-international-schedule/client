@@ -9,7 +9,6 @@ class Carousel {
       stories: document.querySelectorAll('.stories')
     };
     this.index = 0;
-    console.log(this.storiesRefs.stories);
     this.storiesRefs.stories[this.index].style.display = 'flex';
     this.storiesRefs.stories[this.index].style.justifyContent = 'space-evenly';
     this.nextBtn.addEventListener('click', () => this.next());
