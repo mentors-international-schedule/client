@@ -13,7 +13,7 @@ import {
 export const getContacts = (groupId) => dispatch => {
   dispatch({ type: GETTING_CONTACTS });
   axios
-    .get(`${URL}api/contacts/:id`, { groupId })
+    .get(`${URL}api/contacts/${groupId}`)
     .then(res => {
       dispatch({
         type: SUCCESS_GETTING_CONTACTS,

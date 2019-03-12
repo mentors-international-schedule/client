@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { getContacts } from '../actions/memberBoxActions'; 
+import { getContacts, createContact } from '../actions/memberBoxActions'; 
 
 import styled from 'styled-components';
 
@@ -70,7 +70,7 @@ const formError = (toggleFlag) => {
   })
 }
 
-// TEMPORARY CONSTANT (REPLACED BY AJAX REQUEST)
+// TEMPORARY CONSTANTS (REPLACED BY AJAX REQUEST)
 // const groupMembers = [
 //   {name: 'Frodo Baggins', phone: 123444, isChecked: false}, 
 //   {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
@@ -92,12 +92,14 @@ class MemberBox extends Component {
       memberFormToggle: false,
       blankFormError: false,
       duplicateMemberError: false,
+      groupId: 9,
     }
   }
 
+ // MISSING isChecked on Redux store
   componentDidMount() {
     // GET request goes here:
-    this.props.getContacts("NEED GROUP ID HERE");
+    console.log(this.props.getContacts(this.state.groupId));
 
     // this.setState({
     //   members: groupMembers,
@@ -172,6 +174,7 @@ class MemberBox extends Component {
       let updatedMembers = [...this.state.members];
 
       updatedMembers.push(newMember);
+    
   
       this.setState({
         members: updatedMembers,
@@ -273,4 +276,4 @@ const mapStateToProps = state => ({
   error: state.memberBoxReducer.error,
 });
 
-export default connect(mapStateToProps, { getContacts })(MemberBox);
+export default connect(mapStateToProps, { getContacts, createContact })(MemberBox);
