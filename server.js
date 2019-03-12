@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 
-server = express();
+const server = express();
 
 server.use('/app/', express.static(path.join(__dirname, 'app', 'build')));
 server.get('/app/*', function(req, res) {
