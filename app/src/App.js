@@ -15,7 +15,7 @@ class App extends Component {
         <Switch>
           <Route path='/login' component={LoginView} />
           <Route path='/signup' component={SignUpView} />
-          <Route path='/app' component={AppView} />
+          <Route path='/' component={AppView} />
         </Switch>
 
       </StyledApp>
