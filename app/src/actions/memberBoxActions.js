@@ -28,10 +28,10 @@ export const getContacts = (groupId) = dispatch => {
     );
 }
 
-export const createContact = (name, phone, groupId) = dispatch => {
+export const createContact = (name, phone_number, group_id) = dispatch => {
   dispatch({ type: CREATING_CONTACT });
   axios
-    .get(`${URL}api/contacts`, { name, phone, groupId })
+    .post(`${URL}api/contacts`, { name, phone_number, group_id })
     .then(res => {
       dispatch({
         type: SUCCESS_CREATING_CONTACT                                                                                                                                                                                                                                                                                                                                                                                           ,

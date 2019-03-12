@@ -9,5 +9,6 @@ export default {
     form,
     loginReducer,
     signUpReducer,
-    organizationsReducer
+    organizationsReducer,
+    memberBoxReducer,
   };
