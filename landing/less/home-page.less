@@ -39,6 +39,7 @@
   margin-top: 0px;
   top: 300px;
   height: 230px;
+  text-align: center;
 
   @media @tablet {
     justify-content: space-between;
@@ -228,6 +229,11 @@
       padding-bottom: 30px;
     }
 
+    a {
+      text-decoration: none;
+      color: @dodger-blue;
+    }
+
     .title {
       padding-bottom: 30px;
       h2 {
@@ -360,6 +366,10 @@
       }
     }
   }
+  a {
+    text-decoration: none;
+    color: @dodger-blue;
+  }
 }
 
 //  Section: Footer
@@ -372,6 +382,10 @@
 
   @media @tablet {
     padding-top: 40px;
+  }
+  a {
+    text-decoration: none;
+    color: @footer-text;
   }
 
   img {
@@ -398,18 +412,18 @@
         padding-bottom: 5px;
       }
     }
+  }
 
-    .social-media {
-      .icons {
-        display: flex;
-        justify-content: space-evenly;
+  .social-media {
+    .icons {
+      display: flex;
+      justify-content: space-evenly;
 
-        @media (max-width: 600px) {
-          justify-content: flex-start;
+      @media (max-width: 600px) {
+        justify-content: flex-start;
 
-          i {
-            margin-right: 20px;
-          }
+        i {
+          margin-right: 20px;
         }
       }
     }
