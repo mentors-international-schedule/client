@@ -8,8 +8,9 @@ import AppView from './views/AppView'
 import styled from 'styled-components'
 
 const StyledApp = styled.div`
+  // Background: color or url(img)
+`;
 
-`
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
