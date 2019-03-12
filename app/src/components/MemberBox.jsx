@@ -113,7 +113,7 @@ class MemberBox extends Component {
   }
 
   toggleMemberForm = () => {
-    // USING DOM MANIPULATION
+    // USING DOM MANIPULATION (Don't do this)
     // let memberForm = document.querySelector('.addMemberForm');
 
     // if (memberForm.style.display === "none") {
@@ -136,10 +136,14 @@ class MemberBox extends Component {
     e.preventDefault();
 
     if (this.state.name === "" || this.state.phone === "") {
+      // USING DOM MANIPULATION (Don't do this)
       // document.querySelector('.formError').style.display = 'block';
+
       this.setState({ formErrorToggle: true })
     } else {
+      // USING DOM MANIPULATION (Don't do this)
       // document.querySelector('.formError').style.display = 'none';
+
       this.setState({ formErrorToggle: false })
 
       let newMember = {
