@@ -140,6 +140,8 @@ class MemberBox extends Component {
       // document.querySelector('.formError').style.display = 'block';
 
       this.setState({ formErrorToggle: true })
+    } else if {
+
     } else {
       // USING DOM MANIPULATION (Don't do this)
       // document.querySelector('.formError').style.display = 'none';
@@ -164,24 +166,18 @@ class MemberBox extends Component {
     }
   }
 
-  selectAll = () => {
+  selectToggle = (bool) => {
     let updatedMembers = [...this.state.members]
-    updatedMembers.map(member => member.isChecked = true)
+    updatedMembers.map(member => member.isChecked = bool)
 
     let checkboxes = document.getElementsByName('checkbox');
     for(var i=0, n=checkboxes.length;i<n;i++) {
-      checkboxes[i].checked = true;
+      checkboxes[i].checked = bool;
     }
-  }
-
-  selectNone = () => {
-    let updatedMembers = [...this.state.members]
-    updatedMembers.map(member => member.isChecked = false)
-
-    let checkboxes = document.getElementsByName('checkbox');
-    for(var i=0, n=checkboxes.length;i<n;i++) {
-      checkboxes[i].checked = false;
-    }
+    
+    this.setState({
+      members: updatedMembers,
+    })
   }
 
   render() {
@@ -207,15 +203,15 @@ class MemberBox extends Component {
 
         <ButtonContainer>
           <Button
-            onClick={() => this.toggleMemberForm()} >
+            onClick={this.toggleMemberForm} >
             add member
           </Button>
           <Button 
-            onClick={() => this.selectAll()} >
+            onClick={() => this.selectToggle(true)} >
             select all
           </Button>
           <Button
-            onClick={() => this.selectNone()} >
+            onClick={() => this.selectToggle(false)} >
             select none
           </Button>
         </ButtonContainer>
