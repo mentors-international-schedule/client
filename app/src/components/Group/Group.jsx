@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Route, NavLink } from "react-router-dom";
+
 import GroupHeader from "./GroupHeader";
 import NewMessageView from "../../views/NewMessageView";
+
 const StyledGroup = styled.div`
   width: 100%;
   padding: 0 10px;
@@ -19,6 +21,7 @@ const StyledGroup = styled.div`
     }
   }
 `;
+
 export default function Group(props) {
   console.log(props);
   return (
@@ -26,21 +29,21 @@ export default function Group(props) {
       <div className="header">
         <GroupHeader name={"Group Name"} handle={"Group Handle"} />
         <nav>
-          <NavLink to={`/app/${"curentGroup"}/newMessage`}>New Message</NavLink>
-          <NavLink to={`/app/${"curentGroup"}/scheduler`}>Scheduler</NavLink>
-          <NavLink to={`/app/${"curentGroup"}/people`}>People</NavLink>
+          <NavLink to={`/${"curentGroup"}/newMessage`}>New Message</NavLink>
+          <NavLink to={`/${"curentGroup"}/scheduler`}>Scheduler</NavLink>
+          <NavLink to={`/${"curentGroup"}/people`}>People</NavLink>
         </nav>
       </div>
       <Route
-        path={`/app/${"curentGroup"}/newMessage`}
+        path={`/${"curentGroup"}/newMessage`}
         component={NewMessageView}
       />
       <Route
-        path={`/app/${"curentGroup"}/scheduler`}
+        path={`/${"curentGroup"}/scheduler`}
         component={() => <div>Scheduler feature getting worked on</div>}
       />
       <Route
-        path={`/app/${"curentGroup"}/people`}
+        path={`/${"curentGroup"}/people`}
         component={() => <div>People feature getting worked on</div>}
       />
     </StyledGroup>

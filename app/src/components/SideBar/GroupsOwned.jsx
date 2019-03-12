@@ -24,7 +24,7 @@ export default function GroupsOwned(props) {
       <h3>Groups Owned </h3>
       <AddAGroup />
       {tempListOfGroups.map(group => (
-        <NavLink to={`/app/${group}`}>{group}</NavLink>
+        <NavLink to={`/${group}`}>{group}</NavLink>
       ))}
     </StyledGroupsOwned>
   );
