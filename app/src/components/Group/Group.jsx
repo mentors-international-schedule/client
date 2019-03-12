@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Route, NavLink } from "react-router-dom";
+
 import GroupHeader from "./GroupHeader";
 import NewMessageView from "../../views/NewMessageView";
+
 const StyledGroup = styled.div`
   width: 100%;
   padding: 0 10px;
@@ -19,6 +21,7 @@ const StyledGroup = styled.div`
     }
   }
 `;
+
 export default function Group(props) {
   console.log(props);
   return (
