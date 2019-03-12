@@ -27,10 +27,9 @@ class App extends Component {
   render() {
     return (
       <StyledApp>
-        <PrivateRoute exact path="/" />
         <Route path='/login' component={LoginView} />
         <Route path='/signup' component={SignUpView} />
-        <PrivateRoute path='/app' component={AppView} />
+        <PrivateRoute exact path='/' component={AppView} />
       </StyledApp>
     );
   }

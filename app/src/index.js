@@ -9,6 +9,8 @@ import reducers from "./reducers/index";
 
 import App from "./App";
 
+const { NODE_ENV } = process.env;
+
 const rootReducers = combineReducers(reducers);
 const store = createStore(
   rootReducers,
@@ -22,7 +24,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router basename={NODE_ENV === 'production' ? '/app' : undefined}>
       <App />
     </Router>
   </Provider>,
