@@ -87,7 +87,8 @@ class MemberBox extends Component {
       name: '',
       phone: '',
       memberFormToggle: false,
-      formErrorToggle: false,
+      blankFormError: false,
+      duplicateMemberError: false,
     }
   }
 
@@ -139,14 +140,23 @@ class MemberBox extends Component {
       // USING DOM MANIPULATION (Don't do this)
       // document.querySelector('.formError').style.display = 'block';
 
-      this.setState({ formErrorToggle: true })
-    } else if {
-
+      this.setState({ 
+        blankFormError: true,
+        duplicateMemberError: false, 
+      })
+    } else if (this.state.members.filter(member => member.phone === parseInt(this.state.phone)).length > 0) {
+      this.setState({ 
+        duplicateMemberError: true,
+        blankFormError: false,
+      })
     } else {
       // USING DOM MANIPULATION (Don't do this)
       // document.querySelector('.formError').style.display = 'none';
 
-      this.setState({ formErrorToggle: false })
+      this.setState({ 
+        blankFormError: false,
+        duplicateMemberError: false,
+      })
 
       let newMember = {
         name: this.state.name, 
@@ -238,8 +248,12 @@ class MemberBox extends Component {
           </button>
           <label
             className="formError"
-            style={formError(this.state.formErrorToggle)}>
+            style={formError(this.state.blankFormError)} >
             Error: please do not leave any fields blank.
+          </label>
+          <label
+            style={formError(this.state.duplicateMemberError)} >
+            Error: phone number already exists.
           </label>
         </form>
       </MemberBoxContainer>
