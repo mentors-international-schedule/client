@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router";
-
 import LoginView from "./views/LoginView";
 import SignUpView from './views/SignUpView';
 import AppView from './views/AppView'
-
 import styled from 'styled-components'
 
 const StyledApp = styled.div`
-  // Background: color or url(img)
+
 `;
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
+  
     {...rest}
     render={props =>
       localStorage.getItem("token") ? (
         <Component {...props} />
       ) : (
+       
         <Redirect to="/login" />
       )
     }
@@ -38,4 +38,6 @@ class App extends Component {
   }
 }
 
-export default App;
+
+
+export default App

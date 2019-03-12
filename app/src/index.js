@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import reducers from "./reducers/index";
-
+import authenticate from './reduxMiddleware/authenticate'
 import App from "./App";
 
 const { NODE_ENV } = process.env;
@@ -15,7 +15,7 @@ const rootReducers = combineReducers(reducers);
 const store = createStore(
   rootReducers,
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, authenticate),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
