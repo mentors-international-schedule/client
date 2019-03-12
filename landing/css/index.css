@@ -464,7 +464,9 @@ header .header nav a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
+  padding-bottom: 80px;
 }
 @media (max-width: 960px) {
   .success-stories {
@@ -487,33 +489,38 @@ header .header nav a {
 .success-stories .title h2 .o-brand {
   color: #f5a623;
 }
-.success-stories .boxes {
-  padding-bottom: 80px;
+.success-stories .testimonials {
+  display: flex;
+  align-items: center;
 }
-.success-stories .boxes .testimonials {
+.success-stories .testimonials .previous {
+  color: #17bcff;
+}
+.success-stories .testimonials .previous:hover {
+  opacity: 0.8;
+}
+.success-stories .testimonials .next {
+  color: #17bcff;
+}
+.success-stories .testimonials .next:hover {
+  opacity: 0.8;
+}
+.success-stories .testimonials .stories {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.success-stories .testimonials .stories .story {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding-bottom: 40px;
 }
-.success-stories .boxes .testimonials .previous {
-  color: #17bcff;
-}
-.success-stories .boxes .testimonials .previous:hover {
-  opacity: 0.8;
-}
-.success-stories .boxes .testimonials .next {
-  color: #17bcff;
-}
-.success-stories .boxes .testimonials .next:hover {
-  opacity: 0.8;
-}
-.success-stories .boxes .testimonials .test-box {
+.success-stories .testimonials .stories .story .story-content {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 40%;
+  width: 80%;
   height: 380px;
   background: #ffffff;
   border-radius: 5px;
@@ -523,33 +530,33 @@ header .header nav a {
   text-align: center;
 }
 @media (max-width: 780px) {
-  .success-stories .boxes .testimonials .test-box {
+  .success-stories .testimonials .stories .story .story-content {
     width: 92%;
     height: auto;
     justify-content: center;
   }
 }
 @media (max-width: 780px) {
-  .success-stories .boxes .testimonials .test-box .top-img {
+  .success-stories .testimonials .stories .story .story-content .top-img {
     width: 100%;
   }
 }
-.success-stories .boxes .testimonials .test-box img {
+.success-stories .testimonials .stories .story .story-content img {
   border-radius: 5px 5px 0 0;
 }
 @media (max-width: 780px) {
-  .success-stories .boxes .testimonials .test-box img {
+  .success-stories .testimonials .stories .story .story-content img {
     width: 100%;
   }
 }
-.success-stories .boxes .testimonials .test-box .quote {
+.success-stories .testimonials .stories .story .story-content .quote {
   padding: 25px;
   color: #dde1e6;
 }
-.success-stories .boxes .testimonials .test-box .bottom-text {
+.success-stories .testimonials .stories .story .story-content .bottom-text {
   display: flex;
 }
-.success-stories .boxes .testimonials .test-box .bottom-text .content {
+.success-stories .testimonials .stories .story .story-content .bottom-text .content {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -558,13 +565,13 @@ header .header nav a {
   padding: 10px 40px 40px 10px;
   margin-top: 20px;
 }
-.success-stories .boxes .testimonials .test-box .bottom-text .content p {
+.success-stories .testimonials .stories .story .story-content .bottom-text .content p {
   font-size: 1.5rem;
 }
-.success-stories .boxes .testimonials .test-box .bottom-text span {
+.success-stories .testimonials .stories .story .story-content .bottom-text span {
   font-weight: 800;
 }
-.success-stories .boxes .testimonials .test-box .bottom-text .btn-read-more {
+.success-stories .testimonials .stories .story .story-content .bottom-text .btn-read-more {
   margin-top: 10px;
   width: 100px;
   background: none;
@@ -576,7 +583,16 @@ header .header nav a {
   outline: none;
   padding: 0;
 }
-.success-stories .boxes .btn-primary {
+@media (max-width: 780px) {
+  .success-stories .testimonials #testimonials2 {
+    display: none;
+  }
+}
+.success-stories a {
+  text-decoration: none;
+  color: #17bcff;
+}
+.success-stories .btn-primary {
   width: 120px;
   height: 46px;
   background: none;
@@ -587,15 +603,6 @@ header .header nav a {
   font-weight: 500;
   cursor: pointer;
   outline: none;
-}
-@media (max-width: 780px) {
-  .success-stories .boxes #testimonials2 {
-    display: none;
-  }
-}
-.success-stories a {
-  text-decoration: none;
-  color: #17bcff;
 }
 .footer {
   padding: 0 2%;
