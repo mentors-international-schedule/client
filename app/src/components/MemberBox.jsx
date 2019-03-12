@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 // STYLED COMPONENTS
-const MemerBoxContainer = styled.div`
+const MemberBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -45,15 +45,17 @@ const Input = styled.input`
 `;
 
 // INLINE COMPONENTS (ONLY FOR TOGGLING)
-const addMemberForm = {
-  flexDirection: "column",
-  marginTop: "20px",
-  display: "none",
-  height: "120px",
-  border: "1px solid lightgray",
-  justifyContent: "space-between",
-  padding: "10px 20px",
-  background: "whitesmoke"
+const addMemberForm = (currentState) => {
+  return ({
+    flexDirection: "column",
+    marginTop: "20px",
+    height: "120px",
+    border: "1px solid lightgray",
+    justifyContent: "space-between",
+    padding: "10px 20px",
+    background: "whitesmoke",
+    display: currentState.memberFormToggle ? 'flex' : 'none',
+  })
 }
 
 const formError = {
@@ -81,6 +83,7 @@ class MemberBox extends Component {
       members: [],
       name: '',
       phone: '',
+      memberFormToggle: false,
     }
   }
 
@@ -106,13 +109,19 @@ class MemberBox extends Component {
   }
 
   toggleMemberForm = () => {
-    let memberForm = document.querySelector('.addMemberForm');
+    // USING DOM MANIPULATION
+    // let memberForm = document.querySelector('.addMemberForm');
 
-    if (memberForm.style.display === "none") {
-      memberForm.style.display = "flex";
-    } else {
-      memberForm.style.display = "none";
-    }
+    // if (memberForm.style.display === "none") {
+    //   memberForm.style.display = "flex";
+    // } else {
+    //   memberForm.style.display = "none";
+    // }
+
+    // USING REACT STATE 
+    this.setState(prevState => ({ 
+      memberFormToggle: !prevState.memberFormToggle
+    }) );
   }
 
   handleChange = e => {
@@ -167,7 +176,7 @@ class MemberBox extends Component {
 
   render() {
     const members = this.state.members.map((member, index) => 
-      <span key={index} style={{marginBottom: '10px',}}>
+      <span key={member.phone} style={{marginBottom: '10px',}}>
         <input 
           type="checkbox"
           name="checkbox" 
@@ -179,7 +188,7 @@ class MemberBox extends Component {
     )
 
     return (
-      <MemerBoxContainer>
+      <MemberBoxContainer>
         <p>Your group members will appear here. Uncheck the box to remove someone from the message chain.</p>
         
         <MemberList>
@@ -202,7 +211,7 @@ class MemberBox extends Component {
         </ButtonContainer>
 
         <form 
-          style={addMemberForm}
+          style={addMemberForm(this.state)}
           className="addMemberForm"
           onSubmit={this.handleSubmit} >
           <label>Add New Member: </label>
@@ -227,7 +236,7 @@ class MemberBox extends Component {
             Error: please do not leave any fields blank.
           </p>
         </form>
-      </MemerBoxContainer>
+      </MemberBoxContainer>
     )
   }
 }
