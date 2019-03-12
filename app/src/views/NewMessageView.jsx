@@ -7,12 +7,17 @@ import ComposeMessageField from "../components/Group/ComposeMessageField";
 const StyledNewMessageView = styled.div`
   display: flex;
 `;
-export default function NewMessageView(props) {
+export function NewMessageView(props) {
+  const { messageInput } = props;
+  console.log(messageInput);
   return (
     <StyledNewMessageView>
       <div>
-        <div>message History</div>
-        <div>currently composing message</div>
+        {messageInput ? (
+          <div>currently composing message</div>
+        ) : (
+          <div>message History</div>
+        )}
 
         <ComposeMessageField />
       </div>
@@ -21,14 +26,17 @@ export default function NewMessageView(props) {
   );
 }
 function mapStateToProps(state) {
-  if (!!state.form.composeMessage.values) {
+  if (!!state.form.composeMessage && state.form.composeMessage.values) {
     return {
       messageInput: state.form.composeMessage.values.message
     };
   }
+  return {
+    messageInput: false
+  };
 }
 
-// export default connect(
-//   mapStateToProps,
-//   {}
-// )(NewMessageView);
+export default connect(
+  mapStateToProps,
+  {}
+)(NewMessageView);
