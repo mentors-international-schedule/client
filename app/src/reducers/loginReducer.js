@@ -33,7 +33,7 @@ export function loginReducer(stateOfLogin = initState, action) {
     case SET_USER:
       return {
         ...stateOfLogin,
-        loggingIn: false,
+        loggingIn: false, 
         currentUser: action.payload,
       };
     case LOG_OUT:
