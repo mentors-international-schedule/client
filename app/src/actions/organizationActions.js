@@ -26,16 +26,17 @@ export const getOrganizations = () => dispatch => {
 
 export const createOrganization = name => dispatch => {
   dispatch({ type: CREATING_ORGANIZATION });
-  axios.post(`${URL}api/organizations`)
+  axios
+    .post(`${URL}api/organizations`)
     .then(res => {
-      dispatch({type: SUCCESS_CREATE_ORGANIZATION, payload: res.data})
+      dispatch({ type: SUCCESS_CREATE_ORGANIZATION, payload: res.data });
     })
     .catch(err => {
-      dispatch({type: FAIL_CREATE_ORGANIZATION, payload: err})
-    })
+      dispatch({ type: FAIL_CREATE_ORGANIZATION, payload: err });
+    });
 };
 
-export const joinOrganization = name => dispatch=> {
- dispatch({type: JOINING_ORGANIZATION})
-  dispatch({type: SUCCESS_JOIN_ORGANIZATION, payload: {name}})
-}
+export const joinOrganization = name => dispatch => {
+  dispatch({ type: JOINING_ORGANIZATION });
+  dispatch({ type: SUCCESS_JOIN_ORGANIZATION, payload: { name } });
+};

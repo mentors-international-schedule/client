@@ -6,10 +6,10 @@ import AppView from './views/AppView'
 import styled from 'styled-components'
 
 const StyledApp = styled.div`
-`
 
+`;
 
-const PrivateRoute = ({ component: Component, ...rest }) =>   (
+const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
   
     {...rest}
