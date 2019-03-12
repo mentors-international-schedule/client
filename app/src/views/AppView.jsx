@@ -16,6 +16,10 @@ export class AppView extends React.Component {
     const user = localStorage.getItem("user");
     if (user) {
       this.props.setUser(user);
+    } else {
+      localStorage.clear();
+      const { history } = this.props;
+      history.push("/login");
     }
   }
   render() {
