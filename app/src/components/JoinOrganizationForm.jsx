@@ -1,10 +1,27 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
-import { getOrganizations } from "../actions/organizationActions";
+import {
+  getOrganizations,
+  joinOrganization,
+  createOrganization
+} from "../actions/organizationActions";
 import styled from "styled-components";
-import URL from "../actions/AJAX_URL";
-const StyledJoinOrganizationForm = styled.div``;
+import SearchInputWithDrop from "../components/SearchInputWithDrop";
+const StyledJoinOrganizationForm = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .container {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    h2 {
+      text-align: center;
+    }
+  }
+`;
 
 export function JoinOrganizationForm(props) {
   const [initialized, setInitialized] = useState(false);
@@ -15,13 +32,17 @@ export function JoinOrganizationForm(props) {
       setInitialized(true);
     }
   });
+
   return (
     <StyledJoinOrganizationForm>
-      <select name="organization">
-        {props.organizations.map(organization => (
-          <option value={organization.name}>{organization.name}</option>
-        ))}
-      </select>
+      <div className="container">
+        <h2>What is the Name of your Organization?</h2>
+        <SearchInputWithDrop
+          create={props.createOrganization}
+          join={props.joinOrganization}
+          items={props.organizations}
+        />
+      </div>
     </StyledJoinOrganizationForm>
   );
 }
@@ -32,5 +53,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getOrganizations }
+  { getOrganizations, joinOrganization, createOrganization }
 )(JoinOrganizationForm);

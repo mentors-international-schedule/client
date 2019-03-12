@@ -4,7 +4,9 @@ import {
   FAIL_LOGIN,
   SUCCESS_SIGN_UP,
   SET_USER,
-  LOG_OUT
+  LOG_OUT,
+  SUCCESS_CREATE_ORGANIZATION,
+  SUCCESS_JOIN_ORGANIZATION
 } from "../actions/actionTypes";
 
 const initState = {
@@ -38,6 +40,17 @@ export function loginReducer(stateOfLogin = initState, action) {
       };
     case LOG_OUT:
       return initState;
+    case SUCCESS_CREATE_ORGANIZATION:
+      return {
+        ...stateOfLogin, // need to set the name of organization in the user or get the payload to be a new user
+        organization: true
+      }
+    case SUCCESS_JOIN_ORGANIZATION:
+    debugger
+      return {
+        ...stateOfLogin, // need to set the name of organization in the user or get the payload to be a new user
+        organization: true
+      }
     default:
       return stateOfLogin;
   }
