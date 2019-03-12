@@ -18,14 +18,13 @@ export class AppView extends React.Component {
     if (user) {
       this.props.setUser(user);
     } else {
-      debugger;
       localStorage.clear();
       const { history } = this.props;
       history.push("/login");
     }
   }
   render() {
-    if (!this.props.currentUser) {
+    if (!this.props.currentUser && !localStorage.getItem("user")) {
       return <Redirect to="/login" />;
     }
     if (!this.props.isOrganization) {
