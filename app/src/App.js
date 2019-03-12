@@ -4,12 +4,12 @@ import { Route, Redirect, Switch } from "react-router";
 import LoginView from "./views/LoginView";
 import SignUpView from './views/SignUpView';
 import AppView from './views/AppView'
-
 import styled from 'styled-components'
 
 const StyledApp = styled.div`
-
 `
+
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -37,4 +37,6 @@ class App extends Component {
   }
 }
 
-export default App;
+
+
+export default App
