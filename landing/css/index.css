@@ -506,21 +506,20 @@ header .header nav a {
   opacity: 0.8;
 }
 .success-stories .testimonials .stories {
-  display: flex;
-  flex-wrap: nowrap;
+  display: none;
 }
 .success-stories .testimonials .stories .story {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding-bottom: 40px;
+  width: 42%;
 }
 .success-stories .testimonials .stories .story .story-content {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 80%;
   height: 380px;
   background: #ffffff;
   border-radius: 5px;
@@ -549,12 +548,12 @@ header .header nav a {
     width: 100%;
   }
 }
-.success-stories .testimonials .stories .story .story-content .quote {
-  padding: 25px;
-  color: #dde1e6;
-}
 .success-stories .testimonials .stories .story .story-content .bottom-text {
   display: flex;
+}
+.success-stories .testimonials .stories .story .story-content .bottom-text .quote {
+  padding: 25px;
+  color: #dde1e6;
 }
 .success-stories .testimonials .stories .story .story-content .bottom-text .content {
   display: flex;
@@ -568,10 +567,10 @@ header .header nav a {
 .success-stories .testimonials .stories .story .story-content .bottom-text .content p {
   font-size: 1.5rem;
 }
-.success-stories .testimonials .stories .story .story-content .bottom-text span {
+.success-stories .testimonials .stories .story .story-content .bottom-text .content span {
   font-weight: 800;
 }
-.success-stories .testimonials .stories .story .story-content .bottom-text .btn-read-more {
+.success-stories .testimonials .stories .story .story-content .bottom-text .content .btn-read-more {
   margin-top: 10px;
   width: 100px;
   background: none;

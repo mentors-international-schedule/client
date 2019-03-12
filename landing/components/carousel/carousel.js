@@ -1,6 +1,5 @@
 class Carousel {
   constructor(carousel) {
-    console.log(carousel);
     this.carousel = carousel;
     this.previousBtn = document.querySelector('.previous');
     this.previousBtn.style.zIndex = 50;
@@ -9,20 +8,41 @@ class Carousel {
     this.storiesRefs = {
       stories: document.querySelectorAll('.stories')
     };
-    console.dir(this);
     this.index = 0;
+    console.log(this.storiesRefs.stories);
     this.storiesRefs.stories[this.index].style.display = 'flex';
+    this.storiesRefs.stories[this.index].style.justifyContent = 'space-evenly';
+    this.nextBtn.addEventListener('click', () => this.next());
+    this.previousBtn.addEventListener('click', () => this.previous());
+  }
+  next() {
+    this.index++;
+    if (this.index >= this.storiesRefs.stories.length) {
+      this.index = 0;
+    }
+    TweenMax.from(this.storiesRefs.stories, 0.5, {x: '50px', opacity: '0'});
+    TweenMax.to(this.storiesRefs.stories, 0.5, {x: '0px', opacity: '1'});
+
+    this.storiesRefs.stories.forEach(story => {
+      story.style.display = 'none';
+    });
+    this.storiesRefs.stories[this.index].style.display = 'flex';
+    this.storiesRefs.stories[this.index].style.justifyContent = 'space-evenly';
+  }
+  previous() {
+    this.index--;
+    if (this.index < 0) {
+      this.index = this.storiesRefs.stories.length - 1;
+    }
+    TweenMax.from(this.storiesRefs.stories, 0.5, {x: '-50px', opacity: '0'});
+    TweenMax.to(this.storiesRefs.stories, 0.5, {x: '0px', opacity: '1'});
+    this.storiesRefs.stories.forEach(story => {
+      story.style.display = 'none';
+    });
+    this.storiesRefs.stories[this.index].style.display = 'flex';
+    this.storiesRefs.stories[this.index].style.justifyContent = 'space-evenly';
   }
 }
 
 let carousel = document.querySelector('.testimonials');
-console.log(carousel);
 carousel = new Carousel(carousel);
-
-let index = 0;
-
-let stories = {
-  storyList: document.querySelectorAll('.stories')
-};
-
-// console.log(stories.storyList[index]);
