@@ -302,6 +302,7 @@
     .next:hover {
       opacity: 0.8;
     }
+
     .stories {
       display: flex;
       flex-wrap: nowrap;
@@ -346,13 +347,13 @@
             }
           }
 
-          .quote {
-            padding: 25px;
-            color: @light-gray;
-          }
-
           .bottom-text {
             display: flex;
+
+            .quote {
+              padding: 25px;
+              color: @light-gray;
+            }
 
             .content {
               display: flex;
@@ -362,18 +363,17 @@
               text-align: left;
               padding: 10px 40px 40px 10px;
               margin-top: 20px;
+
               p {
                 font-size: 1.5rem;
               }
-            }
-
-            span {
-              font-weight: 800;
-            }
-
-            .btn-read-more {
-              margin-top: 10px;
-              .btn-read(@width: 100px);
+              span {
+                font-weight: 800;
+              }
+              .btn-read-more {
+                margin-top: 10px;
+                .btn-read(@width: 100px);
+              }
             }
           }
         }
