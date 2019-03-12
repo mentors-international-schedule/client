@@ -290,15 +290,30 @@
     .testimonials {
       display: flex;
       justify-content: space-around;
+      align-items: center;
       padding-bottom: 40px;
+
+      .previous {
+        color: @dodger-blue;
+      }
+      .previous:hover {
+        opacity: 0.8;
+      }
+
+      .next {
+        color: @dodger-blue;
+      }
+      .next:hover {
+        opacity: 0.8;
+      }
 
       .test-box {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        width: 45%;
-        height: 468px;
+        width: 40%;
+        height: 380px;
         background: @white;
         border-radius: 5px;
         box-shadow: 0 0 30px rgba(23, 188, 255, 0.1);
@@ -342,7 +357,7 @@
             padding: 10px 40px 40px 10px;
             margin-top: 20px;
             p {
-              font-size: 1.8rem;
+              font-size: 1.5rem;
             }
           }
 

@@ -493,15 +493,28 @@ header .header nav a {
 .success-stories .boxes .testimonials {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding-bottom: 40px;
+}
+.success-stories .boxes .testimonials .previous {
+  color: #17bcff;
+}
+.success-stories .boxes .testimonials .previous:hover {
+  opacity: 0.8;
+}
+.success-stories .boxes .testimonials .next {
+  color: #17bcff;
+}
+.success-stories .boxes .testimonials .next:hover {
+  opacity: 0.8;
 }
 .success-stories .boxes .testimonials .test-box {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 45%;
-  height: 468px;
+  width: 40%;
+  height: 380px;
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 0 0 30px rgba(23, 188, 255, 0.1);
@@ -546,7 +559,7 @@ header .header nav a {
   margin-top: 20px;
 }
 .success-stories .boxes .testimonials .test-box .bottom-text .content p {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 .success-stories .boxes .testimonials .test-box .bottom-text span {
   font-weight: 800;
