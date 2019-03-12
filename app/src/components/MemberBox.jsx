@@ -45,23 +45,26 @@ const Input = styled.input`
 `;
 
 // INLINE COMPONENTS (ONLY FOR TOGGLING)
-const addMemberForm = (currentState) => {
+const addMemberForm = (toggleFlag) => {
   return ({
     flexDirection: "column",
     marginTop: "20px",
-    height: "120px",
+    minHeight: "200px",
     border: "1px solid lightgray",
-    justifyContent: "space-between",
-    padding: "10px 20px",
+    borderRadius: "5px",
+    justifyContent: "space-evenly",
+    padding: "0 20px",
     background: "whitesmoke",
-    display: currentState.memberFormToggle ? 'flex' : 'none',
+    display: toggleFlag ? 'flex' : 'none',
   })
 }
 
-const formError = {
-  color: 'red',
-  fontSize: '0.9rem',
-  display: 'none',
+const formError = (toggleFlag) => {
+  return ({
+    color: 'red',
+    fontSize: '0.9rem',
+    display: toggleFlag ? 'block' : 'none',
+  })
 }
 
 // TEMPORARY CONSTANT (REPLACED BY AJAX REQUEST)
@@ -84,6 +87,7 @@ class MemberBox extends Component {
       name: '',
       phone: '',
       memberFormToggle: false,
+      formErrorToggle: false,
     }
   }
 
@@ -132,9 +136,11 @@ class MemberBox extends Component {
     e.preventDefault();
 
     if (this.state.name === "" || this.state.phone === "") {
-      document.querySelector('.formError').style.display = 'block';
+      // document.querySelector('.formError').style.display = 'block';
+      this.setState({ formErrorToggle: true })
     } else {
-      document.querySelector('.formError').style.display = 'none';
+      // document.querySelector('.formError').style.display = 'none';
+      this.setState({ formErrorToggle: false })
 
       let newMember = {
         name: this.state.name, 
@@ -211,7 +217,7 @@ class MemberBox extends Component {
         </ButtonContainer>
 
         <form 
-          style={addMemberForm(this.state)}
+          style={addMemberForm(this.state.memberFormToggle)}
           className="addMemberForm"
           onSubmit={this.handleSubmit} >
           <label>Add New Member: </label>
@@ -230,11 +236,11 @@ class MemberBox extends Component {
           <button>
             Submit
           </button>
-          <p 
+          <label
             className="formError"
-            style={formError}>
+            style={formError(this.state.formErrorToggle)}>
             Error: please do not leave any fields blank.
-          </p>
+          </label>
         </form>
       </MemberBoxContainer>
     )
