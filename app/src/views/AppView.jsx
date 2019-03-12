@@ -7,7 +7,7 @@ import SideBar from "../components/SideBar/SideBar";
 import MemberBox from "../components/MemberBox";
 import Group from "../components/Group/Group";
 import JoinOrganizationView from "./JoinOrganizationView";
-import { setUser } from "../actions/loginActions";
+import { setUser, setAuth } from "../actions/loginActions";
 const StyledAppView = styled.div`
   display: flex;
 `;
@@ -17,9 +17,8 @@ export class AppView extends React.Component {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       this.props.setUser(user);
-      debugger;
-      axios.defaults.headers.common["Authorization"] = user.token;
     } else {
+      debugger;
       localStorage.clear();
       const { history } = this.props;
       history.push("/login");
@@ -48,5 +47,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { setUser }
+  { setUser, setAuth }
 )(AppView);

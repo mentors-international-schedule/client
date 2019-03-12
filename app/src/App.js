@@ -9,13 +9,15 @@ const StyledApp = styled.div`
 `
 
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, ...rest }) =>   (
   <Route
+  
     {...rest}
     render={props =>
       localStorage.getItem("token") ? (
         <Component {...props} />
       ) : (
+       
         <Redirect to="/login" />
       )
     }

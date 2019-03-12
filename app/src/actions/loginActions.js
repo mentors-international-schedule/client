@@ -1,6 +1,6 @@
 import axios from "axios";
 import URL from "./AJAX_URL";
-import { LOGGING_IN, SUCCESS_LOGIN, FAIL_LOGIN, SET_USER } from "./actionTypes";
+import { LOGGING_IN, SUCCESS_LOGIN, FAIL_LOGIN, SET_USER, SET_AUTH } from "./actionTypes";
 
 export const login = (email, password, callback) => dispatch => {
   dispatch({ type: LOGGING_IN });
@@ -23,6 +23,10 @@ export const login = (email, password, callback) => dispatch => {
     );
 };
 
-export function setUser(user) {
-  return { type: SET_USER, payload: user };
+export const setUser = (user) => dispatch => {
+  dispatch({ type: SET_USER, payload: user });
+  axios.defaults.headers.common["Authorization"] = user.token;
+}
+export function setAuth(token) {
+  return{type: SET_AUTH, payload: token}
 }

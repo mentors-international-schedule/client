@@ -5,23 +5,7 @@ import { getOrganizations } from "../actions/organizationActions";
 import styled from "styled-components";
 import URL from "../actions/AJAX_URL";
 const StyledJoinOrganizationForm = styled.div``;
-const fakeData = [
-  {
-    id: 1,
-    name: "Canada",
-    user_id: 6
-  },
-  {
-    id: 2,
-    name: "Canada1",
-    user_id: 6
-  },
-  {
-    id: 3,
-    name: "Canada12",
-    user_id: 6
-  }
-];
+
 export function JoinOrganizationForm(props) {
   const [initialized, setInitialized] = useState(false);
   const [inputValue, setInputValue] = useState("");
