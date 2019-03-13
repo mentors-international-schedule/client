@@ -86,7 +86,6 @@ class MemberBox extends Component {
   constructor() {
     super();
     this.state = {
-      members: [],
       name: '',
       phone: '',
       memberFormToggle: false,
@@ -99,7 +98,7 @@ class MemberBox extends Component {
  // MISSING isChecked on Redux store
   componentDidMount() {
     // GET request goes here:
-    console.log(this.props.getContacts(this.state.groupId));
+    this.props.getContacts(this.state.groupId);
 
     // this.setState({
     //   members: groupMembers,
@@ -151,7 +150,7 @@ class MemberBox extends Component {
         blankFormError: true,
         duplicateMemberError: false, 
       })
-    } else if (this.state.members.filter(member => member.phone === parseInt(this.state.phone)).length > 0) {
+    } else if (this.props.contacts.filter(member => member.phone === parseInt(this.state.phone)).length > 0) {
       this.setState({ 
         duplicateMemberError: true,
         blankFormError: false,
@@ -165,19 +164,19 @@ class MemberBox extends Component {
         duplicateMemberError: false,
       })
 
-      let newMember = {
-        name: this.state.name, 
-        phone: parseInt(this.state.phone), 
-        isChecked: false
-      };
+      // let newMember = {
+      //   name: this.state.name, 
+      //   phone: parseInt(this.state.phone), 
+      //   isChecked: false
+      // };
 
-      let updatedMembers = [...this.state.members];
+      // let updatedMembers = [...this.state.members];
 
-      updatedMembers.push(newMember);
+      // updatedMembers.push(newMember);
     
+      this.props.createContact(this.state.name, this.state.phone, this.state.groupId);
   
       this.setState({
-        members: updatedMembers,
         name: '',
         phone: '',
       })
@@ -199,7 +198,7 @@ class MemberBox extends Component {
   }
 
   render() {
-    const members = this.state.members.map((member, index) => 
+    const members = this.props.contacts.map( member => 
       <span key={member.phone} style={{marginBottom: '10px',}}>
         <input 
           type="checkbox"
