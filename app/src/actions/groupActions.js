@@ -14,7 +14,6 @@ import {
 
 
 export const createGroup =(name) => dispatch => { 
-  debugger;
   dispatch({type:CREATING_GROUP});
   axios.post(`${URL}api/groups`,{ name})
     .then(res=> dispatch({type:SUCCESS_CREATE_GROUP, payload:res.data}))
@@ -22,7 +21,6 @@ export const createGroup =(name) => dispatch => {
 }
 
 export const getGroups =() => dispatch => { 
-  debugger;
   dispatch({type:GETTING_GROUPS});
   axios.get(`${URL}api/groups`)
     .then(res=> {dispatch({type:SUCCESS_GET_GROUPS, payload:res.data})})
