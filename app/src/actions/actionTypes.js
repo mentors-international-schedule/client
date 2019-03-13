@@ -3,7 +3,7 @@ export const LOGGING_IN = "LOGGINGIN";
 export const SUCCESS_LOGIN = "SUCCESS_LOGIN";
 export const FAIL_LOGIN = "FAIL_LOGIN";
 export const SET_USER = "SET_USER";
-export const SET_AUTH = " SET_AUTH";
+export const SET_AUTH = "SET_AUTH";
 export const LOG_OUT = "LOG_OUT";
 
 // SIGN UP ACTIONS
