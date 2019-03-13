@@ -53,10 +53,10 @@ export const createContact = (name, phone_number, group_id) => dispatch => {
     );
 }
 
-export const deleteContact = (id) => dispatch => {
+export const deleteContact = (user_id, group_id) => dispatch => {
   dispatch({ type: DELETING_CONTACT });
   axios
-    .post(`${URL}api/contacts/${id}`)
+    .delete(`${URL}api/contacts/${user_id}/${group_id}`)
     .then(res => {
       dispatch({
         type: SUCCESS_DELETING_CONTACT                                                                                                                                                                                                                                                                                                                                                                                           ,

@@ -30,6 +30,7 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "eslint": "^5.15.1",
     "nodemon": "^1.18.10"
   }
 }
