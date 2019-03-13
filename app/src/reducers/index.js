@@ -10,9 +10,11 @@ import { messageReducer } from "./messageReducer";
 // export all reducers as object
 export default {
   form,
+  messageReducer,
   loginReducer,
   signUpReducer,
   organizationsReducer,
   memberBoxReducer,
-  groupReducer
+  groupReducer,
+  
 };
