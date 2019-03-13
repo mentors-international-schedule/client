@@ -28,7 +28,6 @@ export function Group(props) {
   if (props.groupId !== groupId) {
     props.setViewGroup(groupId);
   }
-
   return (
     <StyledGroup>
       <div className="header">
@@ -36,16 +35,16 @@ export function Group(props) {
         <nav>
           <NavLink to={`/${groupId}/newMessage`}>New Message</NavLink>
           <NavLink to={`/${groupId}/scheduler`}>Scheduler</NavLink>
-          <NavLink to={`/${groupId}/people`}>People</NavLink>
+          <NavLink to={`/${groupId}:id/people`}>People</NavLink>
         </nav>
       </div>
-      <Route path={`/${"curentGroup"}/newMessage`} component={NewMessageView} />
+      <Route path={`/${groupId}/newMessage`} component={NewMessageView} />
       <Route
-        path={`/${"curentGroup"}/scheduler`}
+        path={`/${groupId}/scheduler`}
         component={() => <div>Scheduler feature getting worked on</div>}
       />
       <Route
-        path={`/${"curentGroup"}/people`}
+        path={`/${groupId}/people`}
         component={() => <div>People feature getting worked on</div>}
       />
     </StyledGroup>
