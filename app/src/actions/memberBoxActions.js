@@ -11,16 +11,19 @@ import {
   DELETING_CONTACT,
   SUCCESS_DELETING_CONTACT,
   FAIL_DELETING_CONTACT,
+  REPLACE_CONTACTS,
 } from "./actionTypes";
 
 export const getContacts = (groupId) => dispatch => {
   dispatch({ type: GETTING_CONTACTS });
   axios
-    .get(`${URL}api/contacts/${groupId}`)
+    .get(`${URL}api/contacts/${groupId}`, { headers: { Authorization: localStorage.getItem("token") }})
     .then(res => {
+      // give all contacts a bool
+      // const edittedContacts = res.data.map(contact => Object.assign(contact, {"isChecked": false}))
       dispatch({
         type: SUCCESS_GETTING_CONTACTS,
-        payload: res.data
+        payload: res.data,
       });
     })
     .catch(err =>
@@ -66,4 +69,8 @@ export const deleteContact = (id) => dispatch => {
         payload: err
       })
     );
+}
+
+export function replaceContacts(contacts) {
+  return {type: REPLACE_CONTACTS, payload: contacts }
 }

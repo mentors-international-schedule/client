@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { connect } from 'react-redux';
-import { getContacts, createContact, deleteContact } from '../actions/memberBoxActions'; 
+import { connect } from "react-redux";
+import {
+  getContacts,
+  createContact,
+  deleteContact,
+  replaceContacts
+} from "../actions/memberBoxActions";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // STYLED COMPONENTS
 const MemberBoxContainer = styled.div`
@@ -35,10 +40,10 @@ const Button = styled.button`
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  color: blue; 
+  color: blue;
   text-decoration: underline;
 
-  &:hover{
+  &:hover {
     color: darkblue;
   }
 `;
@@ -48,8 +53,8 @@ const Input = styled.input`
 `;
 
 // INLINE COMPONENTS (ONLY FOR TOGGLING)
-const addMemberForm = (toggleFlag) => {
-  return ({
+const addMemberForm = toggleFlag => {
+  return {
     flexDirection: "column",
     marginTop: "20px",
     minHeight: "200px",
@@ -58,62 +63,66 @@ const addMemberForm = (toggleFlag) => {
     justifyContent: "space-evenly",
     padding: "0 20px",
     background: "whitesmoke",
-    display: toggleFlag ? 'flex' : 'none',
-  })
-}
+    display: toggleFlag ? "flex" : "none"
+  };
+};
 
-const formError = (toggleFlag) => {
-  return ({
-    color: 'red',
-    fontSize: '0.9rem',
-    display: toggleFlag ? 'block' : 'none',
-  })
-}
+const formError = toggleFlag => {
+  return {
+    color: "red",
+    fontSize: "0.9rem",
+    display: toggleFlag ? "block" : "none"
+  };
+};
 
 // TEMPORARY CONSTANTS (REPLACED BY AJAX REQUEST)
 // const groupMembers = [
-//   {name: 'Frodo Baggins', phone: 123444, isChecked: false}, 
-//   {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
-//   {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false}, 
+//   {name: 'Frodo Baggins', phone: 123444, isChecked: false},
+//   {name: 'Peregrin  Took', phone: 1234, isChecked: false},
+//   {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false},
 //   {name: 'Famwise Gamgee', phone: 123456, isChecked: false},
-//   {name: 'Wrodo Baggins', phone: 1258883, isChecked: false}, 
-//   {name: 'Reregrin  Took', phone: 825485, isChecked: false}, 
-//   {name: 'Seriadoc Brandybuck', phone: 66672, isChecked: false}, 
+//   {name: 'Wrodo Baggins', phone: 1258883, isChecked: false},
+//   {name: 'Reregrin  Took', phone: 825485, isChecked: false},
+//   {name: 'Seriadoc Brandybuck', phone: 66672, isChecked: false},
 //   {name: 'Ramwise Gamgee', phone: 235235, isChecked: false}
 // ]
 
 class MemberBox extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       members: [],
-      name: '',
-      phone: '',
+      name: "",
+      phone: "",
       memberFormToggle: false,
       blankFormError: false,
       duplicateMemberError: false,
-      groupId: 17,
+      groupId: 17
+    };
+  }
+
+  // MISSING isChecked on Redux store
+  // only gets if it is changing to its view
+  componentDidMount() {
+    if (
+      (this.props.contacts[0] &&
+        this.props.contacts[0].group_id !== this.props.groupId * 1) ||
+      !this.props.contacts[0]
+    ) {
+      debugger;
+      this.props.getContacts(this.props.groupId);
     }
   }
 
- // MISSING isChecked on Redux store
-  componentDidMount() {
-    this.props.getContacts(this.state.groupId);
-  }
-
-  toggleCheckbox = (phone) => {
-    let updatedMembers = [...this.state.members];
-
-    updatedMembers.map(member => {
-      (member.phone === phone &&
-        (member.isChecked = !member.isChecked) 
-      )
-    })
-
-    this.setState({
-      members : updatedMembers,
-    })
-  }
+  toggleCheckbox = id => {
+    const updatedContacts = this.props.contacts.map(contact => {
+      if (contact.id === id) {
+        return { ...contact, isChecked: contact.isChecked ? false : true };
+      }
+      return contact;
+    });
+    this.props.replaceContacts(updatedContacts);
+  };
 
   toggleMemberForm = () => {
     // USING DOM MANIPULATION (Don't do this)
@@ -125,147 +134,139 @@ class MemberBox extends Component {
     //   memberForm.style.display = "none";
     // }
 
-    // USING REACT STATE 
-    this.setState(prevState => ({ 
+    // USING REACT STATE
+    this.setState(prevState => ({
       memberFormToggle: !prevState.memberFormToggle
-    }) );
-  }
+    }));
+  };
 
   handleChange = e => {
-    this.setState({[e.target.name]: e.target.value});
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     if (this.state.name === "" || this.state.phone === "") {
       // USING DOM MANIPULATION (Don't do this)
       // document.querySelector('.formError').style.display = 'block';
 
-      this.setState({ 
+      this.setState({
         blankFormError: true,
-        duplicateMemberError: false, 
-      })
-    } else if (this.props.contacts.filter(member => member.phone === parseInt(this.state.phone)).length > 0) {
-      this.setState({ 
+        duplicateMemberError: false
+      });
+    } else if (
+      this.props.contacts.filter(
+        member => member.phone === parseInt(this.state.phone)
+      ).length > 0
+    ) {
+      this.setState({
         duplicateMemberError: true,
-        blankFormError: false,
-      })
+        blankFormError: false
+      });
     } else {
       // USING DOM MANIPULATION (Don't do this)
       // document.querySelector('.formError').style.display = 'none';
 
-      this.setState({ 
+      this.setState({
         blankFormError: false,
-        duplicateMemberError: false,
-      })
+        duplicateMemberError: false
+      });
 
       // let newMember = {
-      //   name: this.state.name, 
-      //   phone: parseInt(this.state.phone), 
+      //   name: this.state.name,
+      //   phone: parseInt(this.state.phone),
       //   isChecked: false
       // };
 
       // let updatedMembers = [...this.state.members];
 
       // updatedMembers.push(newMember);
-    
-      this.props.createContact(this.state.name, this.state.phone, this.state.groupId);
-  
+
+      this.props.createContact(
+        this.state.name,
+        this.state.phone,
+        this.props.groupId
+      );
+
       this.setState({
-        name: '',
-        phone: '',
-      })
+        name: "",
+        phone: ""
+      });
     }
-  }
+  };
 
-  selectToggle = (bool) => {
-    let updatedMembers = [...this.state.members]
-    updatedMembers.map(member => member.isChecked = bool)
-
-    let checkboxes = document.getElementsByName('checkbox');
-    for(var i=0, n=checkboxes.length;i<n;i++) {
-      checkboxes[i].checked = bool;
-    }
-    
-    this.setState({
-      members: updatedMembers,
-    })
-  }
+  selectToggle = bool => {
+    const updatedContacts = this.props.contacts.map(member => ({
+      ...member,
+      isChecked: bool
+    }));
+    this.props.replaceContacts(updatedContacts);
+  };
 
   render() {
-    const members = this.props.contacts.map(member => 
-      <span key={member.phone} style={{marginBottom: '10px',}}>
-        <input 
+    const members = this.props.contacts.map(member => (
+      <span key={member.id} style={{ marginBottom: "10px" }}>
+        <input
           type="checkbox"
-          name="checkbox" 
-          onClick={() => this.toggleCheckbox(member.phone)} />
-        <label>
-          {member.name}
-        </label>
+          name="checkbox"
+          checked={member.isChecked}
+          onClick={() => this.toggleCheckbox(member.id)}
+        />
+        <label>{member.name}</label>
         <button onClick={() => this.props.deleteContact(member.id)}>x</button>
       </span>
-    )
+    ));
 
     return (
       <MemberBoxContainer>
-        <p>Your group members will appear here. Uncheck the box to remove someone from the message chain.</p>
-        
-        <MemberList>
-          {members}
-        </MemberList>
+        <p>
+          Your group members will appear here. Uncheck the box to remove someone
+          from the message chain.
+        </p>
+
+        <MemberList>{members}</MemberList>
 
         <ButtonContainer>
-          <Button
-            onClick={this.toggleMemberForm} >
-            add member
-          </Button>
-          <Button 
-            onClick={() => this.selectToggle(true)} >
-            select all
-          </Button>
-          <Button
-            onClick={() => this.selectToggle(false)} >
-            select none
-          </Button>
-          <Button
-            onClick={() => console.log(this.state)} >
-            state
-          </Button>
+          <Button onClick={this.toggleMemberForm}>add member</Button>
+          <Button onClick={() => this.selectToggle(true)}>select all</Button>
+          <Button onClick={() => this.selectToggle(false)}>select none</Button>
+          <Button onClick={() => console.log(this.state)}>state</Button>
         </ButtonContainer>
 
-        <form 
+        <form
           style={addMemberForm(this.state.memberFormToggle)}
           className="addMemberForm"
-          onSubmit={this.handleSubmit} >
+          onSubmit={this.handleSubmit}
+        >
           <label>Add New Member: </label>
           <Input
             type="text"
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
-            placeholder="Full Name" />
+            placeholder="Full Name"
+          />
           <Input
             type="text"
             name="phone"
             value={this.state.phone}
             onChange={this.handleChange}
-            placeholder="Phone Number" />
-          <button>
-            Submit
-          </button>
+            placeholder="Phone Number"
+          />
+          <button>Submit</button>
           <label
             className="formError"
-            style={formError(this.state.blankFormError)} >
+            style={formError(this.state.blankFormError)}
+          >
             Error: please do not leave any fields blank.
           </label>
-          <label
-            style={formError(this.state.duplicateMemberError)} >
+          <label style={formError(this.state.duplicateMemberError)}>
             Error: phone number already exists.
           </label>
         </form>
       </MemberBoxContainer>
-    )
+    );
   }
 }
 
@@ -274,6 +275,10 @@ const mapStateToProps = state => ({
   gettingContacts: state.memberBoxReducer.gettingContacts,
   creatingContact: state.memberBoxReducer.creatingContact,
   error: state.memberBoxReducer.error,
+  groupId: state.groupReducer.viewingId
 });
 
-export default connect(mapStateToProps, { getContacts, createContact, deleteContact })(MemberBox);
+export default connect(
+  mapStateToProps,
+  { getContacts, createContact, deleteContact, replaceContacts }
+)(MemberBox);

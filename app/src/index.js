@@ -7,26 +7,40 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import reducers from "./reducers/index";
 import authenticate from './reduxMiddleware/authenticate'
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import App from "./App";
+import { PersistGate } from 'redux-persist/integration/react'
 
 const { NODE_ENV } = process.env;
 
-const rootReducers = combineReducers(reducers);
-const store = createStore(
-  rootReducers,
+const rootReducer = combineReducers(reducers);
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+let store = createStore(
+  persistedReducer,
   compose(
     applyMiddleware(thunk, authenticate),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
+let persistor = persistStore(store)
 
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
     <Router basename={NODE_ENV === 'production' ? '/app' : undefined}>
       <App />
     </Router>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

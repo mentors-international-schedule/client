@@ -24,7 +24,7 @@ export function AddAGroup(props) {
       <input
         onChange={handleChange}
         value={inputValue}
-        placeholder="Join a group"
+        placeholder="Make a group"
       />
     </StyledAddAGroup>
   );

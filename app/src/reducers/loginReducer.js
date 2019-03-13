@@ -9,10 +9,11 @@ import {
   SUCCESS_JOIN_ORGANIZATION
 } from "../actions/actionTypes";
 
-const initState = {
+let initState = {
   loggingIn: false,
   currentUser: null,
-  error: null
+  error: null,
+  userSet: false
 };
 
 export function loginReducer(stateOfLogin = initState, action) {
@@ -25,28 +26,41 @@ export function loginReducer(stateOfLogin = initState, action) {
       return {
         ...stateOfLogin,
         loggingIn: false,
-        currentUser: action.payload,
+        currentUser: action.payload
       };
     case FAIL_LOGIN:
       return { ...stateOfLogin, loggingIn: false, error: action.payload };
     case SET_USER:
       return {
         ...stateOfLogin,
-        loggingIn: false, 
-        currentUser: action.payload,
+        userSet: true
       };
     case LOG_OUT:
-      return initState;
+      return {
+        loggingIn: false,
+        currentUser: null,
+        error: null,
+        userSet: false
+      };
     case SUCCESS_CREATE_ORGANIZATION:
       return {
         ...stateOfLogin, // need to set the name of organization in the user or get the payload to be a new user
-        currentUser: {...stateOfLogin.currentUser, organization: action.payload}
-      }
+        currentUser: {
+          ...stateOfLogin.currentUser,
+          currentUser: {
+            ...stateOfLogin.currentUser,
+            organization: action.payload
+          }
+        }
+      };
     case SUCCESS_JOIN_ORGANIZATION:
       return {
         ...stateOfLogin, // need to set the name of organization in the user or get the payload to be a new user
-        currentUser: {...stateOfLogin.currentUser, organization: action.payload}
-      }
+        currentUser: {
+          ...stateOfLogin.currentUser,
+          organization: action.payload
+        }
+      };
     default:
       return stateOfLogin;
   }

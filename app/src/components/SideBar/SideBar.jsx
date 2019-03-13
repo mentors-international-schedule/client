@@ -16,7 +16,7 @@ export function SideBar(props) {
   let firstname = "";
   let orgName = "";
   const [init, setInit] = useState(false);
-  if (!!localStorage.getItem("token") && !init) {
+  if (props.userSet && !init) {
     props.getGroups();
     setInit(true);
   }
@@ -39,7 +39,8 @@ export function SideBar(props) {
 function mapStateToProps(state) {
   return {
     currentUser: state.loginReducer.currentUser,
-    myGroups: state.groupReducer.groups
+    myGroups: state.groupReducer.groups,
+    userSet: state.loginReducer.userSet
   };
 }
 

@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Route, NavLink } from "react-router-dom";
-
+import { connect } from "react-redux";
 import GroupHeader from "./GroupHeader";
 import NewMessageView from "../../views/NewMessageView";
+import { setViewGroup } from "../../actions/groupActions";
 
 const StyledGroup = styled.div`
   width: 100%;
@@ -22,30 +23,41 @@ const StyledGroup = styled.div`
   }
 `;
 
-export default function Group(props) {
-  console.log(props);
+export function Group(props) {
+  const groupId = props.match.params.groupId;
+  if (props.groupId !== groupId) {
+    props.setViewGroup(groupId);
+  }
   return (
     <StyledGroup>
       <div className="header">
         <GroupHeader name={"Group Name"} handle={"Group Handle"} />
         <nav>
-          <NavLink to={`/${"curentGroup"}/newMessage`}>New Message</NavLink>
-          <NavLink to={`/${"curentGroup"}/scheduler`}>Scheduler</NavLink>
-          <NavLink to={`/${"curentGroup"}/people`}>People</NavLink>
+          <NavLink to={`/${groupId}/newMessage`}>New Message</NavLink>
+          <NavLink to={`/${groupId}/scheduler`}>Scheduler</NavLink>
+          <NavLink to={`/${groupId}:id/people`}>People</NavLink>
         </nav>
       </div>
+      <Route path={`/${groupId}/newMessage`} component={NewMessageView} />
       <Route
-        path={`/${"curentGroup"}/newMessage`}
-        component={NewMessageView}
-      />
-      <Route
-        path={`/${"curentGroup"}/scheduler`}
+        path={`/${groupId}/scheduler`}
         component={() => <div>Scheduler feature getting worked on</div>}
       />
       <Route
-        path={`/${"curentGroup"}/people`}
+        path={`/${groupId}/people`}
         component={() => <div>People feature getting worked on</div>}
       />
     </StyledGroup>
   );
 }
+
+function mstp(state) {
+  return {
+    groupId: state.groupReducer.viewingId
+  };
+}
+
+export default connect(
+  mstp,
+  { setViewGroup }
+)(Group);
