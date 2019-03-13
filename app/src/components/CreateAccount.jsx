@@ -10,7 +10,7 @@ const StyledCreateAccount = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
+  font-size: 16px;
 
   h2 {
     font-family: ‘Source Sans Pro’, sans-serif;
@@ -19,6 +19,16 @@ const StyledCreateAccount = styled.div`
     color: #009DDE;
     font-weight: 900;
     margin: 0;
+  }
+
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #17BCFF;
+    font-family: ‘Source Sans Pro’, sans-serif;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
   }
 
   input {
@@ -44,13 +54,22 @@ const StyledCreateAccount = styled.div`
   }
 
   button {
-    width: 180px;
+    width: 100%;
     height: 46px;
     border-radius: 30px;
     border: none;
     background: #17BCFF;
     font-size: 16px;
     color: #fff;
+  }
+
+  .google-btn {
+    width: 100%;
+    height: 46px;
+    font-size: 16px;
+    background: #FF4F00;
+    color: #fff;
+    border-radius: 30px;
   }
 `;
 
@@ -77,7 +96,8 @@ export default function CreateAccount({
       <p>
         <span>OR</span>
       </p>
-      <button>Sign up with Google</button>
+      <button
+        className='google-btn'>Sign up with Google</button>
     </StyledCreateAccount>
   );
 }

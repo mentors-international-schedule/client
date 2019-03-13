@@ -64,7 +64,7 @@ export default function SignUpNamePasswordForm(props) {
   } = props;
   return (
     <StyledSignUpNamePasswordForm>
-      <h2>Create an Account</h2>
+      <h2>Complete Profile</h2>
 
       <label htmlFor="firstName">First Name</label>
       <input
@@ -90,7 +90,7 @@ export default function SignUpNamePasswordForm(props) {
         onChange={event => changePassword(event.target.value)}
       />
 
-      <button onClick={handleSignUp}>Complete Sign Up</button>
+      <button onClick={handleSignUp}>Submit</button>
     </StyledSignUpNamePasswordForm>
   );
 }

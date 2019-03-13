@@ -95,7 +95,7 @@ export class LoginForm extends React.Component {
   render() {
     return (
       <StyledLoginForm onSubmit={this.handleSubmit}>
-        <h2>Mentor Login</h2>
+        <h2><i className="fas fa-globe-americas fa-md o-brand"></i>  Mentor Login</h2>
 
         <label htmlFor="email">Email</label>
         <input
