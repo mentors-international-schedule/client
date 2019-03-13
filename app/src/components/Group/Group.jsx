@@ -31,7 +31,7 @@ export function Group(props) {
   return (
     <StyledGroup>
       <div className="header">
-        <GroupHeader name={"Group Name"} handle={"Group Handle"} />
+      <GroupHeader groups={props.groups} groupId={props.groupId} />
         <nav>
           <NavLink to={`/${groupId}/newMessage`}>New Message</NavLink>
           <NavLink to={`/${groupId}/scheduler`}>Scheduler</NavLink>
@@ -53,6 +53,7 @@ export function Group(props) {
 
 function mstp(state) {
   return {
+    groups: state.groupReducer.groups,
     groupId: state.groupReducer.viewingId
   };
 }
