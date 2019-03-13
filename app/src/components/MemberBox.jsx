@@ -107,13 +107,13 @@ class MemberBox extends Component {
   }
 
   toggleCheckbox = id => {
-    const updatedMembers = this.props.members.map(member => {
-      if (member.id === id) {
-        return { ...member, isChecked: member.isChecked ? false : true };
+    const updatedContacts = this.props.contacts.map(contact => {
+      if (contact.id === id) {
+        return { ...contact, isChecked: contact.isChecked ? false : true };
       }
-      return member;
+      return contact;
     });
-    this.props.replaceContacts(updatedMembers);
+    this.props.replaceContacts(updatedContacts);
   };
 
   toggleMemberForm = () => {
