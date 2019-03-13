@@ -8,6 +8,7 @@ import {
   DELETING_CONTACT,
   SUCCESS_DELETING_CONTACT,
   FAIL_DELETING_CONTACT,
+  SET_VIEWING_GROUP,
 } from "../actions/actionTypes";
 
 const initState = {
@@ -74,6 +75,11 @@ export function memberBoxReducer(state = initState, action) {
         deletingContact: false,
         error: action.payload, 
       }
+    case SET_VIEWING_GROUP:
+    return {
+      ...state,
+      contacts: [],
+    }
     default:
       return state;
   }
