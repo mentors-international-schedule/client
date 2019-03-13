@@ -30,7 +30,7 @@ const StyledLoginForm = styled.form`
   }
 
   .last-input {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 
   h2 {
@@ -39,7 +39,8 @@ const StyledLoginForm = styled.form`
     font-size: 32px;
     color: #009DDE;
     font-weight: 900;
-    margin: 0 10px;
+    margin: 0;
+    margin-bottom: 15px;
   }
 
   .login-btn {
@@ -94,7 +95,7 @@ export class LoginForm extends React.Component {
   render() {
     return (
       <StyledLoginForm onSubmit={this.handleSubmit}>
-        <h2>Login</h2>
+        <h2>Mentor Login</h2>
 
         <label htmlFor="email">Email</label>
         <input
