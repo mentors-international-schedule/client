@@ -16,15 +16,16 @@ const StyledGroupsOwned = styled.div`
   }
 `;
 
-const tempListOfGroups = ["Pie", "Fireball", "red"];
 export default function GroupsOwned(props) {
-  const { name } = props;
+  const { groups } = props;
   return (
     <StyledGroupsOwned>
       <h3>Groups Owned </h3>
       <AddAGroup />
-      {tempListOfGroups.map(group => (
-        <NavLink to={`/${group}`}>{group}</NavLink>
+      {groups.map(group => (
+        <NavLink to={`/${group.name.split(" ").join("-")}`}>
+          {group.name}
+        </NavLink>
       ))}
     </StyledGroupsOwned>
   );

@@ -14,6 +14,7 @@ const authenticate = store => next => action => {
     localStorage.clear();
     action.type = LOG_OUT;
   }
+  debugger
   next(action);
 };
 
