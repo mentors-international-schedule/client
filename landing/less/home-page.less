@@ -345,7 +345,8 @@
     padding: 0 2%;
   }
 
-  @media @phone {
+  @media (max-width: 600px) {
+    margin-bottom: 30px;
   }
 
   .title {
@@ -363,12 +364,6 @@
   .testimonials {
     display: flex;
     align-items: center;
-
-    @media (min-width: 1100px) {
-      .testimonials {
-        display: none;
-      }
-    }
 
     .previous {
       color: @dodger-blue;
@@ -392,12 +387,26 @@
     .stories {
       display: none;
 
+      @media (max-width: 1100px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .story {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding-bottom: 40px;
         width: 42%;
+
+        @media (max-width: 1100px) {
+          width: 80%;
+        }
+
+        @media (max-width: 600px) {
+          justify-content: center;
+          width: 100%;
+        }
 
         .story-content {
           display: flex;
@@ -438,6 +447,10 @@
               padding: 25px;
               color: #f0f2f7;
               padding-top: 10px;
+
+              @media (max-width: 600px) {
+                display: none;
+              }
             }
 
             .content {
@@ -448,6 +461,13 @@
               text-align: left;
               padding: 10px 40px 40px 10px;
               margin-top: 30px;
+
+              @media (max-width: 600px) {
+                padding-left: 2%;
+                padding-right: 2%;
+                padding-bottom: 10px;
+                margin-top: 5px;
+              }
 
               p {
                 font-size: 1.5rem;
@@ -473,28 +493,17 @@
         }
       }
     }
-    .hide-story {
-      @media @tablet {
-        display: none !important;
-      }
-    }
+    // .hide-story {
+    //   @media @tablet {
+    //     display: none !important;
+    //   }
+    // }
 
-    #testimonials2 {
-      @media @tablet {
-        display: none;
-      }
-    }
-  }
-
-  .mobile-testimonials {
-    display: none;
-
-    @media (max-width: 1100px) {
-      .mobile-testimonials {
-        display: flex;
-        align-items: center;
-      }
-    }
+    // #testimonials2 {
+    //   @media @tablet {
+    //     display: none;
+    //   }
+    // }
   }
 
   a {
