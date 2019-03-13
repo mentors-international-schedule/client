@@ -7,7 +7,10 @@ import {
   FAIL_GETTING_CONTACTS,
   CREATING_CONTACT,
   FAIL_CREATING_CONTACT,
-  SUCCESS_CREATING_CONTACT
+  SUCCESS_CREATING_CONTACT,
+  DELETING_CONTACT,
+  SUCCESS_DELETING_CONTACT,
+  FAIL_DELETING_CONTACT,
 } from "./actionTypes";
 
 export const getContacts = (groupId) => dispatch => {
@@ -42,6 +45,24 @@ export const createContact = (name, phone_number, group_id) => dispatch => {
     .catch(err =>
       dispatch({
         type: FAIL_CREATING_CONTACT,
+        payload: err
+      })
+    );
+}
+
+export const deleteContact = (id) => dispatch => {
+  dispatch({ type: DELETING_CONTACT });
+  axios
+    .post(`${URL}api/contacts/${id}`)
+    .then(res => {
+      dispatch({
+        type: SUCCESS_DELETING_CONTACT                                                                                                                                                                                                                                                                                                                                                                                           ,
+        payload: res.data //{success: true}
+      });
+    })
+    .catch(err =>
+      dispatch({
+        type: FAIL_DELETING_CONTACT,
         payload: err
       })
     );

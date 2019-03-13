@@ -194,7 +194,7 @@ class MemberBox extends Component {
   }
 
   render() {
-    const members = this.props.contacts.map( member => 
+    const members = this.props.contacts.map(member => 
       <span key={member.phone} style={{marginBottom: '10px',}}>
         <input 
           type="checkbox"
@@ -203,7 +203,7 @@ class MemberBox extends Component {
         <label>
           {member.name}
         </label>
-        <button onClick={this.props.deleteContact(member.phone)}>x</button>
+        <button onClick={this.props.deleteContact(member.id)}>x</button>
       </span>
     )
 
