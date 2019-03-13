@@ -18,9 +18,11 @@ export const getContacts = (groupId) => dispatch => {
   axios
     .get(`${URL}api/contacts/${groupId}`)
     .then(res => {
+      // give all contacts a bool
+      const edittedContacts = res.data.map(contact => Object.assign(contact, {"isChecked": false}))
       dispatch({
         type: SUCCESS_GETTING_CONTACTS,
-        payload: res.data
+        payload: edittedContacts
       });
     })
     .catch(err =>
