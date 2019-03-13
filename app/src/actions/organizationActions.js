@@ -27,16 +27,22 @@ export const getOrganizations = () => dispatch => {
 export const createOrganization = name => dispatch => {
   dispatch({ type: CREATING_ORGANIZATION });
   axios
-    .post(`${URL}api/organizations`, {name})
+    .post(`${URL}api/organizations`, { name })
     .then(res => {
-      dispatch({ type: SUCCESS_CREATE_ORGANIZATION, payload: {name} });
+      dispatch({ type: SUCCESS_CREATE_ORGANIZATION, payload: { name } });
     })
     .catch(err => {
       dispatch({ type: FAIL_CREATE_ORGANIZATION, payload: err });
     });
 };
 
-export const joinOrganization = name => dispatch => {
+export const joinOrganization = (name, id) => dispatch => {
   dispatch({ type: JOINING_ORGANIZATION });
-  dispatch({ type: SUCCESS_JOIN_ORGANIZATION, payload: { name } });
+  debugger
+  axios
+    .post(`${URL}api/organizations/join`, { id })
+    .then(() =>
+      dispatch({ type: SUCCESS_JOIN_ORGANIZATION, payload: { name, id } })
+    )
+    .catch(err => { dispatch({ type: FAIL_JOIN_ORGANIZATIONS, payload: err })});
 };

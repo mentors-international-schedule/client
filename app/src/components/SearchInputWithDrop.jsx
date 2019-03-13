@@ -42,8 +42,9 @@ export default function SearchInputWithDrop(props) {
     props.create(name);
   }
 
-  function join(name) {
-    props.join(name);
+  function join(name, id) {
+    debugger;
+    props.join(name, id);
   }
   return (
     <StyledSearchInputWithDrop>
@@ -61,7 +62,7 @@ export default function SearchInputWithDrop(props) {
           <div className="search-names">
             {itemsToShow.map(item => (
               <div
-                onClick={() => join(item.name)}
+                onClick={() => join(item.name, item.id)}
                 className="search-name"
                 key={item.id}
               >
