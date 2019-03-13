@@ -17,7 +17,7 @@ import {
 export const getContacts = (groupId) => dispatch => {
   dispatch({ type: GETTING_CONTACTS });
   axios
-    .get(`${URL}api/contacts/${groupId}`)
+    .get(`${URL}api/contacts/${groupId}`, { headers: { Authorization: localStorage.getItem("token") }})
     .then(res => {
       // give all contacts a bool
       // const edittedContacts = res.data.map(contact => Object.assign(contact, {"isChecked": false}))

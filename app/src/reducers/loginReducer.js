@@ -8,11 +8,11 @@ import {
   SUCCESS_CREATE_ORGANIZATION,
   SUCCESS_JOIN_ORGANIZATION
 } from "../actions/actionTypes";
-const localUser = JSON.parse(localStorage.getItem("user"));
+
 
 let initState = {
   loggingIn: false,
-  currentUser: !!localUser ? localUser : null,
+  currentUser:   null,
   error: null,
   userSet: false
 };

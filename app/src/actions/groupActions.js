@@ -23,7 +23,7 @@ export const createGroup =(name) => dispatch => {
 
 export const getGroups =() => dispatch => { 
   dispatch({type:GETTING_GROUPS});
-  axios.get(`${URL}api/groups`)
+  axios.get(`${URL}api/groups`,{ headers: { Authorization: localStorage.getItem("token") }})
     .then(res=> {dispatch({type:SUCCESS_GET_GROUPS, payload:res.data})})
     .catch(err => { dispatch({type:FAIL_GET_GROUPS, payload:err })})
 }

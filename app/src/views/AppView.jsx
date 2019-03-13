@@ -13,6 +13,14 @@ const StyledAppView = styled.div`
 
 export class AppView extends React.Component {
   componentDidMount() {
+    axios.interceptors.request.use(function(config) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.common["Authorization"] = token;
+      }
+      return config;
+    });
+
     const user = this.props.currentUser;
     if (user) {
       axios.defaults.headers.common["Authorization"] = user.token;
