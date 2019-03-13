@@ -7,14 +7,16 @@ import {
   FAIL_DELETE_GROUP,
   GETTING_GROUPS,
   FAIL_GET_GROUPS,
-  SUCCESS_GET_GROUPS
+  SUCCESS_GET_GROUPS,
+  SET_VIEWING_GROUP
 } from "../actions/actionTypes";
 
 const initState = {
   groups: [],
   gettingGroups: false,
   creatingGroup: false,
-  error: null
+  error: null,
+  viewingId : null,
 };
 
 export function groupReducer(state = initState, action) {
@@ -39,6 +41,8 @@ export function groupReducer(state = initState, action) {
       return { ...state, gettingGroups: false, groups: action.payload };
     case FAIL_GET_GROUPS:
       return { ...state, gettingGroups: false, error: action.payload };
+    case SET_VIEWING_GROUP:
+      return {...state, viewingId: action.payload}
     default:
       return state;
   }

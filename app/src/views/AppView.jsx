@@ -35,7 +35,7 @@ export class AppView extends React.Component {
       <StyledAppView>
         <SideBar />
 
-        <Route path={`/:group`} component={Group} />
+        <Route path={`/:groupId`} component={Group} />
       </StyledAppView>
     );
   }
