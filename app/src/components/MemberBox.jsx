@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import {
   getContacts,
   createContact,
-  deleteContact
+  deleteContact,
+  replaceContacts
 } from "../actions/memberBoxActions";
 
 import styled from "styled-components";
@@ -105,16 +106,14 @@ class MemberBox extends Component {
     this.props.getContacts(this.props.groupId);
   }
 
-  toggleCheckbox = phone => {
-    let updatedMembers = [...this.state.members];
-
-    updatedMembers.map(member => {
-      member.phone === phone && (member.isChecked = !member.isChecked);
+  toggleCheckbox = id => {
+    const updatedMembers = this.props.members.map(member => {
+      if (member.id === id) {
+        return { ...member, isChecked: member.isChecked ? false : true };
+      }
+      return member;
     });
-
-    this.setState({
-      members: updatedMembers
-    });
+    this.props.replaceContacts(updatedMembers);
   };
 
   toggleMemberForm = () => {
@@ -205,11 +204,12 @@ class MemberBox extends Component {
 
   render() {
     const members = this.props.contacts.map(member => (
-      <span key={member.phone} style={{ marginBottom: "10px" }}>
+      <span key={member.id} style={{ marginBottom: "10px" }}>
         <input
           type="checkbox"
           name="checkbox"
-          onClick={() => this.toggleCheckbox(member.phone)}
+          checked={member.isChecked}
+          onClick={() => this.toggleCheckbox(member.id)}
         />
         <label>{member.name}</label>
         <button onClick={() => this.props.deleteContact(member.id)}>x</button>
@@ -278,5 +278,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getContacts, createContact, deleteContact }
+  { getContacts, createContact, deleteContact, replaceContacts }
 )(MemberBox);

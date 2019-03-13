@@ -9,6 +9,7 @@ import {
   SUCCESS_DELETING_CONTACT,
   FAIL_DELETING_CONTACT,
   SET_VIEWING_GROUP,
+  REPLACE_CONTACTS
 } from "../actions/actionTypes";
 
 const initState = {
@@ -22,64 +23,69 @@ const initState = {
 export function memberBoxReducer(state = initState, action) {
   switch (action.type) {
     case GETTING_CONTACTS:
-      return { 
-        ...state, 
+      return {
+        ...state,
         gettingContacts: true,
-        error: null,
-      }
+        error: null
+      };
     case SUCCESS_GETTING_CONTACTS:
-      return { 
-        ...state, 
+      return {
+        ...state,
         gettingContacts: false,
-        contacts: action.payload,
-      }
+        contacts: action.payload
+      };
     case FAIL_GETTING_CONTACTS:
-      return { 
-        ...state, 
+      return {
+        ...state,
         gettingContacts: false,
-        error: action.payload,
-      }
+        error: action.payload
+      };
     case CREATING_CONTACT:
       return {
         ...state,
         creatingContact: true,
-        error: null,
-      }
+        error: null
+      };
     case SUCCESS_CREATING_CONTACT:
       return {
         ...state,
         creatingContact: false,
-        contacts: [...state.contacts, action.payload],
-      }
+        contacts: [...state.contacts, action.payload]
+      };
     case FAIL_CREATING_CONTACT:
       return {
         ...state,
         creatingContact: false,
-        error: action.payload, 
-      }
+        error: action.payload
+      };
     case DELETING_CONTACT:
       return {
         ...state,
         deletingContact: true,
-        error: null,
-      }
+        error: null
+      };
     case SUCCESS_DELETING_CONTACT:
       return {
         ...state,
         deletingContact: false,
-        contacts: action.payload,
-      }
+        contacts: action.payload
+      };
     case FAIL_DELETING_CONTACT:
       return {
         ...state,
         deletingContact: false,
-        error: action.payload, 
-      }
+        error: action.payload
+      };
     case SET_VIEWING_GROUP:
-    return {
-      ...state,
-      contacts: [],
-    }
+      return {
+        ...state,
+        contacts: []
+      };
+    case REPLACE_CONTACTS:
+      return {
+        ...state,
+        contacts: action.payload
+      };
     default:
       return state;
   }
