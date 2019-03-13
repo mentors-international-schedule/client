@@ -92,7 +92,7 @@ class MemberBox extends Component {
       memberFormToggle: false,
       blankFormError: false,
       duplicateMemberError: false,
-      groupId: 9,
+      groupId: 17,
     }
   }
 
