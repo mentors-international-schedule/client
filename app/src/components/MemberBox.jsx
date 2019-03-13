@@ -213,7 +213,7 @@ class MemberBox extends Component {
           onClick={() => this.toggleCheckbox(member.id)}
         />
         <label>{member.name}</label>
-        <button onClick={() => this.props.deleteContact(member.id)}>x</button>
+        <button onClick={() => this.props.deleteContact(member.id, member.group_id)}>x</button>
       </span>
     ));
 
