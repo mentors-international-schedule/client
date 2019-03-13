@@ -3,17 +3,23 @@ import styled from "styled-components";
 import { create } from "domain";
 
 const StyledSearchInputWithDrop = styled.div`
-  width: 90%;
-  margin-left: 5%;
+  width: 100%;
   input {
     width: 100%;
+    margin: 0;
   }
   .search-names {
-    height: 300px;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 100%;
+    overflow-y: auto;
+    height: 200px;
     border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 0 10px;
   }
   .add-org {
-    border: 1px solid black;
     border-top: none;
   }
 `;
