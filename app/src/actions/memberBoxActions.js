@@ -33,6 +33,7 @@ export const createContact = (name, phone_number, group_id) => dispatch => {
   axios
     .post(`${URL}api/contacts`, { name, phone_number, group_id })
     .then(res => {
+      Object.assign(res.data, {'isChecked':false});
       dispatch({
         type: SUCCESS_CREATING_CONTACT                                                                                                                                                                                                                                                                                                                                                                                           ,
         payload: res.data

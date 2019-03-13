@@ -86,6 +86,7 @@ class MemberBox extends Component {
   constructor() {
     super();
     this.state = {
+      members: [],
       name: '',
       phone: '',
       memberFormToggle: false,
@@ -97,12 +98,7 @@ class MemberBox extends Component {
 
  // MISSING isChecked on Redux store
   componentDidMount() {
-    // GET request goes here:
     this.props.getContacts(this.state.groupId);
-
-    // this.setState({
-    //   members: groupMembers,
-    // })
   }
 
   toggleCheckbox = (phone) => {
@@ -230,6 +226,10 @@ class MemberBox extends Component {
           <Button
             onClick={() => this.selectToggle(false)} >
             select none
+          </Button>
+          <Button
+            onClick={() => console.log(this.state)} >
+            state
           </Button>
         </ButtonContainer>
 
