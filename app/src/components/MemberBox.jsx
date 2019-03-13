@@ -87,8 +87,8 @@ const formError = toggleFlag => {
 // ]
 
 class MemberBox extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       members: [],
       name: "",
@@ -102,7 +102,7 @@ class MemberBox extends Component {
 
   // MISSING isChecked on Redux store
   componentDidMount() {
-    this.props.getContacts(this.state.groupId);
+    this.props.getContacts(this.props.groupId);
   }
 
   toggleCheckbox = phone => {
@@ -179,7 +179,7 @@ class MemberBox extends Component {
       this.props.createContact(
         this.state.name,
         this.state.phone,
-        this.state.groupId
+        this.props.groupId
       );
 
       this.setState({
