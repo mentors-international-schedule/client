@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { getContacts, createContact, deleteContact } from '../actions/memberBoxActions'; 
+
 import styled from 'styled-components';
 
 // STYLED COMPONENTS
@@ -67,17 +70,17 @@ const formError = (toggleFlag) => {
   })
 }
 
-// TEMPORARY CONSTANT (REPLACED BY AJAX REQUEST)
-const groupMembers = [
-  {name: 'Frodo Baggins', phone: 123444, isChecked: false}, 
-  {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
-  {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false}, 
-  {name: 'Famwise Gamgee', phone: 123456, isChecked: false},
-  {name: 'Wrodo Baggins', phone: 1258883, isChecked: false}, 
-  {name: 'Reregrin  Took', phone: 825485, isChecked: false}, 
-  {name: 'Seriadoc Brandybuck', phone: 66672, isChecked: false}, 
-  {name: 'Ramwise Gamgee', phone: 235235, isChecked: false}
-]
+// TEMPORARY CONSTANTS (REPLACED BY AJAX REQUEST)
+// const groupMembers = [
+//   {name: 'Frodo Baggins', phone: 123444, isChecked: false}, 
+//   {name: 'Peregrin  Took', phone: 1234, isChecked: false}, 
+//   {name: 'Meriadoc Brandybuck', phone: 12345, isChecked: false}, 
+//   {name: 'Famwise Gamgee', phone: 123456, isChecked: false},
+//   {name: 'Wrodo Baggins', phone: 1258883, isChecked: false}, 
+//   {name: 'Reregrin  Took', phone: 825485, isChecked: false}, 
+//   {name: 'Seriadoc Brandybuck', phone: 66672, isChecked: false}, 
+//   {name: 'Ramwise Gamgee', phone: 235235, isChecked: false}
+// ]
 
 class MemberBox extends Component {
   constructor() {
@@ -89,14 +92,13 @@ class MemberBox extends Component {
       memberFormToggle: false,
       blankFormError: false,
       duplicateMemberError: false,
+      groupId: 17,
     }
   }
 
+ // MISSING isChecked on Redux store
   componentDidMount() {
-    // GET request goes here:
-    this.setState({
-      members: groupMembers,
-    })
+    this.props.getContacts(this.state.groupId);
   }
 
   toggleCheckbox = (phone) => {
@@ -144,7 +146,7 @@ class MemberBox extends Component {
         blankFormError: true,
         duplicateMemberError: false, 
       })
-    } else if (this.state.members.filter(member => member.phone === parseInt(this.state.phone)).length > 0) {
+    } else if (this.props.contacts.filter(member => member.phone === parseInt(this.state.phone)).length > 0) {
       this.setState({ 
         duplicateMemberError: true,
         blankFormError: false,
@@ -158,18 +160,19 @@ class MemberBox extends Component {
         duplicateMemberError: false,
       })
 
-      let newMember = {
-        name: this.state.name, 
-        phone: parseInt(this.state.phone), 
-        isChecked: false
-      };
+      // let newMember = {
+      //   name: this.state.name, 
+      //   phone: parseInt(this.state.phone), 
+      //   isChecked: false
+      // };
 
-      let updatedMembers = [...this.state.members];
+      // let updatedMembers = [...this.state.members];
 
-      updatedMembers.push(newMember);
+      // updatedMembers.push(newMember);
+    
+      this.props.createContact(this.state.name, this.state.phone, this.state.groupId);
   
       this.setState({
-        members: updatedMembers,
         name: '',
         phone: '',
       })
@@ -191,7 +194,7 @@ class MemberBox extends Component {
   }
 
   render() {
-    const members = this.state.members.map((member, index) => 
+    const members = this.props.contacts.map(member => 
       <span key={member.phone} style={{marginBottom: '10px',}}>
         <input 
           type="checkbox"
@@ -200,6 +203,7 @@ class MemberBox extends Component {
         <label>
           {member.name}
         </label>
+        <button onClick={() => this.props.deleteContact(member.id)}>x</button>
       </span>
     )
 
@@ -223,6 +227,10 @@ class MemberBox extends Component {
           <Button
             onClick={() => this.selectToggle(false)} >
             select none
+          </Button>
+          <Button
+            onClick={() => console.log(this.state)} >
+            state
           </Button>
         </ButtonContainer>
 
@@ -261,4 +269,11 @@ class MemberBox extends Component {
   }
 }
 
-export default MemberBox
+const mapStateToProps = state => ({
+  contacts: state.memberBoxReducer.contacts,
+  gettingContacts: state.memberBoxReducer.gettingContacts,
+  creatingContact: state.memberBoxReducer.creatingContact,
+  error: state.memberBoxReducer.error,
+});
+
+export default connect(mapStateToProps, { getContacts, createContact, deleteContact })(MemberBox);

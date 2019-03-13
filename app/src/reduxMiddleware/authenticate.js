@@ -10,11 +10,9 @@ const authenticate = store => next => action => {
     action.payload.response !== undefined &&
     action.payload.response.status === 401
   ) {
-    debugger;
     localStorage.clear();
     action.type = LOG_OUT;
   }
-  debugger
   next(action);
 };
 

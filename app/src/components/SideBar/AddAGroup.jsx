@@ -16,7 +16,6 @@ export function AddAGroup(props) {
     setInputValue(event.target.value);
   }
   function createNewGroup() {
-    debugger;
     props.createGroup(inputValue);
   }
   return (

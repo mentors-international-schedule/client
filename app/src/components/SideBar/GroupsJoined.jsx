@@ -22,8 +22,8 @@ export default function GroupsJoined(props) {
     <StyledGroupsJoined>
       <h3>Joined Groups </h3>
       <JoinAGroup />
-      {tempListOfGroups.map(group => (
-        <NavLink to={`/${group}`}>{group}</NavLink>
+      {tempListOfGroups.map((group, index) => (
+        <NavLink key={index} to={`/${group}`}>{group}</NavLink>
       ))}
     </StyledGroupsJoined>
   );
