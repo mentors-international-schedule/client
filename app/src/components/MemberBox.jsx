@@ -230,7 +230,6 @@ class MemberBox extends Component {
           <Button onClick={this.toggleMemberForm}>add member</Button>
           <Button onClick={() => this.selectToggle(true)}>select all</Button>
           <Button onClick={() => this.selectToggle(false)}>select none</Button>
-          <Button onClick={() => console.log(this.state)}>state</Button>
         </ButtonContainer>
 
         <form

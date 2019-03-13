@@ -56,7 +56,7 @@ export const createContact = (name, phone_number, group_id) => dispatch => {
 export const deleteContact = (id) => dispatch => {
   dispatch({ type: DELETING_CONTACT });
   axios
-    .post(`${URL}api/contacts/${id}`)
+    .delete(`${URL}api/contacts/${id}`)
     .then(res => {
       dispatch({
         type: SUCCESS_DELETING_CONTACT                                                                                                                                                                                                                                                                                                                                                                                           ,
