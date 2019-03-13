@@ -49,7 +49,10 @@ export default function SearchInputWithDrop(props) {
   }
 
   function join(name, id) {
+<<<<<<< HEAD
+=======
    // need to make sure the end point gets fixed
+>>>>>>> origin
     props.join(name, id);
   }
   return (

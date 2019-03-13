@@ -78,11 +78,9 @@ export default function CreateAccount({
   inputEmail,
   changeEmail
 }) {
-  console.log(inputEmail);
   return (
     <StyledCreateAccount>
       <h2>Create an Account</h2>
-
       <input
         name="email"
         type="email"
