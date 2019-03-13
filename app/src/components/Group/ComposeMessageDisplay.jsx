@@ -5,8 +5,11 @@ import { connect } from "react-redux";
 import {
   sendMessage,
   getMessages,
-  draftMessage
+  draftMessage,
+  updateInputMessage,
+  deleteMessage
 } from "../../actions/messageActions";
+
 const StyledComposeMessageDisplay = styled.div`
   background: lightgrey;
   display: flex;
@@ -30,13 +33,27 @@ export function ComposeMessageDisplay(props) {
 
   function handleSendMessage() {
     props.sendMessage(filterContacts(), props.messageInput, props.groupId);
+    if (props.isDraftingId) {
+      props.deleteMessage(props.isDraftingId);
+    }
+  }
+  function handleSaveMessage() {
+    props.draftMessage(props.messageInput, props.groupId);
+  }
+  function handleChangeTextArea(event) {
+    props.updateInputMessage(event.target.value);
   }
   return (
     <StyledComposeMessageDisplay>
       <h3>Message Composer</h3>
-      <textarea value={props.messageInput} rows="3" cols="20" />
+      <textarea
+        onInput={handleChangeTextArea}
+        value={props.messageInput}
+        rows="3"
+        cols="20"
+      />
       <div>
-        <button>Save message</button>
+        <button onClick={handleSaveMessage}>Save message</button>
         <button>Schedule</button>
         <button onClick={handleSendMessage}>Send message</button>
       </div>
@@ -47,11 +64,12 @@ function mapStateToProps(state) {
   return {
     messageInput: state.form.composeMessage.values.message,
     contacts: state.memberBoxReducer.contacts,
-    groupId: state.groupReducer.viewingId
+    groupId: state.groupReducer.viewingId,
+    isDraftingId: state.messageReducer.workingOnDraftId
   };
 }
 
 export default connect(
   mapStateToProps,
-  { sendMessage, getMessages, draftMessage }
+  { sendMessage, getMessages, draftMessage, updateInputMessage, deleteMessage }
 )(ComposeMessageDisplay);

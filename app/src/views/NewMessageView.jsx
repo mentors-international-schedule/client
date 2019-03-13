@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import MemberBox from "../components/MemberBox";
 import ComposeMessageField from "../components/Group/ComposeMessageField";
 import ComposeMessageDisplay from "../components/Group/ComposeMessageDisplay";
+import MessageHistory from "../components/Group/MessageHistory";
+
 const StyledNewMessageView = styled.div`
   display: flex;
   height: 600px;
@@ -17,14 +19,11 @@ const StyledNewMessageView = styled.div`
 `;
 export function NewMessageView(props) {
   const { messageInput } = props;
+
   return (
     <StyledNewMessageView>
       <div className="message-body">
-        {!!messageInput ? (
-          <ComposeMessageDisplay />
-        ) : (
-          <div>message History</div>
-        )}
+        {!!messageInput ? <ComposeMessageDisplay /> : <MessageHistory />}
         <ComposeMessageField />
       </div>
       <MemberBox />
