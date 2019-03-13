@@ -17,7 +17,6 @@ const StyledNewMessageView = styled.div`
 `;
 export function NewMessageView(props) {
   const { messageInput } = props;
-  console.log(messageInput);
   return (
     <StyledNewMessageView>
       <div className="message-body">

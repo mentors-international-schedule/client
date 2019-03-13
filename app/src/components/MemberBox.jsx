@@ -103,7 +103,14 @@ class MemberBox extends Component {
 
   // MISSING isChecked on Redux store
   componentDidMount() {
-    this.props.getContacts(this.props.groupId);
+    if (
+      (this.props.contacts[0] &&
+        this.props.contacts[0].group_id !== this.props.groupId * 1) ||
+      !this.props.contacts[0]
+    ) {
+      debugger;
+      this.props.getContacts(this.props.groupId);
+    }
   }
 
   toggleCheckbox = id => {
