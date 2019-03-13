@@ -35,7 +35,7 @@ export function Group(props) {
         <nav>
           <NavLink to={`/${groupId}/newMessage`}>New Message</NavLink>
           <NavLink to={`/${groupId}/scheduler`}>Scheduler</NavLink>
-          <NavLink to={`/${groupId}:id/people`}>People</NavLink>
+          <NavLink to={`/${groupId}/people`}>People</NavLink>
         </nav>
       </div>
       <Route path={`/${groupId}/newMessage`} component={NewMessageView} />

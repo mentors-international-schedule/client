@@ -7,6 +7,7 @@ import {
   getMessages,
   draftMessage
 } from "../../actions/messageActions";
+
 const StyledComposeMessageDisplay = styled.div`
   background: lightgrey;
   display: flex;
