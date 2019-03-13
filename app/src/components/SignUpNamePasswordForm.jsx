@@ -4,16 +4,51 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 const StyledSignUpNamePasswordForm = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+
   h2 {
+    font-family: ‘Source Sans Pro’, sans-serif;
     text-align: center;
+    font-size: 30px;
+    color: #009DDE;
+    font-weight: 900;
+    margin: 0;
+    margin-bottom: 20px;
   }
+
   label {
-    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #8E8E93;
+    font-family: ‘Source Sans Pro’, sans-serif;
+    margin: 10px 0;
   }
+
   input {
-    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+    background: #DDE1E6;
+    border: none;
+    border-radius: 3px;
+    padding: 0 10px;
+  }
+
+  .last-input {
+    margin-bottom: 30px;
+  }
+
+  button {
+    width: 170px;
+    height: 46px;
+    border-radius: 30px;
+    border: none;
+    background: #17BCFF;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 30px;
   }
 `;
 
@@ -29,7 +64,7 @@ export default function SignUpNamePasswordForm(props) {
   } = props;
   return (
     <StyledSignUpNamePasswordForm>
-      <h2>Enter Name and Password</h2>
+      <h2>Create an Account</h2>
 
       <label htmlFor="firstName">First Name</label>
       <input

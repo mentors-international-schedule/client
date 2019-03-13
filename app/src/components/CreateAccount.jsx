@@ -5,7 +5,7 @@ import { Field, reduxForm } from "redux-form";
 
 const StyledCreateAccount = styled.div`
   width: 100%;
-  height: 250px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,7 +44,7 @@ const StyledCreateAccount = styled.div`
   }
 
   button {
-    width: 146px;
+    width: 180px;
     height: 46px;
     border-radius: 30px;
     border: none;
