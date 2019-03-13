@@ -1,4 +1,4 @@
-import { SUCCESS_LOGIN, SUCCESS_SIGN_UP, LOG_OUT, SET_AUTH } from "../actions/actionTypes";
+import { SUCCESS_LOGIN, SUCCESS_SIGN_UP, LOG_OUT } from "../actions/actionTypes";
 
 const authenticate = store => next => action => {
   if (action.type === SUCCESS_LOGIN || action.type === SUCCESS_SIGN_UP) {
@@ -10,7 +10,6 @@ const authenticate = store => next => action => {
     action.payload.response !== undefined &&
     action.payload.response.status === 401
   ) {
-    localStorage.clear();
     action.type = LOG_OUT;
   }
   next(action);

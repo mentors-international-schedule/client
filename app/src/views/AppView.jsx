@@ -5,18 +5,20 @@ import { connect } from "react-redux";
 import SideBar from "../components/SideBar/SideBar";
 import Group from "../components/Group/Group";
 import JoinOrganizationView from "./JoinOrganizationView";
-import { setUser, setAuth } from "../actions/loginActions";
+import { setUser, setAuth, logout } from "../actions/loginActions";
+import axios from "axios";
 const StyledAppView = styled.div`
   display: flex;
 `;
 
 export class AppView extends React.Component {
   componentDidMount() {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = this.props.currentUser;
     if (user) {
+      axios.defaults.headers.common["Authorization"] = user.token;
       this.props.setUser(user);
     } else {
-      localStorage.clear();
+      this.props.logout();
       const { history } = this.props;
       history.push("/login");
     }
@@ -44,5 +46,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { setUser, setAuth }
+  { setUser, setAuth, logout }
 )(AppView);

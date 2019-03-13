@@ -27,7 +27,7 @@ export const getGroups =() => dispatch => {
     .catch(err => { dispatch({type:FAIL_GET_GROUPS, payload:err })})
 }
 
-export const deleteGroup = (groupName) => dispatch => {
+export const deleteGroup = () => dispatch => {
   dispatch({type:DELETEING_GROUP})
   // axios request to delete group
   

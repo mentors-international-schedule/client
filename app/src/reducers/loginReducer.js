@@ -8,11 +8,13 @@ import {
   SUCCESS_CREATE_ORGANIZATION,
   SUCCESS_JOIN_ORGANIZATION
 } from "../actions/actionTypes";
+const localUser = JSON.parse(localStorage.getItem("user"));
 
-const initState = {
+let initState = {
   loggingIn: false,
-  currentUser: null,
-  error: null
+  currentUser: !!localUser ? localUser : null,
+  error: null,
+  userSet: false
 };
 
 export function loginReducer(stateOfLogin = initState, action) {
@@ -32,11 +34,15 @@ export function loginReducer(stateOfLogin = initState, action) {
     case SET_USER:
       return {
         ...stateOfLogin,
-        loggingIn: false,
-        currentUser: action.payload
+        userSet: true
       };
     case LOG_OUT:
-      return initState;
+      return {
+        loggingIn: false,
+        currentUser: null,
+        error: null,
+        userSet: false
+      };
     case SUCCESS_CREATE_ORGANIZATION:
       return {
         ...stateOfLogin, // need to set the name of organization in the user or get the payload to be a new user
