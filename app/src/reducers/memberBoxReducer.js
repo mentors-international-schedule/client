@@ -4,13 +4,17 @@ import {
   FAIL_GETTING_CONTACTS,
   CREATING_CONTACT,
   FAIL_CREATING_CONTACT,
-  SUCCESS_CREATING_CONTACT
+  SUCCESS_CREATING_CONTACT,
+  DELETING_CONTACT,
+  SUCCESS_DELETING_CONTACT,
+  FAIL_DELETING_CONTACT,
 } from "../actions/actionTypes";
 
 const initState = {
   contacts: [],
   gettingContacts: false,
   creatingContact: false,
+  deletingContact: false,
   error: null
 };
 
@@ -50,6 +54,24 @@ export function memberBoxReducer(state = initState, action) {
       return {
         ...state,
         creatingContact: false,
+        error: action.payload, 
+      }
+    case DELETING_CONTACT:
+      return {
+        ...state,
+        deletingContact: true,
+        error: null,
+      }
+    case SUCCESS_DELETING_CONTACT:
+      return {
+        ...state,
+        deletingContact: false,
+        contacts: action.payload,
+      }
+    case FAIL_DELETING_CONTACT:
+      return {
+        ...state,
+        deletingContact: false,
         error: action.payload, 
       }
     default:

@@ -203,7 +203,7 @@ class MemberBox extends Component {
         <label>
           {member.name}
         </label>
-        <button onClick={this.props.deleteContact(member.id)}>x</button>
+        <button onClick={() => this.props.deleteContact(member.id)}>x</button>
       </span>
     )
 
