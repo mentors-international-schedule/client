@@ -21,7 +21,7 @@ export function NewMessageView(props) {
     <StyledNewMessageView>
       <div className="message-body">
         {!!messageInput ? (
-          <ComposeMessageDisplay message={messageInput} />
+          <ComposeMessageDisplay />
         ) : (
           <div>message History</div>
         )}

@@ -109,7 +109,6 @@ class MemberBox extends Component {
         this.props.contacts[0].group_id !== this.props.groupId * 1) ||
       !this.props.contacts[0]
     ) {
-      debugger;
       this.props.getContacts(this.props.groupId);
     }
   }

@@ -24,14 +24,14 @@ const StyledGroup = styled.div`
 `;
 
 export function Group(props) {
-  const groupId = props.match.params.groupId;
+  const groupId = props.match.params.groupId * 1;
   if (props.groupId !== groupId) {
     props.setViewGroup(groupId);
   }
   return (
     <StyledGroup>
       <div className="header">
-        <GroupHeader name={"Group Name"} handle={"Group Handle"} />
+        <GroupHeader name={"Group Name"} handle={""} />
         <nav>
           <NavLink to={`/${groupId}/newMessage`}>New Message</NavLink>
           <NavLink to={`/${groupId}/scheduler`}>Scheduler</NavLink>
