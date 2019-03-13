@@ -38,7 +38,6 @@ export const createOrganization = name => dispatch => {
 
 export const joinOrganization = (name, id) => dispatch => {
   dispatch({ type: JOINING_ORGANIZATION });
-  debugger
   axios
     .post(`${URL}api/organizations/join`, { id })
     .then(() =>
