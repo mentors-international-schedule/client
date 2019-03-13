@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { getContacts, createContact } from '../actions/memberBoxActions'; 
+import { getContacts, createContact, deleteContact } from '../actions/memberBoxActions'; 
 
 import styled from 'styled-components';
 
@@ -203,6 +203,7 @@ class MemberBox extends Component {
         <label>
           {member.name}
         </label>
+        <button onClick={this.props.deleteContact(member.phone)}>x</button>
       </span>
     )
 
@@ -275,4 +276,4 @@ const mapStateToProps = state => ({
   error: state.memberBoxReducer.error,
 });
 
-export default connect(mapStateToProps, { getContacts, createContact })(MemberBox);
+export default connect(mapStateToProps, { getContacts, createContact, deleteContact })(MemberBox);
