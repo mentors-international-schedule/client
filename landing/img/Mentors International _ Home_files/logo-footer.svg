@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="122px" height="48px" viewBox="0 0 122 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mentors-International-Home-Page" transform="translate(-352.000000, -23.000000)" fill="#BFC8CB">
+            <g id="Nav" transform="translate(351.000000, 20.000000)">
+                <g id="logo">
+                    <text id="International" font-family="ProximaNova-Light, Proxima Nova" font-size="16" font-weight="300" letter-spacing="3.20000005">
+                        <tspan x="0" y="50">Internationa</tspan>
+                        <tspan x="120.064001" y="50">l</tspan>
+                    </text>
+                    <text id="Ment" font-family="Bariol-Bold, Bariol" font-size="34" font-weight="bold">
+                        <tspan x="0" y="27">Ment</tspan>
+                    </text>
+                    <text id="rs" font-family="Bariol-Bold, Bariol" font-size="34" font-weight="bold">
+                        <tspan x="97" y="27">rs</tspan>
+                    </text>
+                    <g id="globe-americas-solid" transform="translate(73.000000, 8.000000)" fill-rule="nonzero">
+                        <path d="M10,0 C4.47701613,0 0,4.47701613 0,10 C0,15.5229839 4.47701613,20 10,20 C15.5229839,20 20,15.5229839 20,10 C20,4.47701613 15.5229839,0 10,0 Z M13.3181452,14.4193548 C13.1608871,14.5758065 12.9959677,14.7399194 12.8620968,14.8741935 C12.7415323,14.9951613 12.6564516,15.1443548 12.6133065,15.3060484 C12.5524194,15.5342742 12.5032258,15.7649194 12.4209677,15.9862903 L11.7197581,17.8754032 C11.1649194,17.996371 10.5907258,18.0645161 10,18.0645161 L10,16.9604839 C10.0681452,16.4516129 9.69193548,15.4983871 9.0875,14.8939516 C8.84556452,14.6520161 8.70967742,14.3237903 8.70967742,13.9814516 L8.70967742,12.6907258 C8.70967742,12.221371 8.45685484,11.7899194 8.04596774,11.5629032 C7.46653226,11.2423387 6.64233871,10.7943548 6.07782258,10.5100806 C5.61491935,10.2770161 5.18669355,9.98024194 4.8016129,9.63306452 L4.76935484,9.60403226 C4.49397717,9.35545836 4.24948109,9.07468047 4.04112903,8.76774194 C3.66290323,8.2125 3.04677419,7.29919355 2.64637097,6.70564516 C3.47177419,4.87096774 4.95927419,3.39758065 6.80766129,2.59717742 L7.77580645,3.08145161 C8.20483871,3.29596774 8.70967742,2.98427419 8.70967742,2.50443548 L8.70967742,2.04879032 C9.03185484,1.99677419 9.35967742,1.96370968 9.69314516,1.95120968 L10.8342742,3.09233871 C11.0862903,3.34435484 11.0862903,3.75282258 10.8342742,4.00483871 L10.6451613,4.19354839 L10.2282258,4.61048387 C10.1024194,4.73629032 10.1024194,4.94072581 10.2282258,5.06653226 L10.4173387,5.25564516 C10.5431452,5.38145161 10.5431452,5.5858871 10.4173387,5.71169355 L10.0947581,6.03427419 C10.0341906,6.09472434 9.95210468,6.1286609 9.86653226,6.12862903 L9.50403226,6.12862903 C9.42016129,6.12862903 9.33951613,6.16129032 9.27903226,6.22016129 L8.87903226,6.60927419 C8.77842604,6.70724313 8.75267104,6.85900201 8.81532258,6.98467742 L9.44395161,8.24233871 C9.55120968,8.45685484 9.39516129,8.70927419 9.15564516,8.70927419 L8.92822581,8.70927419 C8.85040323,8.70927419 8.77540323,8.68104839 8.71693548,8.63024194 L8.34274194,8.30524194 C8.17046752,8.1557892 7.93214132,8.10827723 7.71572581,8.18024194 L6.45887097,8.59919355 C6.26208096,8.664811 6.1293731,8.84901017 6.12943548,9.05645161 C6.12943548,9.2391129 6.23266129,9.40564516 6.39596774,9.4875 L6.84274194,9.7108871 C7.22217742,9.90080645 7.64072581,9.99959677 8.06491935,9.99959677 C8.4891129,9.99959677 8.97580645,11.1 9.35524194,11.2899194 L12.0467742,11.2899194 C12.3891129,11.2899194 12.7169355,11.4258065 12.9592742,11.6677419 L13.5112903,12.2197581 C13.7419026,12.4504585 13.871427,12.7633187 13.871371,13.0895161 C13.8712036,13.5887387 13.6721109,14.0673158 13.3181452,14.4193548 Z M16.8145161,10.7358871 C16.5810484,10.6774194 16.3774194,10.5342742 16.2439516,10.333871 L15.5189516,9.24637097 C15.3020169,8.92145763 15.3020169,8.49789721 15.5189516,8.17298387 L16.308871,6.98830645 C16.4024194,6.8483871 16.5306452,6.73467742 16.6814516,6.65967742 L17.2048387,6.39798387 C17.75,7.48346774 18.0645161,8.70443548 18.0645161,10 C18.0645161,10.3495968 18.0346774,10.6919355 17.991129,11.0298387 L16.8145161,10.7358871 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					head.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					head.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></svg>

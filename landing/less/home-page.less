@@ -338,15 +338,16 @@
   @media (max-width: 960px) {
     width: 100%;
     padding-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   @media @tablet {
     padding: 0 2%;
   }
 
-  @media (max-width: 600px) {
-    margin-bottom: 30px;
-  }
+  // @media (max-width: 600px) {
+  //   margin-bottom: 30px;
+  // }
 
   .title {
     padding-bottom: 30px;
@@ -384,7 +385,8 @@
     }
 
     .stories {
-      display: none;
+      display: flex;
+      justify-content: space-evenly;
 
       @media (max-width: 1100px) {
         flex-direction: column;
@@ -492,17 +494,6 @@
         }
       }
     }
-    // .hide-story {
-    //   @media @tablet {
-    //     display: none !important;
-    //   }
-    // }
-
-    // #testimonials2 {
-    //   @media @tablet {
-    //     display: none;
-    //   }
-    // }
   }
 
   a {
@@ -580,4 +571,8 @@
       }
     }
   }
+}
+
+.stories-display {
+  display: none;
 }

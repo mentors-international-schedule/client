@@ -535,12 +535,16 @@ header .header nav a {
   .success-stories {
     width: 100%;
     padding-bottom: 20px;
-    margin-bottom: 30px;
   }
 }
 @media (max-width: 780px) {
   .success-stories {
     padding: 0 2%;
+  }
+}
+@media (max-width: 600px) {
+  .success-stories {
+    margin-bottom: 30px;
   }
 }
 .success-stories .title {
