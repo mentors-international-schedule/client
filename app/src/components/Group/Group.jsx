@@ -24,7 +24,7 @@ const StyledGroup = styled.div`
 `;
 
 export function Group(props) {
-  const groupId = props.match.params.groupId;
+  const groupId = props.match.params.groupId * 1;
   if (props.groupId !== groupId) {
     props.setViewGroup(groupId);
   }

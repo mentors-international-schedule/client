@@ -9,6 +9,13 @@
   font-weight: 500;
   cursor: pointer;
   outline: none;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background: @dodger-blue;
+    color: @white;
+    transform: scale(1.1);
+  }
 }
 
 .btn-read(@width) {
@@ -22,4 +29,9 @@
   cursor: pointer;
   outline: none;
   padding: 0;
+
+  &:hover {
+    transform: scale(1.1);
+    color: @dodger-blue;
+  }
 }
