@@ -102,6 +102,7 @@ class MemberBox extends Component {
   }
 
   // MISSING isChecked on Redux store
+  // only gets if it is changing to its view
   componentDidMount() {
     if (
       (this.props.contacts[0] &&

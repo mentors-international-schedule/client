@@ -9,10 +9,9 @@ import {
   SUCCESS_JOIN_ORGANIZATION
 } from "../actions/actionTypes";
 
-
 let initState = {
   loggingIn: false,
-  currentUser:   null,
+  currentUser: null,
   error: null,
   userSet: false
 };
@@ -59,10 +58,7 @@ export function loginReducer(stateOfLogin = initState, action) {
         ...stateOfLogin, // need to set the name of organization in the user or get the payload to be a new user
         currentUser: {
           ...stateOfLogin.currentUser,
-          currentUser: {
-            ...stateOfLogin.currentUser,
-            organization: action.payload
-          }
+          organization: action.payload
         }
       };
     default:

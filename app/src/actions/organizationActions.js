@@ -36,12 +36,12 @@ export const createOrganization = name => dispatch => {
     });
 };
 
-export const joinOrganization = (name, id) => dispatch => {
+export const joinOrganization = (name, organization_id) => dispatch => {
   dispatch({ type: JOINING_ORGANIZATION });
   axios
-    .post(`${URL}api/organizations/join`, { id })
+    .post(`${URL}api/organizations/join`, { organization_id })
     .then(() =>
-      dispatch({ type: SUCCESS_JOIN_ORGANIZATION, payload: { name, id } })
+      dispatch({ type: SUCCESS_JOIN_ORGANIZATION, payload: { name, organization_id } })
     )
     .catch(err => { dispatch({ type: FAIL_JOIN_ORGANIZATIONS, payload: err })});
 };
