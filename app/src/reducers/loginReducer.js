@@ -12,7 +12,6 @@ import {
 const initState = {
   loggingIn: false,
   currentUser: null,
-  organization: false,
   error: null
 };
 

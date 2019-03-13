@@ -5,6 +5,7 @@ import { loginReducer } from "./loginReducer";
 import { signUpReducer } from "./signUpReducer";
 import { organizationsReducer } from './organizationsReducer';
 import { memberBoxReducer } from './memberBoxReducer';
+import { groupReducer } from '../reducers/groupReducer';
 
 // export all reducers as object
 export default {
@@ -13,4 +14,5 @@ export default {
     signUpReducer,
     organizationsReducer,
     memberBoxReducer,
+    groupReducer,
   };
