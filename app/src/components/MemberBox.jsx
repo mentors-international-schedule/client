@@ -189,17 +189,11 @@ class MemberBox extends Component {
   };
 
   selectToggle = bool => {
-    let updatedMembers = [...this.state.members];
-    updatedMembers.map(member => (member.isChecked = bool));
-
-    let checkboxes = document.getElementsByName("checkbox");
-    for (var i = 0, n = checkboxes.length; i < n; i++) {
-      checkboxes[i].checked = bool;
-    }
-
-    this.setState({
-      members: updatedMembers
-    });
+    const updatedContacts = this.props.contacts.map(member => ({
+      ...member,
+      isChecked: bool
+    }));
+    this.props.replaceContacts(updatedContacts);
   };
 
   render() {
