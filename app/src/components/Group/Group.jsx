@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { Route, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import GroupHeader from "./GroupHeader";
+
 import NewMessageView from "../../views/NewMessageView";
+import ScheduledMessagesView from "../../views/ScheduledMessagesView";
+
 import { setViewGroup } from "../../actions/groupActions";
 
 const StyledGroup = styled.div`
@@ -35,23 +38,23 @@ export function Group(props) {
         <nav>
           <NavLink to={`/${groupId}/newMessage`}>New Message</NavLink>
           <NavLink to={`/${groupId}/scheduler`}>Scheduler</NavLink>
-          <NavLink to={`/${groupId}/people`}>People</NavLink>
+          {/* <NavLink to={`/${groupId}/people`}>People</NavLink> */}
         </nav>
       </div>
       <Route path={`/${groupId}/newMessage`} component={NewMessageView} />
       <Route
         path={`/${groupId}/scheduler`}
-        component={() => <div>Scheduler feature getting worked on</div>}
+        component={ScheduledMessagesView}
       />
-      <Route
+      {/* <Route
         path={`/${groupId}/people`}
         component={() => <div>People feature getting worked on</div>}
-      />
+      /> */}
     </StyledGroup>
   );
 }
 
-function mstp(state) {
+function mapStateToProps(state) {
   return {
     groups: state.groupReducer.groups,
     groupId: state.groupReducer.viewingId
@@ -59,6 +62,6 @@ function mstp(state) {
 }
 
 export default connect(
-  mstp,
+  mapStateToProps,
   { setViewGroup }
 )(Group);
