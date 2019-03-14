@@ -53,6 +53,9 @@ export function ComposeMessageDisplay(props) {
   }
   function handleSaveMessage() {
     props.draftMessage(props.messageInput, props.groupId);
+    if (props.isDraftingId) {
+      props.deleteMessage(props.isDraftingId);
+    }
   }
   function handleChangeTextArea(event) {
     props.updateInputMessage(event.target.value);
