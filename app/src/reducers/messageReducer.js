@@ -34,6 +34,7 @@ export function messageReducer(state = initState, action) {
         workingOnDraftId: null,
       };
     case SUCCESS_SENDING_MESSAGE:
+      debugger;
       return {
         ...state,
         sendingMessage: false,
@@ -59,26 +60,21 @@ export function messageReducer(state = initState, action) {
       return {
         ...state,
         draftingMessages: false,
-        messages: state.messages.map(message => {
-          if (message.id === action.payload.id) {
-            return { ...message, message: action.payload.message };
-          }
-          return message;
-        })
-      };
+        messages: [...state.messages, {message:action.payload.message, id: action.payload.id}]
+        }
     case FAIL_DRAFTING_MESSAGE:
     debugger
       return { ...state, draftingMessages: false, error: action.payload };
     case SET_MESSAGE:
       return { ...state, workingOnDraftId: action.payload.id };
     case DELETING_MESSAGE:
+    debugger
       return { ...state, deletingMessage: true };
     case SUCCESS_DELETING_MESSAGE:
       return {
         ...state,
         deletingMessage: false,
         messages: state.messages.filter(message => {
-          debugger
           return message.id !== action.payload;
         })
       };

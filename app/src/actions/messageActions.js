@@ -21,10 +21,11 @@ import {
 
 
 export const sendMessage = (contact_ids, message, group_id) => dispatch => {
+  debugger
   dispatch({ type: SENDING_MESSAGE });
   axios
     .post(`${URL}api/notifications/${group_id}`, { message, contact_ids })
-    .then(res =>{dispatch({ type: SUCCESS_SENDING_MESSAGE, payload: res.data })})
+    .then(res =>{ debugger;dispatch({ type: SUCCESS_SENDING_MESSAGE, payload: {contact_ids, message, group_id, sent:true} })})
     .catch(err => dispatch({ type: FAIL_SENDING_MESSAGE, payload: err }));
 };
 

@@ -33,6 +33,7 @@ export function ComposeMessageDisplay(props) {
 
   function handleSendMessage() {
     props.sendMessage(filterContacts(), props.messageInput, props.groupId);
+    debugger;
     if (props.isDraftingId) {
       props.deleteMessage(props.isDraftingId);
     }
