@@ -20,6 +20,13 @@ const StyledSideBar = styled.div`
   margin-right: 30px;
 `;
 
+const SidebarTop = styled.div`
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export function SideBar(props) {
   let firstname = "";
   let orgName = "";
@@ -36,8 +43,10 @@ export function SideBar(props) {
 
   return (
     <StyledSideBar>
-      <ProfileHeader imageURL={""} name={firstname} />
-      <LogoutButton />
+      <SidebarTop>
+        <ProfileHeader imageURL={""} name={firstname} />
+        <LogoutButton />
+      </SidebarTop>
       <OrganizationHeader imageURL={""} name={orgName} />
       <GroupsOwned groups={props.myGroups} />
       <GroupsJoined />
