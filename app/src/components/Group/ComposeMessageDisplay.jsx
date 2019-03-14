@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-
+import DateTimePicker from "react-datetime-picker";
 import {
   sendMessage,
   getMessages,
@@ -57,6 +57,9 @@ export function ComposeMessageDisplay(props) {
   function handleChangeTextArea(event) {
     props.updateInputMessage(event.target.value);
   }
+
+  const [date, setDate] = useState(new Date());
+
   return (
     <StyledComposeMessageDisplay>
       <h3>Message Composer</h3>
@@ -72,7 +75,6 @@ export function ComposeMessageDisplay(props) {
           />
           <div>
             <button onClick={handleSaveMessage}>Save message</button>
-            <button>Schedule</button>
             <button
               onClick={() => {
                 handleSendMessage();
@@ -80,6 +82,8 @@ export function ComposeMessageDisplay(props) {
             >
               Send message
             </button>
+            <DateTimePicker onChange={date => setDate(date)} value={date} />
+            <button>Schedule</button>
           </div>
         </>
       )}
