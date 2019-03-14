@@ -3,18 +3,56 @@ import styled from "styled-components";
 import { create } from "domain";
 
 const StyledSearchInputWithDrop = styled.div`
-  width: 90%;
-  margin-left: 5%;
+  margin-right: 20px;
+
   input {
     width: 100%;
+    height: 30px;
+    background: #DDE1E6;
+    border: none;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 0;
   }
+
   .search-names {
-    height: 300px;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 100%;
+    overflow-y: auto;
+    height: 150px;
+    border: 1px solid lightgray;
+    box-shadow: rgba(100, 100, 100, 0.3) 0px 0px 10px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    padding: 15px 0;
+    padding-left: 15px;
+    background: whitesmoke;
+
+    .search-name {
+      margin-bottom: 10px;
+    }
   }
+
   .add-org {
-    border: 1px solid black;
-    border-top: none;
+    font-size: 16px;
+    color: #17BCFF;
+    font-weight: 700;
+    p {
+      margin-bottom: 5px;
+    }
+  }
+
+  button {
+    width: 146px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    background: #17BCFF;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 15px;
   }
 `;
 
@@ -43,16 +81,13 @@ export default function SearchInputWithDrop(props) {
   }
 
   function join(name, id) {
-<<<<<<< HEAD
-=======
    // need to make sure the end point gets fixed
->>>>>>> origin
     props.join(name, id);
   }
   return (
     <StyledSearchInputWithDrop>
       <input
-        placeholder="search"
+        placeholder="Search for and organization..."
         ref={searchInputVal}
         onChange={handleInputChange}
         type="text"

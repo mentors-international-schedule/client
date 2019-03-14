@@ -3,17 +3,49 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-const StyledSignUpNamePasswordForm = styled.div`
+const StyledSignUpNamePasswordForm = styled.form`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  font-family: ‘Source Sans Pro’, sans-serif;
+
+
   h2 {
     text-align: center;
+    font-size: 30px;
+    color: #009DDE;
+    font-weight: 900;
+    margin: 0;
+    margin-bottom: 30px;
   }
+
   label {
+    font-size: 16px;
+    color: #17BCFF;
+    font-weight: 700;
     margin-bottom: 10px;
   }
+
   input {
-    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+    background: #DDE1E6;
+    border: none;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-bottom: 25px;
+  }
+
+  button {
+    width: 170px;
+    height: 46px;
+    border-radius: 30px;
+    border: none;
+    background: #17BCFF;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 5px;
   }
 `;
 
@@ -28,8 +60,8 @@ export default function SignUpNamePasswordForm(props) {
     handleSignUp
   } = props;
   return (
-    <StyledSignUpNamePasswordForm>
-      <h2>Enter Name and Password</h2>
+    <StyledSignUpNamePasswordForm onSubmit={handleSignUp}>
+      <h2>Complete Your Profile</h2>
 
       <label htmlFor="firstName">First Name</label>
       <input
@@ -55,7 +87,7 @@ export default function SignUpNamePasswordForm(props) {
         onChange={event => changePassword(event.target.value)}
       />
 
-      <button onClick={handleSignUp}>Complete Sign Up</button>
+      <button>Submit</button>
     </StyledSignUpNamePasswordForm>
   );
 }

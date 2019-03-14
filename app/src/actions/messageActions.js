@@ -39,7 +39,7 @@ export const getMessages = (group_id) => dispatch => {
   dispatch({type:GETTING_MESSAGES});
   axios.get(`${URL}api/notifications/${group_id}`,{ headers: { Authorization: localStorage.getItem("token") }})
     .then(res =>  dispatch({type:SUCCESS_GETTING_MESSAGES, payload: res.data } ))
-    .catch(err =>{ debugger; dispatch({type:FAIL_GETTING_MESSAGES, payload:err} )} )
+    .catch(err =>{ dispatch({type:FAIL_GETTING_MESSAGES, payload:err} )} )
 }
 
 export const deleteMessage = (message_id) => dispatch => {
