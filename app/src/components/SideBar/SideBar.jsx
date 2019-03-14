@@ -6,6 +6,7 @@ import GroupsOwned from "./GroupsOwned";
 import GroupsJoined from "./GroupsJoined";
 import { connect } from "react-redux";
 import { createGroup, getGroups } from "../../actions/groupActions";
+import LogoutButton from "./LogoutButton";
 const StyledSideBar = styled.div`
   padding-left: 30px;
   border-right: 1px solid black;
@@ -29,6 +30,7 @@ export function SideBar(props) {
   return (
     <StyledSideBar>
       <ProfileHeader imageURL={""} name={firstname} />
+      <LogoutButton />
       <OrganizationHeader imageURL={""} name={orgName} />
       <GroupsOwned groups={props.myGroups} />
       <GroupsJoined />
