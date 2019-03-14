@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
+// import {
+//   clearLocalMessages
+// } from "../../actions/messageActions";
+
 import {
-  getMessages,
-  setMessage,
-  clearLocalMessages
-} from "../../actions/messageActions";
+  getScheduledMessages,
+  deleteScheduledMessage
+} from "../../actions/scheduleActions";
 
 import ScheduledMessageCard from "./ScheduledMessageCard";
 import Spinner from "../Spinner";
@@ -23,8 +26,8 @@ export function MessageHistory(props) {
   const [init, setInit] = useState(false);
 
   if (!init && props.currentId !== props.groupId) {
-    props.clearLocalMessages();
-    // props.clearLocalmessages();
+    // props.clearLocalMessages();
+    // // props.clearLocalmessages();
     props.getMessages(props.groupId);
     // props.getmessages(())
     setInit(true);
@@ -34,26 +37,15 @@ export function MessageHistory(props) {
     return <Spinner margin="0 auto" marginTop="40%" />;
   }
 
-  // if (props.gettingmessages) {
-  //   return <Spinner margin="0 auto" marginTop="40%" />;
-  // }
-
   if (!props.messages.length) {
     return <div>You have not scheduled any messages yet.</div>;
   }
 
-  // if (!props.messages.length) {
-  //   return <div>You have not scheduled any messages yet.</div>;
-  // }
-
   return (
     <StyledMessageHistory>
       {props.messages.reverse().map(message => (
-        <ScheduledMessageCard message={message} setMessage={props.setMessage} />
-      ))}
-      {/* {props.messages.reverse().map(message => (
         <ScheduledMessageCard message={message} deleteMessage={props.deleteMessage} />
-      ))} */}
+      ))}
     </StyledMessageHistory>
   );
 }
@@ -70,6 +62,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getMessages, setMessage, clearLocalMessages },
-  // { getmessages, deleteScheduledMessage, clearLocalmessages }
+  { getMessages:getScheduledMessages, deleteScheduledMessage }
 )(MessageHistory);

@@ -34,12 +34,14 @@ export const getScheduledMessages = group_id => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
+      debugger;
       dispatch({
         type: SUCCESS_GETTING_SCHEDULED_MESSAGES,
         payload: res.data
       });
     })
     .catch(err => {
+      debugger;
       dispatch({
         type: FAIL_GETTING_SCHEDULED_MESSAGES,
         payload: err
