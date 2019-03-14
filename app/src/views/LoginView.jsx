@@ -14,6 +14,7 @@ const StyledLoginView = styled.div`
   margin: 0 auto;
   margin-top: 125px;
   background: #FDFDFD;
+  height: 330px;
 `;
 
 export default class LoginView extends React.Component {

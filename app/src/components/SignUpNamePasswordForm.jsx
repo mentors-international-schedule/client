@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-const StyledSignUpNamePasswordForm = styled.div`
+const StyledSignUpNamePasswordForm = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@ export default function SignUpNamePasswordForm(props) {
     handleSignUp
   } = props;
   return (
-    <StyledSignUpNamePasswordForm>
+    <StyledSignUpNamePasswordForm onSubmit={handleSignUp}>
       <h2>Complete Your Profile</h2>
 
       <label htmlFor="firstName">First Name</label>
@@ -87,7 +87,7 @@ export default function SignUpNamePasswordForm(props) {
         onChange={event => changePassword(event.target.value)}
       />
 
-      <button onClick={handleSignUp}>Submit</button>
+      <button>Submit</button>
     </StyledSignUpNamePasswordForm>
   );
 }

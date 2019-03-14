@@ -36,7 +36,9 @@ export class SignUpView extends React.Component {
   setSignUpNamePasswordForm = bool =>
     this.setState({ viewSignUpNamePasswordForm: bool });
 
-  handleSignUp = () => {
+  handleSignUp = e => {
+    e.preventDefault();
+
     this.props.signUp(
       this.state.inputEmail,
       this.state.inputFirstName,
