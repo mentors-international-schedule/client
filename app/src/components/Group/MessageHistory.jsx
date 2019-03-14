@@ -18,7 +18,6 @@ export function MessageHistory(props) {
   const [init, setInit] = useState(false);
 
   if (!init && props.currentId !== props.groupId) {
-    debugger;
     props.clearLocalMessages();
     props.getMessages(props.groupId);
     setInit(true);

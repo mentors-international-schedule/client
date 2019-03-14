@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { login } from "../actions/loginActions";
 
 import styled from "styled-components";
-
+import Spinner from "./Spinner";
 // STYLED COMPONENTS
 const StyledLoginForm = styled.form`
   width: 100%;
@@ -17,7 +17,7 @@ const StyledLoginForm = styled.form`
   h2 {
     text-align: center;
     font-size: 32px;
-    color: #009DDE;
+    color: #009dde;
     font-weight: 900;
     margin: 0;
     margin-bottom: 30px;
@@ -25,7 +25,7 @@ const StyledLoginForm = styled.form`
 
   label {
     font-size: 16px;
-    color: #17BCFF;
+    color: #17bcff;
     font-weight: 700;
     margin-bottom: 10px;
   }
@@ -33,7 +33,7 @@ const StyledLoginForm = styled.form`
   input {
     width: 100%;
     height: 40px;
-    background: #DDE1E6;
+    background: #dde1e6;
     border: none;
     border-radius: 3px;
     padding: 0 10px;
@@ -46,18 +46,18 @@ const StyledLoginForm = styled.form`
     height: 46px;
     border-radius: 30px;
     border: none;
-    background: #17BCFF;
+    background: #17bcff;
     font-size: 16px;
     color: #fff;
   }
-  
+
   .signup-btn {
     width: 146px;
     height: 46px;
     border: none;
     background: none;
     font-size: 16px;
-    color: #17BCFF;
+    color: #17bcff;
   }
 `;
 
@@ -72,7 +72,7 @@ const loginError = toggleFlag => {
     color: "red",
     fontSize: "0.9rem",
     display: toggleFlag ? "block" : "none",
-    marginTop: '25px',
+    marginTop: "25px"
   };
 };
 
@@ -92,15 +92,14 @@ export class LoginForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.login(this.state.inputEmail, 
-      this.state.inputPassword, 
-      () => this.props.history.push("/")
+    this.props.login(this.state.inputEmail, this.state.inputPassword, () =>
+      this.props.history.push("/")
     );
 
     this.setState({
       inputEmail: "",
       inputPassword: ""
-    })
+    });
   };
 
   handleSignUp = event => {
@@ -111,7 +110,9 @@ export class LoginForm extends React.Component {
   render() {
     return (
       <StyledLoginForm onSubmit={this.handleSubmit}>
-        <h2><i className="fas fa-globe-americas fa-md o-brand"></i>  Mentor Login</h2>
+        <h2>
+          <i className="fas fa-globe-americas fa-md o-brand" /> Mentor Login
+        </h2>
 
         <label htmlFor="email">Email</label>
         <input
@@ -131,14 +132,20 @@ export class LoginForm extends React.Component {
         />
 
         <ButtonContainer>
-          <button type="submit"
-            className="login-btn">Login</button>
-          <button onClick={this.handleSignUp}
-            className="signup-btn">Signup</button>
+          {!!this.props.loggingIn ? (
+            <Spinner size="6px" color="#17BCFF" />
+          ) : (
+            <button type="submit" className="login-btn">
+              Login
+            </button>
+          )}
+
+          <button onClick={this.handleSignUp} className="signup-btn">
+            Signup
+          </button>
         </ButtonContainer>
 
-        <label
-          style={loginError(this.props.error)} >
+        <label style={loginError(this.props.error)}>
           Error: {this.props.error}. Please try again.
         </label>
       </StyledLoginForm>
@@ -146,10 +153,19 @@ export class LoginForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  loggingIn: state.loginReducer.loggingIn,
-  error: state.loginReducer.error,
-});
+const mapStateToProps = state => {
+  if (state.loginReducer.error) {
+    return {
+      loggingIn: state.loginReducer.loggingIn,
+      error: state.loginReducer.error.response.data.message
+    };
+  } else {
+    return {
+      loggingIn: state.loginReducer.loggingIn,
+      error: null
+    };
+  }
+};
 
 const connectedForm = connect(
   mapStateToProps,

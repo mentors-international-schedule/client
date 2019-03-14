@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
@@ -22,9 +22,14 @@ const StyledComposeMessageDisplay = styled.div`
     height: 150px;
     width: 80%;
   }
+  .error-message {
+    border: 1px solid red;
+    color: red;
+  }
 `;
 
 export function ComposeMessageDisplay(props) {
+  const [error, setError] = useState("");
   function filterContacts() {
     return props.contacts
       .filter(contact => !!contact.isChecked)
@@ -32,10 +37,16 @@ export function ComposeMessageDisplay(props) {
   }
 
   function handleSendMessage() {
-    props.sendMessage(filterContacts(), props.messageInput, props.groupId);
-    debugger;
-    if (props.isDraftingId) {
-      props.deleteMessage(props.isDraftingId);
+    const filteredContacts = filterContacts();
+    if (filteredContacts.length) {
+      setError("");
+      props.sendMessage(filterContacts(), props.messageInput, props.groupId);
+
+      if (props.isDraftingId) {
+        props.deleteMessage(props.isDraftingId);
+      }
+    } else {
+      setError("To send a message please select at least one valid contact");
     }
   }
   function handleSaveMessage() {
@@ -53,6 +64,7 @@ export function ComposeMessageDisplay(props) {
         rows="3"
         cols="20"
       />
+      {!!error ? <p className="error-message">{error}</p> : <> </>}
       <div>
         <button onClick={handleSaveMessage}>Save message</button>
         <button>Schedule</button>

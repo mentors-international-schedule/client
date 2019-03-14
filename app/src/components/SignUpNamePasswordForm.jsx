@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
+import Spinner from "./Spinner";
 
 const StyledSignUpNamePasswordForm = styled.form`
   width: 100%;
@@ -10,11 +10,10 @@ const StyledSignUpNamePasswordForm = styled.form`
   justify-content: space-between;
   font-family: ‘Source Sans Pro’, sans-serif;
 
-
   h2 {
     text-align: center;
     font-size: 30px;
-    color: #009DDE;
+    color: #009dde;
     font-weight: 900;
     margin: 0;
     margin-bottom: 30px;
@@ -22,7 +21,7 @@ const StyledSignUpNamePasswordForm = styled.form`
 
   label {
     font-size: 16px;
-    color: #17BCFF;
+    color: #17bcff;
     font-weight: 700;
     margin-bottom: 10px;
   }
@@ -30,7 +29,7 @@ const StyledSignUpNamePasswordForm = styled.form`
   input {
     width: 100%;
     height: 40px;
-    background: #DDE1E6;
+    background: #dde1e6;
     border: none;
     border-radius: 3px;
     padding: 0 10px;
@@ -42,14 +41,14 @@ const StyledSignUpNamePasswordForm = styled.form`
     height: 46px;
     border-radius: 30px;
     border: none;
-    background: #17BCFF;
+    background: #17bcff;
     font-size: 16px;
     color: #fff;
     margin-top: 5px;
   }
 `;
 
-export default function SignUpNamePasswordForm(props) {
+export function SignUpNamePasswordForm(props) {
   const {
     inputFirstName,
     inputLastName,
@@ -68,6 +67,7 @@ export default function SignUpNamePasswordForm(props) {
         name="firstName"
         type="text"
         value={inputFirstName}
+        required
         onChange={event => changeFirstName(event.target.value)}
       />
 
@@ -76,18 +76,33 @@ export default function SignUpNamePasswordForm(props) {
         name="lastName"
         type="text"
         value={inputLastName}
+        required
         onChange={event => changeLastName(event.target.value)}
       />
 
       <label htmlFor="password">Password</label>
       <input
+        required
         name="password"
         type="password"
         value={inputPassword}
         onChange={event => changePassword(event.target.value)}
       />
-
-      <button>Submit</button>
+      {!props.signingUp ? (
+        <Spinner size="6px" color="#17BCFF" marginTop="15px" margin="0 auto" />
+      ) : (
+        <button>Submit</button>
+      )}
     </StyledSignUpNamePasswordForm>
   );
 }
+function mstp(state) {
+  return {
+    signingUp: state.signUpReducer.signingUp
+  };
+}
+
+export default connect(
+  mstp,
+  {}
+)(SignUpNamePasswordForm);
