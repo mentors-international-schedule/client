@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from 'react-router-dom';
 import styled from "styled-components";
 import ProfileHeader from "./ProfileHeader";
 import OrganizationHeader from "./OrganizationHeader";
@@ -6,6 +7,7 @@ import GroupsOwned from "./GroupsOwned";
 import GroupsJoined from "./GroupsJoined";
 import { connect } from "react-redux";
 import { createGroup, getGroups } from "../../actions/groupActions";
+import LogoutButton from "./LogoutButton";
 const StyledSideBar = styled.div`
   padding-left: 30px;
   border-right: 1px solid black;
@@ -29,6 +31,7 @@ export function SideBar(props) {
   return (
     <StyledSideBar>
       <ProfileHeader imageURL={""} name={firstname} />
+      <LogoutButton />
       <OrganizationHeader imageURL={""} name={orgName} />
       <GroupsOwned groups={props.myGroups} />
       <GroupsJoined />
@@ -44,7 +47,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   { createGroup, getGroups }
-)(SideBar);
+)(SideBar));

@@ -9,7 +9,7 @@ import {
 } from "../actions/memberBoxActions";
 
 import styled from "styled-components";
-
+import Spinner from "./Spinner";
 // STYLED COMPONENTS
 const MemberBoxContainer = styled.div`
   display: flex;
@@ -213,7 +213,11 @@ class MemberBox extends Component {
           onClick={() => this.toggleCheckbox(member.id)}
         />
         <label>{member.name}</label>
-        <button onClick={() => this.props.deleteContact(member.id, member.group_id)}>x</button>
+        <button
+          onClick={() => this.props.deleteContact(member.id, member.group_id)}
+        >
+          x
+        </button>
       </span>
     ));
 
@@ -223,8 +227,13 @@ class MemberBox extends Component {
           Your group members will appear here. Uncheck the box to remove someone
           from the message chain.
         </p>
-
-        <MemberList>{members}</MemberList>
+        <MemberList>
+          {this.props.gettingContacts ? (
+            <Spinner margin=" auto auto" size="8px" />
+          ) : (
+            members
+          )}
+        </MemberList>
 
         <ButtonContainer>
           <Button onClick={this.toggleMemberForm}>add member</Button>
@@ -239,6 +248,7 @@ class MemberBox extends Component {
         >
           <label>Add New Member: </label>
           <Input
+            required
             type="text"
             name="name"
             value={this.state.name}
@@ -246,13 +256,22 @@ class MemberBox extends Component {
             placeholder="Full Name"
           />
           <Input
-            type="text"
+            type="tel"
+            id="phone"
             name="phone"
+            pattern="[+][0-9]{1}[\ \-\.]?[0-9]{3}[\ \-\.]?[0-9]{3}[\ \-\.]?[0-9]{4}"
+            required
             value={this.state.phone}
             onChange={this.handleChange}
             placeholder="Phone Number"
           />
-          <button>Submit</button>
+          <span>Format: +1 123 456 7890</span>
+          {this.props.creatingContact ? (
+            <Spinner size="4px" margin=" 0 auto" marginTop="10px" />
+          ) : (
+            <button>Submit</button>
+          )}
+
           <label
             className="formError"
             style={formError(this.state.blankFormError)}

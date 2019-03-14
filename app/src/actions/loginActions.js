@@ -18,6 +18,8 @@ export const login = (email, password, callback) => dispatch => {
     .catch(err =>
       dispatch({
         type: FAIL_LOGIN,
+        //payload: err.response.data.message
+        // I am using some other info from the error other then just the message
         payload: err
       })
     );
