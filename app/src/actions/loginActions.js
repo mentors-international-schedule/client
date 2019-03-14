@@ -18,7 +18,7 @@ export const login = (email, password, callback) => dispatch => {
     .catch(err =>
       dispatch({
         type: FAIL_LOGIN,
-        payload: err
+        payload: err.response.data.message
       })
     );
 };

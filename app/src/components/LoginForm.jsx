@@ -13,6 +13,15 @@ const StyledLoginForm = styled.form`
   justify-content: space-between;
   font-family: ‘Source Sans Pro’, sans-serif;
 
+  h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #009DDE;
+    font-weight: 900;
+    margin: 0;
+    margin-bottom: 30px;
+  }
+
   label {
     font-size: 16px;
     color: #17BCFF;
@@ -29,15 +38,6 @@ const StyledLoginForm = styled.form`
     padding: 0 10px;
     margin-bottom: 25px;
     margin-top: 0;
-  }
-
-  h2 {
-    text-align: center;
-    font-size: 32px;
-    color: #009DDE;
-    font-weight: 900;
-    margin: 0;
-    margin-bottom: 30px;
   }
 
   .login-btn {

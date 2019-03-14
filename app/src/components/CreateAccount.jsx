@@ -11,9 +11,10 @@ const StyledCreateAccount = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
+  font-family: ‘Source Sans Pro’, sans-serif;
+
 
   h2 {
-    font-family: ‘Source Sans Pro’, sans-serif;
     text-align: center;
     font-size: 30px;
     color: #009DDE;
@@ -25,7 +26,6 @@ const StyledCreateAccount = styled.div`
     font-size: 16px;
     font-weight: 500;
     color: #17BCFF;
-    font-family: ‘Source Sans Pro’, sans-serif;
     margin-top: 0;
     margin-bottom: 0;
     text-align: left;

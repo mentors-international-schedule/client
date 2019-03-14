@@ -8,23 +8,23 @@ const StyledSignUpNamePasswordForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: ‘Source Sans Pro’, sans-serif;
+
 
   h2 {
-    font-family: ‘Source Sans Pro’, sans-serif;
     text-align: center;
     font-size: 30px;
     color: #009DDE;
     font-weight: 900;
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   label {
     font-size: 16px;
-    font-weight: 500;
-    color: #8E8E93;
-    font-family: ‘Source Sans Pro’, sans-serif;
-    margin: 10px 0;
+    color: #17BCFF;
+    font-weight: 700;
+    margin-bottom: 10px;
   }
 
   input {
@@ -34,10 +34,7 @@ const StyledSignUpNamePasswordForm = styled.div`
     border: none;
     border-radius: 3px;
     padding: 0 10px;
-  }
-
-  .last-input {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
 
   button {
@@ -48,7 +45,7 @@ const StyledSignUpNamePasswordForm = styled.div`
     background: #17BCFF;
     font-size: 16px;
     color: #fff;
-    margin-top: 30px;
+    margin-top: 5px;
   }
 `;
 
@@ -64,7 +61,7 @@ export default function SignUpNamePasswordForm(props) {
   } = props;
   return (
     <StyledSignUpNamePasswordForm>
-      <h2>Complete Profile</h2>
+      <h2>Complete Your Profile</h2>
 
       <label htmlFor="firstName">First Name</label>
       <input
