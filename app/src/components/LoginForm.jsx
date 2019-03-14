@@ -11,13 +11,13 @@ const StyledLoginForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: ‘Source Sans Pro’, sans-serif;
 
   label {
     font-size: 16px;
-    font-weight: 500;
-    color: #8E8E93;
-    font-family: ‘Source Sans Pro’, sans-serif;
-    margin: 10px 0;
+    color: #17BCFF;
+    font-weight: 700;
+    margin-bottom: 10px;
   }
 
   input {
@@ -27,20 +27,17 @@ const StyledLoginForm = styled.form`
     border: none;
     border-radius: 3px;
     padding: 0 10px;
-  }
-
-  .last-input {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    margin-top: 0;
   }
 
   h2 {
-    font-family: ‘Source Sans Pro’, sans-serif;
     text-align: center;
     font-size: 32px;
     color: #009DDE;
     font-weight: 900;
     margin: 0;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
   }
 
   .login-btn {
