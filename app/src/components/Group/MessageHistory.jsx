@@ -13,7 +13,7 @@ const StyledMessageHistory = styled.div`
   height: 500px;
   overflow-y: scroll;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 `;
 
 export function MessageHistory(props) {
@@ -34,7 +34,7 @@ export function MessageHistory(props) {
   }
   return (
     <StyledMessageHistory>
-      {props.messages.map(message => (
+      {props.messages.reverse().map(message => (
         <MessageCard message={message} setMessage={props.setMessage} />
       ))}
     </StyledMessageHistory>
