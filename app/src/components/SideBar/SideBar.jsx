@@ -10,7 +10,7 @@ import { createGroup, getGroups } from "../../actions/groupActions";
 import LogoutButton from "./LogoutButton";
 const StyledSideBar = styled.div`
   padding-left: 30px;
-  border-right: 1px solid black;
+  box-shadow: 0 0 10px lightgrey;
   height: 100vh;
 `;
 
