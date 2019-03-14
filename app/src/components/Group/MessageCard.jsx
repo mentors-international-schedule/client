@@ -21,6 +21,7 @@ export default function MessageCard(props) {
     );
   }
   //draft
+  debugger;
   return (
     <StyledMessageCard>
       <span className="status">Draft</span>

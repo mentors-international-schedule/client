@@ -18,6 +18,9 @@ const StyledNewMessageView = styled.div`
     justify-content: space-between;
     .history-header {
       margin-right: 17px;
+      border-top: 1px solid #313a3d;
+      border-bottom: 1px solid #313a3d;
+      padding: 10px 0;
     }
     .status {
       width: 10%;
