@@ -16,7 +16,6 @@ const StyledSideBar = styled.div`
   justify-content: flex-start;
   width: 350px;
   font-family: ’Source Sans Pro’, sans-serif;
-  margin-right: 30px;
 `;
 
 const SidebarTop = styled.div`
@@ -48,7 +47,7 @@ export function SideBar(props) {
       </SidebarTop>
       <OrganizationHeader imageURL={""} name={orgName} />
       <GroupsOwned groups={props.myGroups} />
-      <GroupsJoined />
+      {/* <GroupsJoined /> */}
     </StyledSideBar>
   );
 }

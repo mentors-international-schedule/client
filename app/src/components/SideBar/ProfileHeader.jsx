@@ -5,7 +5,6 @@ const StyledProfileHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 180px;
   height: 70px;
   margin-left: 15px;
   
@@ -19,6 +18,7 @@ const StyledProfileHeader = styled.div`
     font-size: 22px;
     color: #313A3D;
     font-weight: 800;
+    margin-left: 10px;
   }
 `;
 const defaultUser =

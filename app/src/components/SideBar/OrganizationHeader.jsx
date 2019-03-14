@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledProfileHeader = styled.div`
-  width: 90%;
+  width: 310px;
   display: flex;
   justify-items: center;
   flex-wrap: wrap;
@@ -19,6 +19,7 @@ const StyledProfileHeader = styled.div`
     color: #6C7375;
     width: 100%;
     font-weight: bold;  
+    margin-bottom: 15px;
   }
   h4 {
     margin-left: 10px;
