@@ -10,8 +10,7 @@ import MessageCard from "./MessageCard";
 import Spinner from "../Spinner";
 
 const StyledMessageHistory = styled.div`
-  height: 500px;
-  overflow-y: scroll;
+  height: 100%;
   display: flex;
   flex-direction: column;
 `;

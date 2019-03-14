@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-
+import DateTimePicker from "react-datetime-picker";
 import {
   sendMessage,
   getMessages,
@@ -9,7 +9,7 @@ import {
   updateInputMessage,
   deleteMessage
 } from "../../actions/messageActions";
-
+import { scheduleMessage } from "../../actions/scheduleActions";
 import Spinner from "../Spinner";
 
 const StyledComposeMessageDisplay = styled.div`
@@ -17,8 +17,8 @@ const StyledComposeMessageDisplay = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   textarea {
     resize: none;
     height: 150px;
@@ -60,6 +60,22 @@ export function ComposeMessageDisplay(props) {
   function handleChangeTextArea(event) {
     props.updateInputMessage(event.target.value);
   }
+
+  const [date, setDate] = useState(new Date());
+  function handleScheduleMessage() {
+    const sendDate = {
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      dayOfWeek: date.getDay()
+    };
+    // lets schedule a message :)
+    props.scheduleMessage({
+      ...sendDate,
+      message: props.messageInput,
+      contact_ides: filterContacts(),
+      group_id: props.groupId
+    });
+  }
   return (
     <StyledComposeMessageDisplay>
       <h3>Message Composer</h3>
@@ -75,7 +91,7 @@ export function ComposeMessageDisplay(props) {
           />
           <div>
             <button onClick={handleSaveMessage}>Save message</button>
-            <button>Schedule</button>
+
             <button
               onClick={() => {
                 handleSendMessage();
@@ -83,6 +99,13 @@ export function ComposeMessageDisplay(props) {
             >
               Send message
             </button>
+            <DateTimePicker
+              onChange={date => {
+                setDate(date);
+              }}
+              value={date}
+            />
+            <button onClick={handleScheduleMessage}>Schedule</button>
           </div>
         </>
       )}
@@ -104,5 +127,12 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { sendMessage, getMessages, draftMessage, updateInputMessage, deleteMessage }
+  {
+    sendMessage,
+    getMessages,
+    draftMessage,
+    updateInputMessage,
+    deleteMessage,
+    scheduleMessage
+  }
 )(ComposeMessageDisplay);
