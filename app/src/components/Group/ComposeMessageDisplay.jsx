@@ -9,7 +9,7 @@ import {
   updateInputMessage,
   deleteMessage
 } from "../../actions/messageActions";
-
+import { scheduleMessage } from "../../actions/scheduleActions";
 import Spinner from "../Spinner";
 
 const StyledComposeMessageDisplay = styled.div`
@@ -127,5 +127,12 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { sendMessage, getMessages, draftMessage, updateInputMessage, deleteMessage }
+  {
+    sendMessage,
+    getMessages,
+    draftMessage,
+    updateInputMessage,
+    deleteMessage,
+    scheduleMessage
+  }
 )(ComposeMessageDisplay);
