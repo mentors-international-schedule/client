@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
@@ -9,6 +9,8 @@ import {
   updateInputMessage,
   deleteMessage
 } from "../../actions/messageActions";
+
+import Spinner from "../Spinner";
 
 const StyledComposeMessageDisplay = styled.div`
   background: lightgrey;
@@ -22,9 +24,14 @@ const StyledComposeMessageDisplay = styled.div`
     height: 150px;
     width: 80%;
   }
+  .error-message {
+    border: 1px solid red;
+    color: red;
+  }
 `;
 
 export function ComposeMessageDisplay(props) {
+  const [error, setError] = useState("");
   function filterContacts() {
     return props.contacts
       .filter(contact => !!contact.isChecked)
@@ -32,9 +39,16 @@ export function ComposeMessageDisplay(props) {
   }
 
   function handleSendMessage() {
-    props.sendMessage(filterContacts(), props.messageInput, props.groupId);
-    if (props.isDraftingId) {
-      props.deleteMessage(props.isDraftingId);
+    const filteredContacts = filterContacts();
+    if (filteredContacts.length) {
+      setError("");
+      props.sendMessage(filterContacts(), props.messageInput, props.groupId);
+
+      if (props.isDraftingId) {
+        props.deleteMessage(props.isDraftingId);
+      }
+    } else {
+      setError("To send a message please select at least one valid contact");
     }
   }
   function handleSaveMessage() {
@@ -46,17 +60,31 @@ export function ComposeMessageDisplay(props) {
   return (
     <StyledComposeMessageDisplay>
       <h3>Message Composer</h3>
-      <textarea
-        onInput={handleChangeTextArea}
-        value={props.messageInput}
-        rows="3"
-        cols="20"
-      />
-      <div>
-        <button onClick={handleSaveMessage}>Save message</button>
-        <button>Schedule</button>
-        <button onClick={handleSendMessage}>Send message</button>
-      </div>
+      {props.draftingMessage || props.sendingMessage ? (
+        <Spinner marginTop="30%" />
+      ) : (
+        <>
+          <textarea
+            onInput={handleChangeTextArea}
+            value={props.messageInput}
+            rows="3"
+            cols="20"
+          />
+          <div>
+            <button onClick={handleSaveMessage}>Save message</button>
+            <button>Schedule</button>
+            <button
+              onClick={() => {
+                handleSendMessage();
+              }}
+            >
+              Send message
+            </button>
+          </div>
+        </>
+      )}
+
+      {!!error ? <p className="error-message">{error}</p> : <> </>}
     </StyledComposeMessageDisplay>
   );
 }
@@ -65,7 +93,9 @@ function mapStateToProps(state) {
     messageInput: state.form.composeMessage.values.message,
     contacts: state.memberBoxReducer.contacts,
     groupId: state.groupReducer.viewingId,
-    isDraftingId: state.messageReducer.workingOnDraftId
+    isDraftingId: state.messageReducer.workingOnDraftId,
+    draftingMessage: state.messageReducer.draftingMessages,
+    sendingMessage: state.messageReducer.sendingMessage
   };
 }
 

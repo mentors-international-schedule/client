@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-
+import Spinner from "../Spinner";
 import { createGroup } from "../../actions/groupActions";
 const StyledAddAGroup = styled.div`
   display: flex;
@@ -20,7 +20,12 @@ export function AddAGroup(props) {
   }
   return (
     <StyledAddAGroup>
-      <div onClick={createNewGroup}>+ </div>
+      {props.creatingGroup ? (
+        <Spinner size="2px" marginRight=" 10px" marginBottom="10px" />
+      ) : (
+        <div onClick={createNewGroup}>+ </div>
+      )}
+
       <input
         onChange={handleChange}
         value={inputValue}
@@ -29,8 +34,12 @@ export function AddAGroup(props) {
     </StyledAddAGroup>
   );
 }
-
+function mstp(state) {
+  return {
+    creatingGroup: state.groupReducer.creatingGroup
+  };
+}
 export default connect(
-  () => {},
+  mstp,
   { createGroup }
 )(AddAGroup);

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
 
 const StyledCreateAccount = styled.div`
   width: 100%;
@@ -13,11 +12,10 @@ const StyledCreateAccount = styled.div`
   font-size: 16px;
   font-family: ‘Source Sans Pro’, sans-serif;
 
-
   h2 {
     text-align: center;
     font-size: 30px;
-    color: #009DDE;
+    color: #009dde;
     font-weight: 900;
     margin: 0;
   }
@@ -25,7 +23,7 @@ const StyledCreateAccount = styled.div`
   label {
     font-size: 16px;
     font-weight: 500;
-    color: #17BCFF;
+    color: #17bcff;
     margin-top: 0;
     margin-bottom: 0;
     text-align: left;
@@ -34,7 +32,7 @@ const StyledCreateAccount = styled.div`
   input {
     width: 100%;
     height: 40px;
-    background: #DDE1E6;
+    background: #dde1e6;
     border: none;
     border-radius: 3px;
     padding: 0 10px;
@@ -58,7 +56,7 @@ const StyledCreateAccount = styled.div`
     height: 46px;
     border-radius: 30px;
     border: none;
-    background: #17BCFF;
+    background: #17bcff;
     font-size: 16px;
     color: #fff;
   }
@@ -67,7 +65,7 @@ const StyledCreateAccount = styled.div`
     width: 100%;
     height: 46px;
     font-size: 16px;
-    background: #FF4F00;
+    background: #ff4f00;
     color: #fff;
     border-radius: 30px;
   }
@@ -94,8 +92,7 @@ export default function CreateAccount({
       <p>
         <span>OR</span>
       </p>
-      <button
-        className='google-btn'>Sign up with Google</button>
+      <button className="google-btn">Sign up with Google</button>
     </StyledCreateAccount>
   );
 }

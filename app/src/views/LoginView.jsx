@@ -4,7 +4,6 @@ import LoginForm from "../components/LoginForm";
 
 import styled from "styled-components";
 
-// STYLED COMPONENTS
 const StyledLoginView = styled.div`
   width: 364px;
   font-size: 16px;
@@ -13,7 +12,7 @@ const StyledLoginView = styled.div`
   box-shadow: rgba(23, 188, 255, 0.3) 0px 0px 30px;
   margin: 0 auto;
   margin-top: 125px;
-  background: #FDFDFD;
+  background: #fdfdfd;
   height: 330px;
 `;
 
