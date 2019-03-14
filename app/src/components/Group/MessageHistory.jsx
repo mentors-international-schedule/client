@@ -7,6 +7,8 @@ import {
   clearLocalMessages
 } from "../../actions/messageActions";
 import MessageCard from "./MessageCard";
+import Spinner from "../Spinner";
+
 const StyledMessageHistory = styled.div`
   height: 500px;
   overflow-y: scroll;
@@ -21,6 +23,10 @@ export function MessageHistory(props) {
     props.clearLocalMessages();
     props.getMessages(props.groupId);
     setInit(true);
+  }
+
+  if (!props.gettingMessages) {
+    return <Spinner margin="0 auto" marginTop="40%" />;
   }
 
   if (!!props.messages.messages || props.messages.config) {
@@ -39,7 +45,8 @@ function mapStateToProps(state) {
   return {
     groupId: state.groupReducer.viewingId,
     messages: state.messageReducer.messages,
-    currentId: state.messageReducer.currentMessageId
+    currentId: state.messageReducer.currentMessageId,
+    gettingMessages: state.messageReducer.gettingMessages
   };
 }
 
