@@ -132,7 +132,7 @@ export class LoginForm extends React.Component {
         />
 
         <ButtonContainer>
-          {!!this.props.loggingIn ? (
+          {this.props.loggingIn ? (
             <Spinner size="6px" color="#17BCFF" />
           ) : (
             <button type="submit" className="login-btn">

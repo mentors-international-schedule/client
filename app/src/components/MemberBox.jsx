@@ -259,7 +259,7 @@ class MemberBox extends Component {
             type="tel"
             id="phone"
             name="phone"
-            pattern="[+][0-9]{1} [0-9]{3} [0-9]{3} [0-9]{4}"
+            pattern="[+][0-9]{1}[\ \-\.]?[0-9]{3}[\ \-\.]?[0-9]{3}[\ \-\.]?[0-9]{4}"
             required
             value={this.state.phone}
             onChange={this.handleChange}

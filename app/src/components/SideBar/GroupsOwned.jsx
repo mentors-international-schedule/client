@@ -22,8 +22,8 @@ export default function GroupsOwned(props) {
     <StyledGroupsOwned>
       <h3>Groups Owned </h3>
       <AddAGroup />
-      {groups.map((group, index) => (
-        <NavLink key={index} to={`/${group.id}`}>
+      {groups.map(group => (
+        <NavLink key={group.id} to={`/${group.id}`}>
           {/* group.name.split(" ").join("-") */}
           {group.name}
         </NavLink>

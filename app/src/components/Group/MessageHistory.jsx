@@ -29,7 +29,7 @@ export function MessageHistory(props) {
     return <Spinner margin="0 auto" marginTop="40%" />;
   }
 
-  if (!!props.messages.messages || props.messages.config) {
+  if (!props.messages.length) {
     return <div>No messages on draft or sent</div>;
   }
   return (

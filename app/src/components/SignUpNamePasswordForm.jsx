@@ -45,6 +45,12 @@ const StyledSignUpNamePasswordForm = styled.form`
     font-size: 16px;
     color: #fff;
     margin-top: 5px;
+    &:active,
+    &:focus {
+      border-radius: 30px;
+      border: 4px solid #313a3d;
+      outline: none;
+    }
   }
 `;
 
@@ -93,12 +99,15 @@ export function SignUpNamePasswordForm(props) {
       ) : (
         <button>Submit</button>
       )}
+      {props.signingUpError ? <div>{props.signingUpError}</div> : <> </>}
     </StyledSignUpNamePasswordForm>
   );
 }
 function mstp(state) {
+  debugger;
   return {
-    signingUp: state.signUpReducer.signingUp
+    signingUp: state.signUpReducer.signingUp,
+    signingUpError: state.signUpReducer.error
   };
 }
 
