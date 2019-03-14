@@ -26,6 +26,7 @@ export function loginReducer(stateOfLogin = initState, action) {
       return {
         ...stateOfLogin,
         loggingIn: false,
+        error: null,
         currentUser: action.payload
       };
     case FAIL_LOGIN:

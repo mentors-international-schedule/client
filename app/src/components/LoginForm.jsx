@@ -6,6 +6,7 @@ import { login } from "../actions/loginActions";
 
 import styled from "styled-components";
 
+// STYLED COMPONENTS
 const StyledLoginForm = styled.form`
   width: 100%;
   display: flex;
@@ -65,6 +66,16 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
 `;
 
+// INLINE COMPONENTS (TOGGLING)
+const loginError = toggleFlag => {
+  return {
+    color: "red",
+    fontSize: "0.9rem",
+    display: toggleFlag ? "block" : "none",
+    marginTop: '25px',
+  };
+};
+
 export class LoginForm extends React.Component {
   state = {
     inputEmail: "",
@@ -81,7 +92,15 @@ export class LoginForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.login(this.state.inputEmail, this.state.inputPassword, () => this.props.history.push("/"));
+    this.props.login(this.state.inputEmail, 
+      this.state.inputPassword, 
+      () => this.props.history.push("/")
+    );
+
+    this.setState({
+      inputEmail: "",
+      inputPassword: ""
+    })
   };
 
   handleSignUp = event => {
@@ -117,6 +136,11 @@ export class LoginForm extends React.Component {
           <button onClick={this.handleSignUp}
             className="signup-btn">Signup</button>
         </ButtonContainer>
+
+        <label
+          style={loginError(this.props.error)} >
+          Error: {this.props.error}. Please try again.
+        </label>
       </StyledLoginForm>
     );
   }
