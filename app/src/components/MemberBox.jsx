@@ -9,7 +9,7 @@ import {
 } from "../actions/memberBoxActions";
 
 import styled from "styled-components";
-
+import Spinner from "./Spinner";
 // STYLED COMPONENTS
 const MemberBoxContainer = styled.div`
   display: flex;
@@ -261,7 +261,12 @@ class MemberBox extends Component {
             placeholder="Phone Number"
           />
           <span>Format: +1 123 456 7890</span>
-          <button>Submit</button>
+          {this.props.creatingContact ? (
+            <Spinner size="4px" margin=" 0 auto" marginTop="10px" />
+          ) : (
+            <button>Submit</button>
+          )}
+
           <label
             className="formError"
             style={formError(this.state.blankFormError)}
