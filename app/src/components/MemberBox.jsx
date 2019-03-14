@@ -227,8 +227,13 @@ class MemberBox extends Component {
           Your group members will appear here. Uncheck the box to remove someone
           from the message chain.
         </p>
-
-        <MemberList>{members}</MemberList>
+        <MemberList>
+          {this.props.gettingContacts ? (
+            <Spinner margin=" auto auto" size="8px" />
+          ) : (
+            members
+          )}
+        </MemberList>
 
         <ButtonContainer>
           <Button onClick={this.toggleMemberForm}>add member</Button>
