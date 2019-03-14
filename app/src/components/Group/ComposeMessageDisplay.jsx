@@ -9,7 +9,7 @@ import {
   updateInputMessage,
   deleteMessage
 } from "../../actions/messageActions";
-
+import { scheduleMessage } from "../../actions/scheduleActions";
 import Spinner from "../Spinner";
 
 const StyledComposeMessageDisplay = styled.div`
@@ -58,6 +58,19 @@ export function ComposeMessageDisplay(props) {
     props.updateInputMessage(event.target.value);
   }
 
+  function handleScheduleMessage() {
+    const sendDate = {
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      dayOfWeek: date.getDay()
+    };
+    // lets schedule a message :)
+    props.scheduleMessage({
+      ...sendDate,
+      message: props.messageInput,
+      contact_ides: filterContacts()
+    });
+  }
   const [date, setDate] = useState(new Date());
 
   return (
@@ -82,8 +95,13 @@ export function ComposeMessageDisplay(props) {
             >
               Send message
             </button>
-            <DateTimePicker onChange={date => setDate(date)} value={date} />
-            <button>Schedule</button>
+            <DateTimePicker
+              onChange={date => {
+                setDate(date);
+              }}
+              value={date}
+            />
+            <button onClick={handleScheduleMessage}>Schedule</button>
           </div>
         </>
       )}
@@ -105,5 +123,12 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { sendMessage, getMessages, draftMessage, updateInputMessage, deleteMessage }
+  {
+    sendMessage,
+    getMessages,
+    draftMessage,
+    updateInputMessage,
+    deleteMessage,
+    scheduleMessage
+  }
 )(ComposeMessageDisplay);

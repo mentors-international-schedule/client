@@ -9,7 +9,7 @@ import {
   FAIL_JOIN_ORGANIZATIONS,
   SUCCESS_JOIN_ORGANIZATION
 } from "../actions/actionTypes";
-import { dispatch } from "rxjs/internal/observable/pairs";
+
 import axios from "axios";
 import URL from "./AJAX_URL";
 export const getOrganizations = () => dispatch => {
@@ -41,7 +41,12 @@ export const joinOrganization = (name, organization_id) => dispatch => {
   axios
     .post(`${URL}api/organizations/join`, { organization_id })
     .then(() =>
-      dispatch({ type: SUCCESS_JOIN_ORGANIZATION, payload: { name, organization_id } })
+      dispatch({
+        type: SUCCESS_JOIN_ORGANIZATION,
+        payload: { name, organization_id }
+      })
     )
-    .catch(err => { dispatch({ type: FAIL_JOIN_ORGANIZATIONS, payload: err })});
+    .catch(err => {
+      dispatch({ type: FAIL_JOIN_ORGANIZATIONS, payload: err });
+    });
 };
