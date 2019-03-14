@@ -88,7 +88,7 @@ export function SignUpNamePasswordForm(props) {
         value={inputPassword}
         onChange={event => changePassword(event.target.value)}
       />
-      {!props.signingUp ? (
+      {props.signingUp ? (
         <Spinner size="6px" color="#17BCFF" marginTop="15px" margin="0 auto" />
       ) : (
         <button>Submit</button>
