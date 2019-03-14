@@ -28,13 +28,13 @@ const defaultUser =
   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user-300x300.png";
 export default function ProfileHeader(props) {
   const { imageURL, groups, groupId } = props;
-  const group = groups.filter(group => group.id === Number(groupId))[0]
+  const group = groups.filter(group => group.id === Number(groupId))[0];
   return (
     <StyledProfileHeader>
       <img src={imageURL || defaultUser} />
       <div className="header-text">
-        <h3> {group.name} </h3>
-        <h4>{`@${group.name}`}</h4>
+        <h3> {group ? group.name : ""} </h3>
+        <h4>{`@${group ? group.name : ""}`}</h4>
       </div>
     </StyledProfileHeader>
   );
