@@ -9,14 +9,13 @@ import { connect } from "react-redux";
 import { createGroup, getGroups } from "../../actions/groupActions";
 import LogoutButton from "./LogoutButton";
 const StyledSideBar = styled.div`
-  padding-left: 30px;
   box-shadow: 0 0 10px lightgrey;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 314px;
-  font-family: ’Source Sans Pro’; 
+  width: 350px;
+  font-family: ’Source Sans Pro’, sans-serif;
   margin-right: 30px;
 `;
 

@@ -12,6 +12,7 @@ const LogOutBtn = styled.button`
   background: #17bcff;
   font-size: 10px;
   color: #fff;
+  font-family: ’Source Sans Pro’, sans-serif;
 `;
 export function LogOutButton(props) {
   return (

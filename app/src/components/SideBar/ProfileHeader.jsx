@@ -5,8 +5,9 @@ const StyledProfileHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 170px;
+  width: 180px;
   height: 70px;
+  margin-left: 15px;
   
   img {
     width: 50px;
@@ -15,7 +16,7 @@ const StyledProfileHeader = styled.div`
     border: 1px solid black;
   }
   h3 {
-    font-size: 24px;
+    font-size: 22px;
     color: #313A3D;
     font-weight: 800;
   }
