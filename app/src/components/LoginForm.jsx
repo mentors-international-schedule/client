@@ -122,8 +122,13 @@ export class LoginForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  loggingIn: state.loginReducer.loggingIn,
+  error: state.loginReducer.error,
+});
+
 const connectedForm = connect(
-  () => {},
+  mapStateToProps,
   { login }
 )(LoginForm);
 
