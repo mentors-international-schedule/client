@@ -25,7 +25,7 @@ export const sendMessage = (contact_ids, message, group_id) => dispatch => {
   dispatch({ type: SENDING_MESSAGE });
   axios
     .post(`${URL}api/notifications/${group_id}`, { message, contact_ids })
-    .then(res =>{ debugger;dispatch({ type: SUCCESS_SENDING_MESSAGE, payload: {contact_ids, message, group_id, sent:true} })})
+    .then(res =>{ debugger;dispatch({ type: SUCCESS_SENDING_MESSAGE, payload: {message, group_id, sent:true} })})
     .catch(err => dispatch({ type: FAIL_SENDING_MESSAGE, payload: err }));
 };
 
@@ -33,7 +33,7 @@ export const draftMessage = (message, group_id) => dispatch => {
   dispatch({ type: DRAFTING_MESSAGE });
   axios
     .post(`${URL}api/notifications/drafts/${group_id}`, { message })
-    .then(res => dispatch({ type: SUCCESS_DRAFTING_MESSAGE, payload:{message, id:res.data.message_id} }))
+    .then(res => dispatch({ type: SUCCESS_DRAFTING_MESSAGE, payload:{message,group_id ,id:res.data.message_id} }))
     .catch(err => dispatch({ type: FAIL_DRAFTING_MESSAGE, payload: err }));
 };
 
