@@ -28,10 +28,6 @@ export function MessageHistory(props) {
   if (props.gettingMessages) {
     return <Spinner margin="0 auto" marginTop="40%" />;
   }
-
-  if (!props.messages.length) {
-    return <div>No messages on draft or sent</div>;
-  }
   return (
     <StyledMessageHistory>
       {props.messages.reverse().map(message => (

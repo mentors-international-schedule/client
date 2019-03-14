@@ -12,9 +12,21 @@ const StyledNewMessageView = styled.div`
   justify-content: space-between;
   .message-body {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    .history-header {
+      margin-right: 17px;
+    }
+    .status {
+      width: 10%;
+      display: inline-block;
+    }
+    .content {
+      width: 60%;
+      display: inline-block;
+    }
   }
 `;
 export function NewMessageView(props) {
@@ -23,10 +35,21 @@ export function NewMessageView(props) {
   return (
     <StyledNewMessageView>
       <div className="message-body">
-        {!!messageInput ? <ComposeMessageDisplay /> : <MessageHistory />}
-        <ComposeMessageField />
+        <div>
+          <span>SENT MESSAGES</span>
+          <span>DRAFTMESSAGES</span>
+        </div>
+
+        <div>
+          <div className="history-header">
+            <span className="status">Status</span>
+            <span className="content">Content</span>
+            <ComposeMessageField className="main-input" />
+          </div>
+
+          {!!messageInput ? <ComposeMessageDisplay /> : <MessageHistory />}
+        </div>
       </div>
-      <MemberBox />
     </StyledNewMessageView>
   );
 }

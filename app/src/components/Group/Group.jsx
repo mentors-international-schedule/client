@@ -5,13 +5,17 @@ import { connect } from "react-redux";
 import GroupHeader from "./GroupHeader";
 import NewMessageView from "../../views/NewMessageView";
 import { setViewGroup } from "../../actions/groupActions";
-
+import MemberBox from "../MemberBox";
 const StyledGroup = styled.div`
   width: 100%;
   padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
   .header {
     padding: 10px 30px 0 30px;
     border-bottom: 1px solid black;
+    height: 10%;
+
     a {
       text-decoration: none;
       margin-right: 20px;
@@ -20,6 +24,12 @@ const StyledGroup = styled.div`
     .active {
       border-bottom: 2px solid blue;
     }
+  }
+  .main-body {
+    height: 90%;
+  }
+  .body-of-group {
+    width: 100%;
   }
 `;
 
@@ -30,23 +40,23 @@ export function Group(props) {
   }
   return (
     <StyledGroup>
-      <div className="header">
-      <GroupHeader groups={props.groups} groupId={props.groupId} />
-        <nav>
-          <NavLink to={`/${groupId}/newMessage`}>New Message</NavLink>
-          <NavLink to={`/${groupId}/scheduler`}>Scheduler</NavLink>
-          <NavLink to={`/${groupId}/people`}>People</NavLink>
-        </nav>
+      <div className="body-of-group">
+        <div className="header">
+          <nav>
+            <NavLink to={`/${groupId}/newMessage`}>New Message</NavLink>
+            <NavLink to={`/${groupId}/scheduler`}>Scheduler</NavLink>
+          </nav>
+        </div>
+
+        <div className="main-body">
+          <Route path={`/${groupId}/newMessage`} component={NewMessageView} />
+          <Route
+            path={`/${groupId}/scheduler`}
+            component={() => <div>Scheduler feature getting worked on</div>}
+          />
+        </div>
       </div>
-      <Route path={`/${groupId}/newMessage`} component={NewMessageView} />
-      <Route
-        path={`/${groupId}/scheduler`}
-        component={() => <div>Scheduler feature getting worked on</div>}
-      />
-      <Route
-        path={`/${groupId}/people`}
-        component={() => <div>People feature getting worked on</div>}
-      />
+      <MemberBox />
     </StyledGroup>
   );
 }

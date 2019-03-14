@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledMessageCard = styled.div`
-  padding: 10px;
-  border: 1px solid black;
+  display: flex;
+  padding: 10px 0;
+  button {
+    width: 20%;
+    display: inline-block;
+  }
 `;
 
 export default function MessageCard(props) {
@@ -11,16 +15,17 @@ export default function MessageCard(props) {
   if (props.message.sent) {
     return (
       <StyledMessageCard>
-        <h4>Sent Message</h4>
-        <p>{props.message.message} </p>
+        <span className="status">Sent</span>
+        <span className="content">{props.message.message}</span>
       </StyledMessageCard>
     );
   }
   //draft
   return (
     <StyledMessageCard>
-      <h4>Draft Message</h4>
-      <p>{props.message.message} </p>
+      <span className="status">Draft</span>
+      <span className="content">{props.message.message}</span>
+
       <button
         onClick={() => {
           props.setMessage(props.message);

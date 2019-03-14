@@ -3,14 +3,18 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import styled from "styled-components";
 
-const StyledComposeMessageField = styled.div``;
+const StyledComposeMessageField = styled.span`
+  input {
+    width: 20%;
+    display: inline-block;
+  }
+`;
 
 export function ComposeMessageField(props) {
   return (
-    <div>
+    <StyledComposeMessageField>
       <Field name="message" component="input" type="text" />
-      <div />
-    </div>
+    </StyledComposeMessageField>
   );
 }
 function mapStateToProps(state) {
