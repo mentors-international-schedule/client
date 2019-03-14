@@ -12,6 +12,12 @@ const StyledSideBar = styled.div`
   padding-left: 30px;
   box-shadow: 0 0 10px lightgrey;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 314px;
+  font-family: ’Source Sans Pro’; 
+  margin-right: 30px;
 `;
 
 export function SideBar(props) {
