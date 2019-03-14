@@ -68,7 +68,8 @@ export function ComposeMessageDisplay(props) {
     props.scheduleMessage({
       ...sendDate,
       message: props.messageInput,
-      contact_ides: filterContacts()
+      contact_ides: filterContacts(),
+      group_id: props.groupId,
     });
   }
   const [date, setDate] = useState(new Date());
