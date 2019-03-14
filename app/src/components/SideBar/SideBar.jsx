@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from 'react-router-dom';
 import styled from "styled-components";
 import ProfileHeader from "./ProfileHeader";
 import OrganizationHeader from "./OrganizationHeader";
@@ -46,7 +47,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   { createGroup, getGroups }
-)(SideBar);
+)(SideBar));
