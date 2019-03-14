@@ -72,5 +72,5 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   { getMessages, setMessage, clearLocalMessages },
-  // { getScheduledMessages, deleteMessage, clearLocalScheduledMessages }
+  // { getScheduledMessages, deleteScheduledMessage, clearLocalScheduledMessages }
 )(MessageHistory);
