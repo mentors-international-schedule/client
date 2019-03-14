@@ -55,7 +55,13 @@ export function ComposeMessageDisplay(props) {
       <div>
         <button onClick={handleSaveMessage}>Save message</button>
         <button>Schedule</button>
-        <button onClick={handleSendMessage}>Send message</button>
+        <button
+          onClick={() => {
+            handleSendMessage();
+          }}
+        >
+          Send message
+        </button>
       </div>
     </StyledComposeMessageDisplay>
   );

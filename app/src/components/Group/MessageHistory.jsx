@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { getMessages, setMessage } from "../../actions/messageActions";
+import {
+  getMessages,
+  setMessage,
+  clearLocalMessages
+} from "../../actions/messageActions";
 import MessageCard from "./MessageCard";
 const StyledMessageHistory = styled.div`
   height: 500px;
@@ -10,7 +14,10 @@ const StyledMessageHistory = styled.div`
 
 export function MessageHistory(props) {
   const [init, setInit] = useState(false);
-  if (!init) {
+
+  if (!init && props.currentId !== props.groupId) {
+    debugger;
+    props.clearLocalMessages();
     props.getMessages(props.groupId);
     setInit(true);
   }
@@ -30,11 +37,12 @@ export function MessageHistory(props) {
 function mapStateToProps(state) {
   return {
     groupId: state.groupReducer.viewingId,
-    messages: state.messageReducer.messages
+    messages: state.messageReducer.messages,
+    currentId: state.messageReducer.currentMessageId
   };
 }
 
 export default connect(
   mapStateToProps,
-  { getMessages, setMessage }
+  { getMessages, setMessage, clearLocalMessages }
 )(MessageHistory);

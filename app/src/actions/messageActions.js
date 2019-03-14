@@ -15,7 +15,8 @@ import {
   UPDATE_INPUT_MESSAGE,
   DELETING_MESSAGE,
   SUCCESS_DELETING_MESSAGE,
-  FAIL_DELETING_MESSAGE
+  FAIL_DELETING_MESSAGE,
+  CLEAR_LOCAL_MESSAGES
 } from "./actionTypes";
 
 
@@ -38,7 +39,7 @@ export const draftMessage = (message, group_id) => dispatch => {
 export const getMessages = (group_id) => dispatch => {
   dispatch({type:GETTING_MESSAGES});
   axios.get(`${URL}api/notifications/${group_id}`,{ headers: { Authorization: localStorage.getItem("token") }})
-    .then(res =>  dispatch({type:SUCCESS_GETTING_MESSAGES, payload: res.data } ))
+    .then(res =>  dispatch({type:SUCCESS_GETTING_MESSAGES, payload: res.data, currentId: group_id } ))
     .catch(err =>{ dispatch({type:FAIL_GETTING_MESSAGES, payload:err} )} )
 }
 
@@ -55,4 +56,8 @@ export function setMessage(message){
 
 export function updateInputMessage(message){
   return{type: UPDATE_INPUT_MESSAGE, payload: message}
+}
+
+export function clearLocalMessages(){
+  return {type: CLEAR_LOCAL_MESSAGES}
 }

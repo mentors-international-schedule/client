@@ -11,7 +11,8 @@ import {
   SET_MESSAGE,
   DELETING_MESSAGE,
   SUCCESS_DELETING_MESSAGE,
-  FAIL_DELETING_MESSAGE
+  FAIL_DELETING_MESSAGE,
+  CLEAR_LOCAL_MESSAGES
 } from "../actions/actionTypes";
 
 const initState = {
@@ -30,7 +31,7 @@ export function messageReducer(state = initState, action) {
         ...state,
         sendingMessage: true,
         error: null,
-        workingOnDraftId: null
+        workingOnDraftId: null,
       };
     case SUCCESS_SENDING_MESSAGE:
       return {
@@ -43,9 +44,9 @@ export function messageReducer(state = initState, action) {
     case GETTING_MESSAGES:
       return { ...state, gettingMessages: true, error: null };
     case SUCCESS_GETTING_MESSAGES:
-      return { ...state, gettingMessages: false, messages: action.payload };
+      return { ...state, gettingMessages: false, messages: action.payload, currentMessageId: action.currentId };
     case FAIL_GETTING_MESSAGES:
-      return { ...state, gettingMessages: false, messages: action.payload };
+      return { ...state, gettingMessages: false, error: action.payload };
     case DRAFTING_MESSAGE:
       return {
         ...state,
@@ -54,6 +55,7 @@ export function messageReducer(state = initState, action) {
         workingOnDraftId: null
       };
     case SUCCESS_DRAFTING_MESSAGE:
+      debugger
       return {
         ...state,
         draftingMessages: false,
@@ -65,15 +67,26 @@ export function messageReducer(state = initState, action) {
         })
       };
     case FAIL_DRAFTING_MESSAGE:
+    debugger
       return { ...state, draftingMessages: false, error: action.payload };
     case SET_MESSAGE:
       return { ...state, workingOnDraftId: action.payload.id };
     case DELETING_MESSAGE:
-      return {...state, deletingMessage:true}
+      return { ...state, deletingMessage: true };
     case SUCCESS_DELETING_MESSAGE:
-      return {...state, deletingMessage:false ,messages:state.messages.filter(message=> { return message.id !== action.payload})}
-      case FAIL_DELETING_MESSAGE:
-      return {...state, deletingMessage: false, error: action.payload}
+      return {
+        ...state,
+        deletingMessage: false,
+        messages: state.messages.filter(message => {
+          debugger
+          return message.id !== action.payload;
+        })
+      };
+    case FAIL_DELETING_MESSAGE:
+      return { ...state, deletingMessage: false, error: action.payload };
+    case CLEAR_LOCAL_MESSAGES: {
+      return { ...state, workingOnDraftId: null, messages: [] };
+    }
     default:
       return state;
   }
