@@ -16,10 +16,8 @@ export function MessageHistory(props) {
   }
 
   if (!!props.messages.messages || props.messages.config) {
-    debugger;
     return <div>No messages on draft or sent</div>;
   }
-  debugger;
   return (
     <StyledMessageHistory>
       {props.messages.map(message => (
