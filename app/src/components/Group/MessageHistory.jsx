@@ -10,6 +10,8 @@ import MessageCard from "./MessageCard";
 const StyledMessageHistory = styled.div`
   height: 500px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 `;
 
 export function MessageHistory(props) {

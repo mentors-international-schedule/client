@@ -11,6 +11,7 @@ export default function MessageCard(props) {
   if (props.message.sent) {
     return (
       <StyledMessageCard>
+        <h4>Sent Message</h4>
         <p>{props.message.message} </p>
       </StyledMessageCard>
     );
@@ -18,6 +19,7 @@ export default function MessageCard(props) {
   //draft
   return (
     <StyledMessageCard>
+      <h4>Draft Message</h4>
       <p>{props.message.message} </p>
       <button
         onClick={() => {
