@@ -24,9 +24,9 @@ export function MessageHistory(props) {
 
   if (!init && props.currentId !== props.groupId) {
     props.clearLocalMessages();
-    // props.clearLocalScheduledMessages();
+    // props.clearLocalmessages();
     props.getMessages(props.groupId);
-    // props.getScheduledMessages(())
+    // props.getmessages(())
     setInit(true);
   }
 
@@ -34,7 +34,7 @@ export function MessageHistory(props) {
     return <Spinner margin="0 auto" marginTop="40%" />;
   }
 
-  // if (props.gettingScheduledMessages) {
+  // if (props.gettingmessages) {
   //   return <Spinner margin="0 auto" marginTop="40%" />;
   // }
 
@@ -42,7 +42,7 @@ export function MessageHistory(props) {
     return <div>You have not scheduled any messages yet.</div>;
   }
 
-  // if (!props.scheduledMessages.length) {
+  // if (!props.messages.length) {
   //   return <div>You have not scheduled any messages yet.</div>;
   // }
 
@@ -51,7 +51,7 @@ export function MessageHistory(props) {
       {props.messages.reverse().map(message => (
         <ScheduledMessageCard message={message} setMessage={props.setMessage} />
       ))}
-      {/* {props.scheduledMessages.reverse().map(message => (
+      {/* {props.messages.reverse().map(message => (
         <ScheduledMessageCard message={message} deleteMessage={props.deleteMessage} />
       ))} */}
     </StyledMessageHistory>
@@ -62,15 +62,14 @@ function mapStateToProps(state) {
   return {
     groupId: state.groupReducer.viewingId,
     currentId: state.messageReducer.currentMessageId,
-    messages: state.messageReducer.messages,
-    gettingMessages: state.messageReducer.gettingMessages
-    // scheduledMessages: state.messageReducer.messages,
-    // gettingScheduledMessages: state.messageReducer.gettingMessages
+    messages: state.scheduleReducer.messages,
+    gettingMessages: state.scheduleReducer.gettingMessages,
+    deletingMessage: state.scheduleReducer.deletingMessage
   };
 }
 
 export default connect(
   mapStateToProps,
   { getMessages, setMessage, clearLocalMessages },
-  // { getScheduledMessages, deleteScheduledMessage, clearLocalScheduledMessages }
+  // { getmessages, deleteScheduledMessage, clearLocalmessages }
 )(MessageHistory);
