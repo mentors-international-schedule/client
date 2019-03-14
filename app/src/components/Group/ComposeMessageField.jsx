@@ -7,13 +7,20 @@ const StyledComposeMessageField = styled.span`
   input {
     width: 20%;
     display: inline-block;
+    min-width: 180px;
+    padding-left: 4px;
   }
 `;
 
 export function ComposeMessageField(props) {
   return (
     <StyledComposeMessageField>
-      <Field name="message" component="input" type="text" />
+      <Field
+        name="message"
+        component="input"
+        type="text"
+        placeholder="Type here to start a message"
+      />
     </StyledComposeMessageField>
   );
 }

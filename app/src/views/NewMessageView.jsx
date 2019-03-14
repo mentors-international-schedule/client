@@ -15,20 +15,25 @@ const StyledNewMessageView = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    .message-content {
+      height: 100%;
+    }
     .history-header {
-      margin-right: 17px;
       border-top: 1px solid #313a3d;
       border-bottom: 1px solid #313a3d;
-      padding: 10px 0;
+      height: 6%;
+      display: flex;
+      align-items: center;
     }
     .status {
       width: 10%;
       display: inline-block;
     }
     .content {
-      width: 60%;
+      width: 70%;
+      min-width: 200px;
       display: inline-block;
+      word-wrap: break-word;
     }
   }
 `;
@@ -43,7 +48,7 @@ export function NewMessageView(props) {
           <span>DRAFTMESSAGES</span>
         </div>
 
-        <div>
+        <div className="message-content">
           <div className="history-header">
             <span className="status">Status</span>
             <span className="content">Content</span>

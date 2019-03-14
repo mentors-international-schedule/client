@@ -17,8 +17,8 @@ const StyledComposeMessageDisplay = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   textarea {
     resize: none;
     height: 150px;

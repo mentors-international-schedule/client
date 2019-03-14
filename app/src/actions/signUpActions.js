@@ -17,7 +17,6 @@ export const signUp = (email, firstname, lastname, password) => dispatch => {
         })
       })
       .catch(err=> {
-        debugger
         dispatch({
           type:FAIL_SIGN_UP, 
           payload:err.message
