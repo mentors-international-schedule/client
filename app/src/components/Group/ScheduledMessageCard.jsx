@@ -7,27 +7,17 @@ const StyledMessageCard = styled.div`
 `;
 
 export default function MessageCard(props) {
-  //sent message
-  if (props.message.sent) {
-    return (
-      <StyledMessageCard>
-        <h4>Sent Message</h4>
-        <p>{props.message.message} </p>
-      </StyledMessageCard>
-    );
-  }
-  //draft
   return (
     <StyledMessageCard>
-      <h4>Draft Message</h4>
+      <h4>Scheduled Message</h4>
       <p>{props.message.message} </p>
       <button
-        onClick={() => {
-          props.setMessage(props.message);
-        }}
-      >
-        Edit Draft
-      </button>
+      onClick={() => {
+        props.deleteMessage(props.message);
+      }}
+    >
+      Delete Message from Queue
+    </button>
     </StyledMessageCard>
   );
 }
