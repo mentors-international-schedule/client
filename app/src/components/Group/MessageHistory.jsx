@@ -25,7 +25,7 @@ export function MessageHistory(props) {
     setInit(true);
   }
 
-  if (!props.gettingMessages) {
+  if (props.gettingMessages) {
     return <Spinner margin="0 auto" marginTop="40%" />;
   }
 

@@ -213,7 +213,11 @@ class MemberBox extends Component {
           onClick={() => this.toggleCheckbox(member.id)}
         />
         <label>{member.name}</label>
-        <button onClick={() => this.props.deleteContact(member.id, member.group_id)}>x</button>
+        <button
+          onClick={() => this.props.deleteContact(member.id, member.group_id)}
+        >
+          x
+        </button>
       </span>
     ));
 
@@ -239,6 +243,7 @@ class MemberBox extends Component {
         >
           <label>Add New Member: </label>
           <Input
+            required
             type="text"
             name="name"
             value={this.state.name}
@@ -246,12 +251,16 @@ class MemberBox extends Component {
             placeholder="Full Name"
           />
           <Input
-            type="text"
+            type="tel"
+            id="phone"
             name="phone"
+            pattern="[+][0-9]{1} [0-9]{3} [0-9]{3} [0-9]{4}"
+            required
             value={this.state.phone}
             onChange={this.handleChange}
             placeholder="Phone Number"
           />
+          <span>Format: +1 123 456 7890</span>
           <button>Submit</button>
           <label
             className="formError"
