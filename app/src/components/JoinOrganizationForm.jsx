@@ -8,7 +8,7 @@ import {
 import styled from "styled-components";
 import SearchInputWithDrop from "../components/SearchInputWithDrop";
 
-const StyledJoinOrganizationForm = styled.div`
+const JoinOrganizationContainer = styled.div`
   width: 364px;
   font-size: 16px;
   border-radius: 3px;
@@ -17,6 +17,7 @@ const StyledJoinOrganizationForm = styled.div`
   margin: 0 auto;
   margin-top: 125px;
   background: #FDFDFD;
+  font-family: ‘Source Sans Pro’, sans-serif;
 
   h2 {
     font-family: ‘Source Sans Pro’, sans-serif;
@@ -25,7 +26,7 @@ const StyledJoinOrganizationForm = styled.div`
     color: #009DDE;
     font-weight: 900;
     margin: 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
 `;
 
@@ -40,14 +41,14 @@ export function JoinOrganizationForm(props) {
   });
 
   return (
-    <StyledJoinOrganizationForm>
+    <JoinOrganizationContainer>
       <h2>Join or Create an Organization</h2>
       <SearchInputWithDrop
         create={props.createOrganization}
         join={props.joinOrganization}
         items={props.organizations}
       />
-    </StyledJoinOrganizationForm>
+    </JoinOrganizationContainer>
   );
 }
 
