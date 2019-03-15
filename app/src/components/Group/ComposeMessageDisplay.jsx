@@ -80,21 +80,21 @@ export function ComposeMessageDisplay(props) {
     props.updateInputMessage(event.target.value);
   }
 
-  const [date, setDate] = useState(new Date());
-  function handleScheduleMessage() {
-    const sendDate = {
-      hour: date.getHours(),
-      minute: date.getMinutes(),
-      dayOfWeek: date.getDay()
-    };
-    // lets schedule a message :)
-    props.scheduleMessage({
-      ...sendDate,
-      message: props.messageInput,
-      contact_ides: filterContacts(),
-      group_id: props.groupId
-    });
-  }
+  // const [date, setDate] = useState(new Date());
+  // function handleScheduleMessage() {
+  //   const sendDate = {
+  //     hour: date.getHours(),
+  //     minute: date.getMinutes(),
+  //     dayOfWeek: date.getDay()
+  //   };
+  //   // lets schedule a message :)
+  //   props.scheduleMessage({
+  //     ...sendDate,
+  //     message: props.messageInput,
+  //     contact_ides: filterContacts(),
+  //     group_id: props.groupId
+  //   });
+  // }
   return (
     <StyledComposeMessageDisplay>
       <h3>Create a New Message</h3>

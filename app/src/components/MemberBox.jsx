@@ -257,14 +257,14 @@ class MemberBox extends Component {
         <div
           onClick={() => this.props.deleteContact(member.id, member.group_id)}
         >
-          <i class="fa fa-trash" aria-hidden="true" style={{color: '#17bcff',}}></i>
+          <i className="fa fa-trash" aria-hidden="true" style={{color: '#17bcff',}}></i>
         </div>
       </GroupMember>
     ));
 
     return (
       <MemberBoxContainer>
-        <h3><i class="fa fa-users" aria-hidden="true"></i> GROUP MEMBERS</h3>
+        <h3><i className="fa fa-users" aria-hidden="true"></i> GROUP MEMBERS</h3>
         <p>Uncheck the box to remove someone from the message chain.</p>
         <MemberList>
           {this.props.gettingContacts ? (

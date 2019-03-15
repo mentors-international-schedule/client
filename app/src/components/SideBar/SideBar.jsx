@@ -4,7 +4,6 @@ import styled from "styled-components";
 import ProfileHeader from "./ProfileHeader";
 import OrganizationHeader from "./OrganizationHeader";
 import GroupsOwned from "./GroupsOwned";
-import GroupsJoined from "./GroupsJoined";
 import { connect } from "react-redux";
 import { createGroup, getGroups } from "../../actions/groupActions";
 import LogoutButton from "./LogoutButton";

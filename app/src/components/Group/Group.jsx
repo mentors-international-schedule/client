@@ -67,7 +67,7 @@ export function Group(props) {
         <div className="header-group">
           <nav>
             <NavLink className="group-nav-item" to={`/${groupId}/newMessage`}>
-              <i class="fas fa-envelope" style={{marginRight:'10px'}}></i> SEND MESSAGE
+              <i className="fas fa-envelope" style={{marginRight:'10px'}}></i> SEND MESSAGE
             </NavLink>
             {/* <NavLink className="group-nav-item" to={`/${groupId}/scheduler`}>
               <i class="far fa-calendar" style={{marginRight:'10px'}}></i>SCHEDULER

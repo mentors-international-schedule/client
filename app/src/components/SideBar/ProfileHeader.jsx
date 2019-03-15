@@ -27,7 +27,7 @@ export default function ProfileHeader(props) {
   const { imageURL, name } = props;
   return (
     <StyledProfileHeader>
-      <img src={imageURL || defaultUser} />
+      <img src={imageURL || defaultUser} alt='default-user' />
       <div>
         <h3> {name} </h3>
       </div>

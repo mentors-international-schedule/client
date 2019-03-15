@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { create } from "domain";
 
 const StyledSearchInputWithDrop = styled.div`
   margin-right: 20px;

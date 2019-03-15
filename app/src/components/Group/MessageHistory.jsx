@@ -29,8 +29,8 @@ export function MessageHistory(props) {
   }
   return (
     <StyledMessageHistory>
-      {[...props.messages].reverse().map(message => (
-        <MessageCard message={message} setMessage={props.setMessage} />
+      {[...props.messages].reverse().map((message, index) => (
+        <MessageCard key={index} message={message} setMessage={props.setMessage} />
       ))}
     </StyledMessageHistory>
   );

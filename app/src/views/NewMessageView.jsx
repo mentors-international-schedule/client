@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import MemberBox from "../components/MemberBox";
 import ComposeMessageField from "../components/Group/ComposeMessageField";
 import ComposeMessageDisplay from "../components/Group/ComposeMessageDisplay";
 import MessageHistory from "../components/Group/MessageHistory";
