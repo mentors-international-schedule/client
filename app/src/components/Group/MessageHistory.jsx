@@ -13,7 +13,7 @@ const StyledMessageHistory = styled.div`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  width: 50vw;
+  width: 100%;
 `;
 
 export function MessageHistory(props) {

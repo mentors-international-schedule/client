@@ -12,6 +12,8 @@ import Spinner from "../Spinner";
 const StyledMessageHistory = styled.div`
   width: 100%;
   margin-top: 20px;
+  font-size: 16px;
+
   header {
     display: flex;
     justify-content: space-between;
@@ -66,8 +68,8 @@ export function MessageHistory(props) {
         <span className="status">Status </span>
         <span className="content">Message</span>
         <span className="display-date">
-          <span className="display-day">day</span>
-          <span className="display-time">time</span>
+          <span className="display-day">Day</span>
+          <span className="display-time">Time</span>
         </span>
         <span className="space" />
       </header>
