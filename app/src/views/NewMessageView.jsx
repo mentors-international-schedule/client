@@ -10,7 +10,6 @@ const StyledNewMessageView = styled.div`
   display: flex;
   height: 600px;
   justify-content: space-between;
-  padding-top: 20px;
   box-sizing: border-box;
 
   .message-btns{
@@ -24,7 +23,6 @@ const StyledNewMessageView = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
     box-sizing: border-box;
 
     .message-content {
@@ -38,14 +36,14 @@ const StyledNewMessageView = styled.div`
     .history-header {
       border-top: 1px solid gray;
       border-bottom: 1px solid gray;
-      height: 7%;
+      height: 10%;
       display: flex;
       align-items: center;
       background: #74D7FF;
       padding-right: 15px;
       font-weight: bold;
       color: white;
-      border-radius: 5px;
+      border-radius: 5px 5px 0 0;
       box-sizing: border-box;
     }
     .status {
@@ -70,10 +68,10 @@ export function NewMessageView(props) {
   return (
     <StyledNewMessageView>
       <div className="message-body">
-        <div className="message-btns">
+        {/* <div className="message-btns">
           <span>SENT MESSAGES</span>
           <span>DRAFT MESSAGES</span>
-        </div>
+        </div> */}
 
         <div className="message-content">
           <div className="history-header">

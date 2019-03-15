@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import DateTimePicker from "react-datetime-picker";
+// import DateTimePicker from "react-datetime-picker";
 import {
   sendMessage,
   getMessages,
@@ -11,14 +11,33 @@ import {
 } from "../../actions/messageActions";
 import { scheduleMessage } from "../../actions/scheduleActions";
 import Spinner from "../Spinner";
+import { lighten } from "polished";
 
 const StyledComposeMessageDisplay = styled.div`
-  background: lightgrey;
+  background: whitesmoke;
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
   height: 100%;
+  border-radius: 0 0 5px 5px;
+  button {
+    width: 150px;
+    height: 26px;
+    border-radius: 10px;
+    border: none;
+    background: #17bcff;
+    font-size: 13px;
+    color: #fff;
+    font-family: ’Source Sans Pro’, sans-serif;
+    font-weight: bold;
+    margin: 0 25px;
+    margin-top: 30px;
+
+    &:hover {
+      background: ${lighten(0.1, "#17bcff")};
+    }
+  }
   textarea {
     resize: none;
     height: 150px;
@@ -78,7 +97,7 @@ export function ComposeMessageDisplay(props) {
   }
   return (
     <StyledComposeMessageDisplay>
-      <h3>Message Composer</h3>
+      <h3>Create a New Message</h3>
       {props.draftingMessage || props.sendingMessage ? (
         <Spinner marginTop="30%" />
       ) : (
@@ -99,13 +118,13 @@ export function ComposeMessageDisplay(props) {
             >
               Send message
             </button>
-            <DateTimePicker
+            {/* <DateTimePicker
               onChange={date => {
                 setDate(date);
               }}
               value={date}
             />
-            <button onClick={handleScheduleMessage}>Schedule</button>
+            <button onClick={handleScheduleMessage}>Schedule</button> */}
           </div>
         </>
       )}

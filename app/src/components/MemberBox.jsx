@@ -72,7 +72,7 @@ const Button = styled.button`
   transition: 0.15s;
 
   &:hover {
-    background: #fff;
+    background: ${lighten(0.35, "#17bcff")};
   }
 `;
 
