@@ -5,10 +5,11 @@ import { lighten } from "polished";
 
 const StyledMessageCard = styled.div`
   display: flex;
-  padding: 15px 0;
+  padding: 20px 0;
   border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   button {
     width: 20%;
     height: 26px;
@@ -53,7 +54,7 @@ export default function MessageCard(props) {
           props.deleteScheduledMessage(props.message.id);
         }}
       >
-        delete
+        DELETE
       </button>
     </StyledMessageCard>
   );

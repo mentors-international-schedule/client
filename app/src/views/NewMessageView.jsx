@@ -10,6 +10,7 @@ const StyledNewMessageView = styled.div`
   min-height: 600px;
   justify-content: space-between;
   box-sizing: border-box;
+  font-size: 16px;
 
   .message-btns {
     span {
@@ -40,7 +41,7 @@ const StyledNewMessageView = styled.div`
     .status {
       width: 10%;
       display: inline-block;
-      padding: 0 15px;
+      padding: 0 30px;
     }
     .content {
       width: 100%;
@@ -65,7 +66,7 @@ export function NewMessageView(props) {
         <div className="message-content">
           <div id="history-header">
             <span className="status">Status</span>
-            <span className="content">Content</span>
+            <span className="content">Message</span>
             <ComposeMessageField className="main-input" />
           </div>
 
