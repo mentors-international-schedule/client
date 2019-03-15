@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import AddAGroup from "./AddAGroup";
 import { NavLink } from "react-router-dom";
+import { lighten } from "polished";
+
 
 const StyledGroupsOwned = styled.div`
   width: 310px;
@@ -23,18 +25,21 @@ const StyledGroupsOwned = styled.div`
   a {
     color: black;
     display: block;
-    margin: 20px 0;
+    margin: 15px 0;
     margin-left: 35px;
     font-size: 14px;
     text-decoration: none;
-    width: 260px;
+    width: 242px;
+    padding: 5px 5px;
+    transition: 0.15s;
 
     &:hover {
-      text-decoration: underline;
+      background: ${lighten(0.1, "lightgray")};
     }
   }
   .active {
-    background: gray;
+    background: ${lighten(0.4, "#17bcff")};
+    font-weight: bold;
   }
 `;
 

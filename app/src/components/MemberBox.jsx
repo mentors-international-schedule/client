@@ -24,7 +24,7 @@ const MemberBoxContainer = styled.div`
 
   h3 {
     color: #17bcff;
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 0;
   }
 `;

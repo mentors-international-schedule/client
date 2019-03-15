@@ -20,6 +20,7 @@ const StyledSideBar = styled.div`
 `;
 
 const SidebarTop = styled.div`
+  margin-top: 10px;
   width: 95%;
   display: flex;
   align-items: center;
