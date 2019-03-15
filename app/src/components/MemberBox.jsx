@@ -75,6 +75,17 @@ const Button = styled.button`
   }
 `;
 
+const NewMemberButton = styled.button`
+  width: 90px;
+  height: 26px;
+  border-radius: 10px;
+  border: none;
+  background: #17bcff;
+  font-size: 12px;
+  color: #fff;
+  font-weight: bold;
+`;
+
 const Input = styled.input`
   padding: 5px 8px;
 `;
@@ -252,7 +263,7 @@ class MemberBox extends Component {
 
     return (
       <MemberBoxContainer>
-        <h3>GROUP MEMBERS</h3>
+        <h3><i class="fa fa-users" aria-hidden="true"></i> GROUP MEMBERS</h3>
         <p>Uncheck the box to remove someone from the message chain.</p>
         <MemberList>
           {this.props.gettingContacts ? (
@@ -296,7 +307,7 @@ class MemberBox extends Component {
           {this.props.creatingContact ? (
             <Spinner size="4px" margin=" 0 auto" marginTop="10px" />
           ) : (
-            <button>Submit</button>
+            <NewMemberButton>Submit</NewMemberButton>
           )}
 
           <label

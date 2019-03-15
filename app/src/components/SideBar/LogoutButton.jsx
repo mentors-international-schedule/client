@@ -7,7 +7,7 @@ import { logout } from "../../actions/loginActions";
 const LogOutBtn = styled.button`
   width: 70px;
   height: 26px;
-  border-radius: 30px;
+  border-radius: 10px;
   border: none;
   background: #17bcff;
   font-size: 12px;
