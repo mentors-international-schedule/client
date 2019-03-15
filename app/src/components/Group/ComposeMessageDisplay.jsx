@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import DateTimePicker from "react-datetime-picker";
 import {
   sendMessage,
   getMessages,
@@ -80,23 +79,44 @@ export function ComposeMessageDisplay(props) {
     props.updateInputMessage(event.target.value);
   }
 
-  const [date, setDate] = useState(new Date());
   function handleScheduleMessage() {
-    const sendDate = {
-      hour: date.getHours(),
-      minute: date.getMinutes(),
-      dayOfWeek: date.getDay()
-    };
     // lets schedule a message :)
+
+    const minute = minuteRef.current.value * 1;
+    const hour = hourRef.current.value * 1;
+    const dayOfWeek = dayRef.current.value * 1;
+
     props.scheduleMessage(
       {
-        ...sendDate,
+        minute,
+        hour,
+        dayOfWeek,
         message: props.messageInput,
         contact_ides: filterContacts()
       },
       props.groupId
     );
   }
+  const daysInWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  const hourArray = [];
+  for (let i = 0; i < 25; i++) {
+    hourArray.push(i);
+  }
+  const minuteArray = [];
+  for (let i = 0; i < 61; i++) {
+    minuteArray.push(i);
+  }
+  const dayRef = createRef();
+  const hourRef = createRef();
+  const minuteRef = createRef();
   return (
     <StyledComposeMessageDisplay>
       <h3>Create a New Message</h3>
@@ -105,6 +125,7 @@ export function ComposeMessageDisplay(props) {
       ) : (
         <>
           <textarea
+            onChange={() => {}}
             onInput={handleChangeTextArea}
             value={props.messageInput}
             rows="3"
@@ -120,12 +141,29 @@ export function ComposeMessageDisplay(props) {
             >
               Send message
             </button>
-            <DateTimePicker
-              onChange={date => {
-                setDate(date);
-              }}
-              value={date}
-            />
+
+            <select ref={dayRef}>
+              {daysInWeek.map((day, index) => (
+                <option key={index} value={index}>
+                  {day}
+                </option>
+              ))}
+            </select>
+            <select ref={hourRef}>
+              {hourArray.map(item => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+            <select ref={minuteRef}>
+              {minuteArray.map(item => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+
             <button onClick={handleScheduleMessage}>Schedule</button>
           </div>
         </>
