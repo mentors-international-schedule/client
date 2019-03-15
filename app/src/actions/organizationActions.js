@@ -28,7 +28,7 @@ export const createOrganization = name => dispatch => {
   axios
     .post(`${URL}api/organizations`, { name })
     .then(res => {
-      dispatch({ type: SUCCESS_CREATE_ORGANIZATION, payload: { name } });
+      dispatch({ type: SUCCESS_CREATE_ORGANIZATION, payload:  res.data.organization });
     })
     .catch(err => {
       dispatch({ type: FAIL_CREATE_ORGANIZATION, payload: err });
