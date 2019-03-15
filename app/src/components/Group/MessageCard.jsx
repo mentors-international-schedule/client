@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 const StyledMessageCard = styled.div`
   display: flex;
-  padding: 10px 0;
+  padding: 15px 0;
+  border-bottom: 1px solid lightgray;
   button {
     width: 20%;
     display: inline-block;

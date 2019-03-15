@@ -13,6 +13,7 @@ const StyledGroup = styled.div`
   background: #FDFDFD;
   font-family: ’Source Sans Pro’, sans-serif;
   padding-left: 20px;
+  height: 100vh;
 
   .header-group {
     padding-top: 20px;
@@ -49,6 +50,9 @@ const StyledGroup = styled.div`
 
   .body-of-group {
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
