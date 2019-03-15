@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledCreateAccount = styled.div`
   width: 100%;
-  height: 300px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,10 +88,10 @@ export default function CreateAccount({
         }}
       />
       <button onClick={moveToNextForm}>Continue</button>
-      <p>
+      {/* <p>
         <span>OR</span>
       </p>
-      <button className="google-btn">Sign up with Google</button>
+      <button className="google-btn">Sign up with Google</button> */}
     </StyledCreateAccount>
   );
 }
