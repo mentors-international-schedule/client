@@ -15,7 +15,7 @@ const StyledGroup = styled.div`
   padding-left: 20px;
 
   .header-group {
-    padding: 10px 30px 0 30px;
+    margin-top: 20px;
     height: 10%;
 
     nav {

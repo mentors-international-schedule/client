@@ -35,6 +35,9 @@ const OrganizationTitle = styled.div`
   color: white;
   border-radius: 5px 5px 0 0;
   padding-left: 15px;
+  font-size: 17px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 `;
 
 const defaultOrganization =

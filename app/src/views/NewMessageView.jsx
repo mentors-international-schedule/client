@@ -10,30 +10,49 @@ const StyledNewMessageView = styled.div`
   display: flex;
   height: 600px;
   justify-content: space-between;
+  margin-top: 20px;
+
+  .message-btns{
+    span {
+      margin-right: 20px;
+      font-weight: bold;
+    }
+  }
   .message-body {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
     .message-content {
       height: 100%;
     }
     .history-header {
-      border-top: 1px solid #313a3d;
-      border-bottom: 1px solid #313a3d;
-      height: 6%;
+      border-top: 1px solid gray;
+      border-bottom: 1px solid gray;
+      height: 7%;
       display: flex;
       align-items: center;
+      margin-top: 20px;
+      background: #74D7FF;
+      padding-right: 15px;
+      font-weight: bold;
+      color: white;
+      border-radius: 5px;
     }
     .status {
       width: 10%;
       display: inline-block;
+      padding: 0 15px;
+
     }
     .content {
       width: 70%;
       min-width: 200px;
       display: inline-block;
       word-wrap: break-word;
+      padding: 0;
+
     }
   }
 `;
@@ -43,9 +62,9 @@ export function NewMessageView(props) {
   return (
     <StyledNewMessageView>
       <div className="message-body">
-        <div>
+        <div className="message-btns">
           <span>SENT MESSAGES</span>
-          <span>DRAFTMESSAGES</span>
+          <span>DRAFT MESSAGES</span>
         </div>
 
         <div className="message-content">
