@@ -63,7 +63,7 @@ const StyledComposeMessageDisplay = styled.div`
     border: none;
     padding: 20px;
     resize: none;
-    height: 60vh;
+    height: 40vh;
     min-height: 300px;
     width: 80%;
   }
