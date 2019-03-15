@@ -10,7 +10,8 @@ const StyledNewMessageView = styled.div`
   display: flex;
   height: 600px;
   justify-content: space-between;
-  margin-top: 20px;
+  padding-top: 20px;
+  box-sizing: border-box;
 
   .message-btns{
     span {
@@ -23,22 +24,29 @@ const StyledNewMessageView = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    padding-top: 10px;
+    box-sizing: border-box;
+
     .message-content {
-      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding-top: 20px;
+      box-sizing: border-box;
     }
+
     .history-header {
       border-top: 1px solid gray;
       border-bottom: 1px solid gray;
       height: 7%;
       display: flex;
       align-items: center;
-      margin-top: 20px;
       background: #74D7FF;
       padding-right: 15px;
       font-weight: bold;
       color: white;
       border-radius: 5px;
+      box-sizing: border-box;
     }
     .status {
       width: 10%;

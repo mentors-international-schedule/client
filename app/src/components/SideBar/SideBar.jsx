@@ -9,8 +9,6 @@ import { connect } from "react-redux";
 import { createGroup, getGroups } from "../../actions/groupActions";
 import LogoutButton from "./LogoutButton";
 const StyledSideBar = styled.div`
-  box-shadow: 0 0 10px lightgrey;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

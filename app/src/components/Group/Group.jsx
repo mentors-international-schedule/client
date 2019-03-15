@@ -15,8 +15,9 @@ const StyledGroup = styled.div`
   padding-left: 20px;
 
   .header-group {
-    margin-top: 20px;
-    height: 10%;
+    padding-top: 20px;
+    height: 12%;
+    box-sizing: border-box;
 
     nav {
       display: flex;
