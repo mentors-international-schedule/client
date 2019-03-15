@@ -6,14 +6,16 @@ import {
   SET_USER,
   LOG_OUT,
   SUCCESS_CREATE_ORGANIZATION,
-  SUCCESS_JOIN_ORGANIZATION
+  SUCCESS_JOIN_ORGANIZATION,
+  SET_USER_IMAGE
 } from "../actions/actionTypes";
 
 let initState = {
   loggingIn: false,
   currentUser: null,
   error: null,
-  userSet: false
+  userSet: false,
+  userImage: null,
 };
 
 export function loginReducer(stateOfLogin = initState, action) {
@@ -62,6 +64,8 @@ export function loginReducer(stateOfLogin = initState, action) {
           organization: action.payload
         }
       };
+      case SET_USER_IMAGE:
+      return {...stateOfLogin, userImage: action.payload}
     default:
       return stateOfLogin;
   }

@@ -71,6 +71,7 @@ export function MessageHistory(props) {
         </span>
         <span className="space" />
       </header>
+
       {[...props.messages].reverse().map((message, index) => (
         <ScheduleCard
           key={index}
