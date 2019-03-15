@@ -4,9 +4,12 @@ import styled from "styled-components";
 import { lighten } from "polished";
 
 const StyledMessageCard = styled.div`
+  box-sizing: content-box;
   display: flex;
-  padding: 15px 0;
   border-bottom: 1px solid lightgray;
+  height: auto;
+  align-items: center;
+  padding: 10px;
   button {
     width: 20%;
     height: 26px;
@@ -17,6 +20,7 @@ const StyledMessageCard = styled.div`
     color: #fff;
     font-family: ’Source Sans Pro’, sans-serif;
     font-weight: bold;
+    margin-left: 10px;
 
     &:hover {
       background: ${lighten(0.1, "#17bcff")};

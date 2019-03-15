@@ -10,16 +10,17 @@ import ScheduleHistory from "./ScheduleHistory";
 
 const StyledGroup = styled.div`
   width: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background: #fdfdfd;
   font-family: ’Source Sans Pro’, sans-serif;
   padding-left: 20px;
-  height: 100vh;
+  min-height: 100vh;
 
   .header-group {
     padding-top: 20px;
-    height: 12%;
+    height: 80px;
     box-sizing: border-box;
 
     nav {

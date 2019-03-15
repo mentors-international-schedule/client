@@ -13,15 +13,17 @@ import Spinner from "../Spinner";
 import { lighten } from "polished";
 
 const StyledComposeMessageDisplay = styled.div`
-  background: whitesmoke;
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
   height: 100%;
   border-radius: 0 0 5px 5px;
+  h3 {
+    color: #6c7375;
+  }
   button {
-    width: 150px;
+    width: 125px;
     height: 26px;
     border-radius: 10px;
     border: none;
@@ -37,9 +39,32 @@ const StyledComposeMessageDisplay = styled.div`
       background: ${lighten(0.1, "#17bcff")};
     }
   }
+  select {
+    margin: 0 25px;
+    width: 125px;
+    height: 26px;
+    border-radius: 10px;
+    border: none;
+    background: #17bcff;
+    font-size: 13px;
+    color: #fff;
+    font-family: ’Source Sans Pro’, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
   textarea {
+    font-size: 20px;
+    font-family: "Indie Flower", cursive;
+    background: #e3f7ff;
+    border: none;
+    padding: 20px;
     resize: none;
-    height: 150px;
+    height: 60vh;
+    min-height: 300px;
     width: 80%;
   }
   .error-message {
@@ -119,7 +144,7 @@ export function ComposeMessageDisplay(props) {
   const minuteRef = createRef();
   return (
     <StyledComposeMessageDisplay>
-      <h3>Create a New Message</h3>
+      <h3>Compose a Message</h3>
       {props.draftingMessage || props.sendingMessage ? (
         <Spinner marginTop="30%" />
       ) : (
@@ -143,6 +168,9 @@ export function ComposeMessageDisplay(props) {
             </button>
 
             <select ref={dayRef}>
+              <option value="" disabled selected>
+                day
+              </option>
               {daysInWeek.map((day, index) => (
                 <option key={index} value={index}>
                   {day}
@@ -150,6 +178,9 @@ export function ComposeMessageDisplay(props) {
               ))}
             </select>
             <select ref={hourRef}>
+              <option value="" disabled selected>
+                hour
+              </option>
               {hourArray.map(item => (
                 <option key={item} value={item}>
                   {item}
@@ -157,6 +188,9 @@ export function ComposeMessageDisplay(props) {
               ))}
             </select>
             <select ref={minuteRef}>
+              <option value="" disabled selected>
+                minute
+              </option>
               {minuteArray.map(item => (
                 <option key={item} value={item}>
                   {item}

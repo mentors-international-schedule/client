@@ -10,9 +10,8 @@ import ScheduleCard from "./ScheduleCard";
 import Spinner from "../Spinner";
 
 const StyledMessageHistory = styled.div`
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
   header {
     display: flex;
     justify-content: space-between;
@@ -22,12 +21,30 @@ const StyledMessageHistory = styled.div`
   }
   .status {
     width: 100px;
+    padding-left: 10px;
   }
   .content {
     width: 250px;
   }
   .display-day {
     padding-right: 40px;
+    width: 100px;
+  }
+  .display-time {
+    width: 50px;
+  }
+  .schedule-header {
+    border: 1px solid gray;
+    height: 70px;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    background: #74d7ff;
+    padding-right: 15px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    box-sizing: border-box;
   }
 `;
 
@@ -45,12 +62,12 @@ export function MessageHistory(props) {
   }
   return (
     <StyledMessageHistory>
-      <header>
+      <header className="schedule-header">
         <span className="status">Status </span>
         <span className="content">Message</span>
         <span className="display-date">
           <span className="display-day">day</span>
-          <span className="display-hour">hour</span>
+          <span className="display-time">time</span>
         </span>
         <span className="space" />
       </header>

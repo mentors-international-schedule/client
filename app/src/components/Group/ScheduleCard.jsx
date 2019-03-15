@@ -35,16 +35,6 @@ const daysInWeek = [
   "Saturday"
 ];
 export default function MessageCard(props) {
-  //sent message
-  if (props.message.sent) {
-    return (
-      <StyledMessageCard>
-        <span className="status">Sent</span>
-        <span className="content">{props.message.message}</span>
-      </StyledMessageCard>
-    );
-  }
-  //draft
   return (
     <StyledMessageCard>
       <span className="status">Scheduled</span>
@@ -53,7 +43,9 @@ export default function MessageCard(props) {
         <span className="display-day">
           {daysInWeek[props.message.dayOfWeek]}
         </span>
-        <span className="display-hour">{props.message.hour}</span>
+        <span className="display-time">
+          {props.message.hour}:{props.message.minute}
+        </span>
       </span>
 
       <button
