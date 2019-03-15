@@ -8,17 +8,20 @@ import { lighten, darken } from "polished";
 import MemberBox from "../MemberBox";
 const StyledGroup = styled.div`
   width: 100%;
-  padding: 0 10px;
   display: flex;
   justify-content: space-between;
-  background: #fafafa;
+  background: #FDFDFD;
+  font-family: ’Source Sans Pro’, sans-serif;
+  padding-left: 20px;
+
   .header-group {
     padding: 10px 30px 0 30px;
-
     height: 10%;
+
     nav {
       display: flex;
     }
+
     a {
       display: flex;
       justify-content: center;
@@ -30,17 +33,19 @@ const StyledGroup = styled.div`
       background: #ffffff;
       height: 60px;
       border-radius: 3px;
-      border: 1px solid #{lighten(0.2, #313a3d)};
+      border: 1px solid lightgray;
+      font-weight: bold;
     }
+
     .active {
       color: ${darken(0.0, "#17bcff")};
       background: ${lighten(0.4, "#17bcff")};
-      border: none;
     }
   }
   .main-body {
     height: 90%;
   }
+
   .body-of-group {
     width: 100%;
   }
@@ -57,20 +62,20 @@ export function Group(props) {
         <div className="header-group">
           <nav>
             <NavLink className="group-nav-item" to={`/${groupId}/newMessage`}>
-              New Message
+              <i class="fas fa-envelope" style={{marginRight:'10px'}}></i> SEND MESSAGE
             </NavLink>
-            <NavLink className="group-nav-item" to={`/${groupId}/scheduler`}>
-              Scheduler
-            </NavLink>
+            {/* <NavLink className="group-nav-item" to={`/${groupId}/scheduler`}>
+              <i class="far fa-calendar" style={{marginRight:'10px'}}></i>SCHEDULER
+            </NavLink> */}
           </nav>
         </div>
 
         <div className="main-body">
           <Route path={`/${groupId}/newMessage`} component={NewMessageView} />
-          <Route
+          {/* <Route
             path={`/${groupId}/scheduler`}
             component={() => <div>Scheduler feature getting worked on</div>}
-          />
+          /> */}
         </div>
       </div>
       <MemberBox />

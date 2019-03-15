@@ -20,6 +20,7 @@ const MemberBoxContainer = styled.div`
   background: ${lighten(0.4, "#17bcff")};
   padding: 0 15px;
   font-family: ’Source Sans Pro’, sans-serif;
+  margin-left: 20px;
 
   h3 {
     color: #17bcff;
@@ -100,7 +101,7 @@ const addMemberForm = toggleFlag => {
     borderRadius: "5px",
     justifyContent: "space-evenly",
     padding: "0 20px",
-    background: "#fff",
+    background: "#FDFDFD",
     display: toggleFlag ? "flex" : "none"
   };
 };
