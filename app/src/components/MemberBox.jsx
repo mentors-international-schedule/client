@@ -21,6 +21,7 @@ const MemberBoxContainer = styled.div`
   padding: 0 15px;
   font-family: ’Source Sans Pro’, sans-serif;
   margin-left: 20px;
+  font-size: 16px;
 
   .contact-container {
     display: flex;

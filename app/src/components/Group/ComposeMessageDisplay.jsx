@@ -19,8 +19,13 @@ const StyledComposeMessageDisplay = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 0 0 5px 5px;
+  padding-top: 15px;
   h3 {
     color: #6c7375;
+    font-size: 16px;
+  }
+  .btn-container {
+    padding-left: 80px;
   }
   button {
     width: 125px;
@@ -51,9 +56,14 @@ const StyledComposeMessageDisplay = styled.div`
     font-family: ’Source Sans Pro’, sans-serif;
     font-weight: bold;
     text-align: center;
+    padding-left: 40px;
     &:active,
     &:focus {
       outline: none;
+    }
+    
+    &:hover {
+      background: ${lighten(0.1, "#17bcff")};
     }
   }
   textarea {
@@ -63,7 +73,7 @@ const StyledComposeMessageDisplay = styled.div`
     border: none;
     padding: 20px;
     resize: none;
-    height: 60vh;
+    height: 40vh;
     min-height: 300px;
     width: 80%;
   }
@@ -156,7 +166,7 @@ export function ComposeMessageDisplay(props) {
             rows="3"
             cols="20"
           />
-          <div>
+          <div className='btn-container'>
             <button onClick={handleSaveMessage}>Save message</button>
 
             <button

@@ -9,7 +9,9 @@ const StyledMessageCard = styled.div`
   border-bottom: 1px solid lightgray;
   height: auto;
   align-items: center;
-  padding: 10px;
+  padding: 20px 0;
+  font-size: 16px;
+
   button {
     width: 20%;
     height: 26px;
