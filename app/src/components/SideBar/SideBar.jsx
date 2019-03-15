@@ -14,8 +14,9 @@ const StyledSideBar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 350px;
+  width: 310px;
   font-family: ’Source Sans Pro’, sans-serif;
+  padding: 0 20px;
 `;
 
 const SidebarTop = styled.div`
