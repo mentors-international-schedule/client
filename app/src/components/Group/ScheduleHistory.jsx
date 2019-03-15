@@ -33,7 +33,7 @@ export function MessageHistory(props) {
         <ScheduleCard
           key={index}
           message={message}
-          deleteScheduledMessage={props.delet}
+          deleteScheduledMessage={props.deleteScheduledMessage}
         />
       ))}
     </StyledMessageHistory>

@@ -55,7 +55,7 @@ export function scheduleReducer(state = initState, action) {
       return {
         ...state,
         deletingMessage: false,
-        messages: action.payload,
+        messages: state.messages.filter(message=> action.payload !== message.id),
       }
     case FAIL_DELETING_SCHEDULED_MESSAGES:
       return {

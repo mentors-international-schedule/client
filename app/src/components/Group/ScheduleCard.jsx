@@ -23,7 +23,15 @@ const StyledMessageCard = styled.div`
     }
   }
 `;
-
+const daysInWeek = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
 export default function MessageCard(props) {
   //sent message
   if (props.message.sent) {
@@ -39,10 +47,17 @@ export default function MessageCard(props) {
     <StyledMessageCard>
       <span className="status">Scheduled</span>
       <span className="content">{props.message.message}</span>
+      <span className="display-date">
+        {" "}
+        <span className="display-day">
+          {daysInWeek[props.message.dayOfWeek]}
+        </span>{" "}
+        <span className="display-hour">{props.message.hour}</span>
+      </span>
 
       <button
         onClick={() => {
-          props.deleteScheduledMessage(props.message);
+          props.deleteScheduledMessage(props.message.id);
         }}
       >
         delete

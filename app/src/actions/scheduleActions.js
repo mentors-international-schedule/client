@@ -19,11 +19,11 @@ export const scheduleMessage = (body,  group_id) => dispatch => {
   axios
     .post(`${URL}api/scheduler/${group_id}`, body)
     .then(res => {
-      debugger;
+      
       dispatch({ type: SUCCESS_SCHEDULING_MESSAGE, payload: res.data });
     })
     .catch(err => {
-      debugger;
+      
       dispatch({ type: FAIL_SCHEDULING_MESSAGE, payload: err });
     });
 };
@@ -35,7 +35,7 @@ export const getScheduledMessages = group_id => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
-      debugger;
+      
       dispatch({
         type: SUCCESS_GETTING_SCHEDULED_MESSAGES,
         payload: res.data,
@@ -43,7 +43,7 @@ export const getScheduledMessages = group_id => dispatch => {
       });
     })
     .catch(err => {
-      debugger;
+
       dispatch({
         type: FAIL_GETTING_SCHEDULED_MESSAGES,
         payload: err
@@ -60,7 +60,7 @@ export const deleteScheduledMessage = (message_id) => dispatch => {
     .then(res => {
       dispatch({
         type: SUCCESS_DELETING_SCHEDULED_MESSAGES,
-        payload: res.data
+        payload: message_id
       });
     })
     .catch(err => {

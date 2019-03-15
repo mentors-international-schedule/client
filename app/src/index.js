@@ -27,7 +27,7 @@ let store = createStore(
   persistedReducer,
   compose(
     applyMiddleware(thunk, authenticate),
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 let persistor = persistStore(store)
