@@ -3,7 +3,8 @@ import {
   SET_MESSAGE,
   SUCCESS_SENDING_MESSAGE,
   SUCCESS_DRAFTING_MESSAGE,
-  UPDATE_INPUT_MESSAGE
+  UPDATE_INPUT_MESSAGE,
+  SUCCESS_SCHEDULING_MESSAGE
 } from "../actions/actionTypes";
 
 const form = formReducer.plugin({
@@ -19,6 +20,8 @@ const form = formReducer.plugin({
         return { ...state, values: { message: "" } };
       case SUCCESS_DRAFTING_MESSAGE:
         return { ...state, values: { message: "" } };
+      case SUCCESS_SCHEDULING_MESSAGE:
+        return { ...state, values: { message: "" } }
       case UPDATE_INPUT_MESSAGE:
         return {...state, values: {message: action.payload}}
       default:

@@ -8,7 +8,7 @@ import {
   DELETING_SCHEDULED_MESSAGES,
   SUCCESS_DELETING_SCHEDULED_MESSAGES,
   FAIL_DELETING_SCHEDULED_MESSAGES,
-  CLEAR_LOCAL_SCHEDULED_MESSAGES
+  CLEAR_LOCAL_SCHEDULED_MESSAGES,
 } from "../actions/actionTypes";
 
 const initState = {
@@ -16,7 +16,8 @@ const initState = {
   schedulingMessage: false,
   gettingMessages: false,
   deletingMessage: false,
-  error: null
+  error: null,
+  currentMessageId: null,
 };
 
 export function scheduleReducer(state = initState, action) {
@@ -36,7 +37,8 @@ export function scheduleReducer(state = initState, action) {
       return {
         ...state,
         gettingMessages: false,
-        messages: action.payload
+        messages: action.payload,
+        currentMessageId: action.currentId
       }
     case FAIL_GETTING_SCHEDULED_MESSAGES:
       return {

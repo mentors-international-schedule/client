@@ -6,11 +6,13 @@ import NewMessageView from "../../views/NewMessageView";
 import { setViewGroup } from "../../actions/groupActions";
 import { lighten, darken } from "polished";
 import MemberBox from "../MemberBox";
+import ScheduleHistory from "./ScheduleHistory";
+
 const StyledGroup = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background: #FDFDFD;
+  background: #fdfdfd;
   font-family: ’Source Sans Pro’, sans-serif;
   padding-left: 20px;
   height: 100vh;
@@ -67,20 +69,19 @@ export function Group(props) {
         <div className="header-group">
           <nav>
             <NavLink className="group-nav-item" to={`/${groupId}/newMessage`}>
-              <i className="fas fa-envelope" style={{marginRight:'10px'}}></i> SEND MESSAGE
+              <i className="fas fa-envelope" style={{ marginRight: "10px" }} />{" "}
+              SEND MESSAGE
             </NavLink>
-            {/* <NavLink className="group-nav-item" to={`/${groupId}/scheduler`}>
-              <i class="far fa-calendar" style={{marginRight:'10px'}}></i>SCHEDULER
-            </NavLink> */}
+            <NavLink className="group-nav-item" to={`/${groupId}/scheduler`}>
+              <i className="far fa-calendar" style={{ marginRight: "10px" }} />
+              SCHEDULER
+            </NavLink>
           </nav>
         </div>
 
         <div className="main-body">
           <Route path={`/${groupId}/newMessage`} component={NewMessageView} />
-          {/* <Route
-            path={`/${groupId}/scheduler`}
-            component={() => <div>Scheduler feature getting worked on</div>}
-          /> */}
+          <Route path={`/${groupId}/scheduler`} component={ScheduleHistory} />
         </div>
       </div>
       <MemberBox />

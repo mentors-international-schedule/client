@@ -12,7 +12,8 @@ import {
   DELETING_MESSAGE,
   SUCCESS_DELETING_MESSAGE,
   FAIL_DELETING_MESSAGE,
-  CLEAR_LOCAL_MESSAGES
+  CLEAR_LOCAL_MESSAGES,
+  SUCCESS_SCHEDULING_MESSAGE
 } from "../actions/actionTypes";
 
 const initState = {
@@ -22,7 +23,8 @@ const initState = {
   draftingMessages: false,
   deletingMessage: false,
   error: null,
-  workingOnDraftId: null
+  workingOnDraftId: null,
+  currentMessageId: null,
 };
 export function messageReducer(state = initState, action) {
   switch (action.type) {
@@ -87,6 +89,8 @@ export function messageReducer(state = initState, action) {
     case CLEAR_LOCAL_MESSAGES: {
       return { ...state, workingOnDraftId: null, messages: [] };
     }
+    case SUCCESS_SCHEDULING_MESSAGE:
+      return {...state, workingOnDraftId: null}
     default:
       return state;
   }

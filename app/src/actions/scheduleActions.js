@@ -14,10 +14,10 @@ import {
   CLEAR_LOCAL_SCHEDULED_MESSAGES,
 } from "./actionTypes";
 
-export const scheduleMessage = body => dispatch => {
+export const scheduleMessage = (body,  group_id) => dispatch => {
   dispatch({ type: SCHEDULING_MESSAGE });
   axios
-    .post(`${URL}api/scheduler`, body)
+    .post(`${URL}api/scheduler/${group_id}`, body)
     .then(res => {
       debugger;
       dispatch({ type: SUCCESS_SCHEDULING_MESSAGE, payload: res.data });
@@ -38,7 +38,8 @@ export const getScheduledMessages = group_id => dispatch => {
       debugger;
       dispatch({
         type: SUCCESS_GETTING_SCHEDULED_MESSAGES,
-        payload: res.data
+        payload: res.data,
+        currentMessageId: group_id
       });
     })
     .catch(err => {
