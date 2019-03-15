@@ -7,6 +7,8 @@ const StyledMessageCard = styled.div`
   display: flex;
   padding: 15px 0;
   border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
   button {
     width: 20%;
     height: 26px;
@@ -48,10 +50,9 @@ export default function MessageCard(props) {
       <span className="status">Scheduled</span>
       <span className="content">{props.message.message}</span>
       <span className="display-date">
-        {" "}
         <span className="display-day">
           {daysInWeek[props.message.dayOfWeek]}
-        </span>{" "}
+        </span>
         <span className="display-hour">{props.message.hour}</span>
       </span>
 
