@@ -22,6 +22,25 @@ const MemberBoxContainer = styled.div`
   font-family: ’Source Sans Pro’, sans-serif;
   margin-left: 20px;
 
+  .contact-container {
+    display: flex;
+    align-items: center;
+  }
+  .delete-button {
+    margin-top: 4px;
+    margin-right: 20px;
+    font-size: 20px;
+  }
+  .checkbox {
+    appearance: none;
+    background-color: red;
+    padding: 9px;
+    border-radius: 100px;
+    display: inline-block;
+    &:checked {
+      background-color: green;
+    }
+  }
   h3 {
     color: #17bcff;
     margin-top: 30px;
@@ -244,9 +263,10 @@ class MemberBox extends Component {
 
   render() {
     const members = this.props.contacts.map(member => (
-      <GroupMember key={member.id} >
-        <div>
+      <GroupMember key={member.id}>
+        <div className="contact-container">
           <input
+            className="checkbox"
             type="checkbox"
             name="checkbox"
             checked={member.isChecked}
@@ -255,16 +275,23 @@ class MemberBox extends Component {
           <label>{member.name}</label>
         </div>
         <div
+          className="delete-button"
           onClick={() => this.props.deleteContact(member.id, member.group_id)}
         >
-          <i className="fa fa-trash" aria-hidden="true" style={{color: '#17bcff',}}></i>
+          <i
+            className="fa fa-trash"
+            aria-hidden="true"
+            style={{ color: "#17bcff" }}
+          />
         </div>
       </GroupMember>
     ));
 
     return (
       <MemberBoxContainer>
-        <h3><i className="fa fa-users" aria-hidden="true"></i> GROUP MEMBERS</h3>
+        <h3>
+          <i className="fa fa-users" aria-hidden="true" /> GROUP MEMBERS
+        </h3>
         <p>Uncheck the box to remove someone from the message chain.</p>
         <MemberList>
           {this.props.gettingContacts ? (

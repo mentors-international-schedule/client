@@ -4,12 +4,11 @@ import styled from "styled-components";
 import { lighten } from "polished";
 
 const StyledMessageCard = styled.div`
-  box-sizing: content-box;
   display: flex;
+  padding: 15px 0;
   border-bottom: 1px solid lightgray;
-  height: auto;
-  align-items: center;
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
   button {
     width: 20%;
     height: 26px;
@@ -20,36 +19,41 @@ const StyledMessageCard = styled.div`
     color: #fff;
     font-family: ’Source Sans Pro’, sans-serif;
     font-weight: bold;
-    margin-left: 10px;
 
     &:hover {
       background: ${lighten(0.1, "#17bcff")};
     }
   }
 `;
-
+const daysInWeek = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
 export default function MessageCard(props) {
-  //sent message
-  if (props.message.sent) {
-    return (
-      <StyledMessageCard>
-        <span className="status">Sent</span>
-        <span className="content">{props.message.message}</span>
-      </StyledMessageCard>
-    );
-  }
-  //draft
   return (
     <StyledMessageCard>
-      <span className="status">Draft</span>
+      <span className="status">Scheduled</span>
       <span className="content">{props.message.message}</span>
+      <span className="display-date">
+        <span className="display-day">
+          {daysInWeek[props.message.dayOfWeek]}
+        </span>
+        <span className="display-time">
+          {props.message.hour}:{props.message.minute}
+        </span>
+      </span>
 
       <button
         onClick={() => {
-          props.setMessage(props.message);
+          props.deleteScheduledMessage(props.message.id);
         }}
       >
-        Edit Draft
+        delete
       </button>
     </StyledMessageCard>
   );

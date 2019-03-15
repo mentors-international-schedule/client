@@ -5,7 +5,7 @@ export const FAIL_LOGIN = "FAIL_LOGIN";
 export const SET_USER = "SET_USER";
 export const SET_AUTH = "SET_AUTH";
 export const LOG_OUT = "LOG_OUT";
-
+export const SET_USER_IMAGE = 'SET_USER_IMAGE';
 // SIGN UP ACTIONS
 export const SIGNING_UP = "SIGNING_UP";
 export const SUCCESS_SIGN_UP = "SUCCESS_SIGN_UP";

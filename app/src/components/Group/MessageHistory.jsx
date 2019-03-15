@@ -13,6 +13,7 @@ const StyledMessageHistory = styled.div`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  width: 50vw;
 `;
 
 export function MessageHistory(props) {
@@ -30,7 +31,11 @@ export function MessageHistory(props) {
   return (
     <StyledMessageHistory>
       {[...props.messages].reverse().map((message, index) => (
-        <MessageCard key={index} message={message} setMessage={props.setMessage} />
+        <MessageCard
+          key={index}
+          message={message}
+          setMessage={props.setMessage}
+        />
       ))}
     </StyledMessageHistory>
   );

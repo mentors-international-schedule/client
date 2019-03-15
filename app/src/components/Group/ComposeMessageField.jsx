@@ -9,6 +9,10 @@ const StyledComposeMessageField = styled.span`
     display: inline-block;
     min-width: 180px;
     padding-left: 4px;
+    background: #e3f7ff;
+    border: none;
+    padding: 6px;
+    border-radius: 3px;
   }
 `;
 

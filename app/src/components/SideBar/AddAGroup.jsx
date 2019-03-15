@@ -6,7 +6,6 @@ import { createGroup } from "../../actions/groupActions";
 const StyledAddAGroup = styled.div`
   display: flex;
   align-items: baseline;
-
   input {
     width: 230px;
     height: 30px;
@@ -34,7 +33,9 @@ export function AddAGroup(props) {
       {props.creatingGroup ? (
         <Spinner size="2px" marginRight=" 10px" marginBottom="10px" />
       ) : (
-        <div onClick={createNewGroup}>+ </div>
+        <div onClick={createNewGroup}>
+          <i className="far fa-plus-square" />{" "}
+        </div>
       )}
 
       <input

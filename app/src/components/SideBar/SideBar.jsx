@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import ProfileHeader from "./ProfileHeader";
 import OrganizationHeader from "./OrganizationHeader";
@@ -41,7 +41,7 @@ export function SideBar(props) {
   return (
     <StyledSideBar>
       <SidebarTop>
-        <ProfileHeader imageURL={""} name={firstname} />
+        <ProfileHeader imageURL={props.userImage} name={firstname} />
         <LogoutButton />
       </SidebarTop>
       <OrganizationHeader imageURL={""} name={orgName} />
@@ -55,11 +55,14 @@ function mapStateToProps(state) {
   return {
     currentUser: state.loginReducer.currentUser,
     myGroups: state.groupReducer.groups,
-    userSet: state.loginReducer.userSet
+    userSet: state.loginReducer.userSet,
+    userImage: state.loginReducer.userImage
   };
 }
 
-export default withRouter(connect(
-  mapStateToProps,
-  { createGroup, getGroups }
-)(SideBar));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { createGroup, getGroups }
+  )(SideBar)
+);

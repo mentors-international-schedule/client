@@ -1,6 +1,13 @@
 import axios from "axios";
 import URL from "./AJAX_URL";
-import { LOGGING_IN, SUCCESS_LOGIN, FAIL_LOGIN, SET_USER, SET_AUTH, LOG_OUT } from "./actionTypes";
+import {
+  LOGGING_IN,
+  SUCCESS_LOGIN,
+  FAIL_LOGIN,
+  SET_USER,
+  SET_AUTH,
+  LOG_OUT, SET_USER_IMAGE
+} from "./actionTypes";
 
 export const login = (email, password, callback) => dispatch => {
   dispatch({ type: LOGGING_IN });
@@ -23,17 +30,20 @@ export const login = (email, password, callback) => dispatch => {
         payload: err
       })
     );
+  axios.get("https://randomuser.me/api/").then(res => {
+    debugger
+    dispatch({type: SET_USER_IMAGE, payload: res.data.results[0].picture.thumbnail });
+  });
 };
 
-export const setUser = (user) => dispatch => {
+export const setUser = user => dispatch => {
   axios.defaults.headers.common["Authorization"] = user.token;
   dispatch({ type: SET_USER, payload: user });
-  
-}
+};
 export function setAuth(token) {
-  return{type: SET_AUTH, payload: token}
+  return { type: SET_AUTH, payload: token };
 }
 export function logout() {
   localStorage.clear();
-  return {type:LOG_OUT}
+  return { type: LOG_OUT };
 }

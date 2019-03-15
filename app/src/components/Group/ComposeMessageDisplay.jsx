@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-// import DateTimePicker from "react-datetime-picker";
 import {
   sendMessage,
   getMessages,
@@ -14,15 +13,17 @@ import Spinner from "../Spinner";
 import { lighten } from "polished";
 
 const StyledComposeMessageDisplay = styled.div`
-  background: whitesmoke;
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
   height: 100%;
   border-radius: 0 0 5px 5px;
+  h3 {
+    color: #6c7375;
+  }
   button {
-    width: 150px;
+    width: 125px;
     height: 26px;
     border-radius: 10px;
     border: none;
@@ -38,9 +39,32 @@ const StyledComposeMessageDisplay = styled.div`
       background: ${lighten(0.1, "#17bcff")};
     }
   }
+  select {
+    margin: 0 25px;
+    width: 125px;
+    height: 26px;
+    border-radius: 10px;
+    border: none;
+    background: #17bcff;
+    font-size: 13px;
+    color: #fff;
+    font-family: ’Source Sans Pro’, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
   textarea {
+    font-size: 20px;
+    font-family: "Indie Flower", cursive;
+    background: #e3f7ff;
+    border: none;
+    padding: 20px;
     resize: none;
-    height: 150px;
+    height: 60vh;
+    min-height: 300px;
     width: 80%;
   }
   .error-message {
@@ -80,29 +104,53 @@ export function ComposeMessageDisplay(props) {
     props.updateInputMessage(event.target.value);
   }
 
-  // const [date, setDate] = useState(new Date());
-  // function handleScheduleMessage() {
-  //   const sendDate = {
-  //     hour: date.getHours(),
-  //     minute: date.getMinutes(),
-  //     dayOfWeek: date.getDay()
-  //   };
-  //   // lets schedule a message :)
-  //   props.scheduleMessage({
-  //     ...sendDate,
-  //     message: props.messageInput,
-  //     contact_ides: filterContacts(),
-  //     group_id: props.groupId
-  //   });
-  // }
+  function handleScheduleMessage() {
+    // lets schedule a message :)
+
+    const minute = minuteRef.current.value * 1;
+    const hour = hourRef.current.value * 1;
+    const dayOfWeek = dayRef.current.value * 1;
+
+    props.scheduleMessage(
+      {
+        minute,
+        hour,
+        dayOfWeek,
+        message: props.messageInput,
+        contact_ides: filterContacts()
+      },
+      props.groupId
+    );
+  }
+  const daysInWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  const hourArray = [];
+  for (let i = 0; i < 25; i++) {
+    hourArray.push(i);
+  }
+  const minuteArray = [];
+  for (let i = 0; i < 61; i++) {
+    minuteArray.push(i);
+  }
+  const dayRef = createRef();
+  const hourRef = createRef();
+  const minuteRef = createRef();
   return (
     <StyledComposeMessageDisplay>
-      <h3>Create a New Message</h3>
+      <h3>Compose a Message</h3>
       {props.draftingMessage || props.sendingMessage ? (
         <Spinner marginTop="30%" />
       ) : (
         <>
           <textarea
+            onChange={() => {}}
             onInput={handleChangeTextArea}
             value={props.messageInput}
             rows="3"
@@ -118,13 +166,39 @@ export function ComposeMessageDisplay(props) {
             >
               Send message
             </button>
-            {/* <DateTimePicker
-              onChange={date => {
-                setDate(date);
-              }}
-              value={date}
-            />
-            <button onClick={handleScheduleMessage}>Schedule</button> */}
+
+            <select ref={dayRef}>
+              <option value="" disabled selected>
+                day
+              </option>
+              {daysInWeek.map((day, index) => (
+                <option key={index} value={index}>
+                  {day}
+                </option>
+              ))}
+            </select>
+            <select ref={hourRef}>
+              <option value="" disabled selected>
+                hour
+              </option>
+              {hourArray.map(item => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+            <select ref={minuteRef}>
+              <option value="" disabled selected>
+                minute
+              </option>
+              {minuteArray.map(item => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+
+            <button onClick={handleScheduleMessage}>Schedule</button>
           </div>
         </>
       )}
