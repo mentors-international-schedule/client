@@ -104,7 +104,6 @@ export function SignUpNamePasswordForm(props) {
   );
 }
 function mstp(state) {
-  debugger;
   return {
     signingUp: state.signUpReducer.signingUp,
     signingUpError: state.signUpReducer.error

@@ -10,42 +10,81 @@ import {
 
 import styled from "styled-components";
 import Spinner from "./Spinner";
+import { lighten } from "polished";
+
 // STYLED COMPONENTS
 const MemberBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 250px;
+  background: ${lighten(0.4, "#17bcff")};
+  padding: 0 15px;
+  font-family: ’Source Sans Pro’, sans-serif;
+  margin-left: 20px;
+
+  h3 {
+    color: #17bcff;
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
 `;
 
 const MemberList = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: space-between;
   float: left;
   width: 250px;
   overflow-y: auto;
-  height: 200px;
+  height: 180px;
   margin: 10px 0;
+`;
+
+const GroupMember = styled.span`
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    input {
+      margin-right: 10px;
+    }
+  }
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 `;
 
 const Button = styled.button`
+  width: 100px;
+  margin-bottom: 20px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #17bcff;
   background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  color: blue;
-  text-decoration: underline;
+  font-size: 11px;
+  color: #17bcff;
+  font-family: ’Source Sans Pro’, sans-serif;
+  font-weight: bold;
+  transition: 0.15s;
 
   &:hover {
-    color: darkblue;
+    background: ${lighten(0.35, "#17bcff")};
   }
+`;
+
+const NewMemberButton = styled.button`
+  width: 90px;
+  height: 26px;
+  border-radius: 10px;
+  border: none;
+  background: #17bcff;
+  font-size: 12px;
+  color: #fff;
+  font-weight: bold;
 `;
 
 const Input = styled.input`
@@ -56,13 +95,13 @@ const Input = styled.input`
 const addMemberForm = toggleFlag => {
   return {
     flexDirection: "column",
-    marginTop: "20px",
+    marginTop: "0",
     minHeight: "200px",
     border: "1px solid lightgray",
     borderRadius: "5px",
     justifyContent: "space-evenly",
     padding: "0 20px",
-    background: "whitesmoke",
+    background: "#FDFDFD",
     display: toggleFlag ? "flex" : "none"
   };
 };
@@ -205,28 +244,28 @@ class MemberBox extends Component {
 
   render() {
     const members = this.props.contacts.map(member => (
-      <span key={member.id} style={{ marginBottom: "10px" }}>
-        <input
-          type="checkbox"
-          name="checkbox"
-          checked={member.isChecked}
-          onClick={() => this.toggleCheckbox(member.id)}
-        />
-        <label>{member.name}</label>
-        <button
+      <GroupMember key={member.id} >
+        <div>
+          <input
+            type="checkbox"
+            name="checkbox"
+            checked={member.isChecked}
+            onClick={() => this.toggleCheckbox(member.id)}
+          />
+          <label>{member.name}</label>
+        </div>
+        <div
           onClick={() => this.props.deleteContact(member.id, member.group_id)}
         >
-          x
-        </button>
-      </span>
+          <i className="fa fa-trash" aria-hidden="true" style={{color: '#17bcff',}}></i>
+        </div>
+      </GroupMember>
     ));
 
     return (
       <MemberBoxContainer>
-        <p>
-          Your group members will appear here. Uncheck the box to remove someone
-          from the message chain.
-        </p>
+        <h3><i className="fa fa-users" aria-hidden="true"></i> GROUP MEMBERS</h3>
+        <p>Uncheck the box to remove someone from the message chain.</p>
         <MemberList>
           {this.props.gettingContacts ? (
             <Spinner margin=" auto auto" size="8px" />
@@ -236,9 +275,9 @@ class MemberBox extends Component {
         </MemberList>
 
         <ButtonContainer>
-          <Button onClick={this.toggleMemberForm}>add member</Button>
-          <Button onClick={() => this.selectToggle(true)}>select all</Button>
-          <Button onClick={() => this.selectToggle(false)}>select none</Button>
+          <Button onClick={this.toggleMemberForm}>ADD</Button>
+          <Button onClick={() => this.selectToggle(true)}>SELECT ALL</Button>
+          <Button onClick={() => this.selectToggle(false)}>SELECT NONE</Button>
         </ButtonContainer>
 
         <form
@@ -269,7 +308,7 @@ class MemberBox extends Component {
           {this.props.creatingContact ? (
             <Spinner size="4px" margin=" 0 auto" marginTop="10px" />
           ) : (
-            <button>Submit</button>
+            <NewMemberButton>Submit</NewMemberButton>
           )}
 
           <label

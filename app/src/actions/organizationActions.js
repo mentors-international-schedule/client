@@ -9,7 +9,6 @@ import {
   FAIL_JOIN_ORGANIZATIONS,
   SUCCESS_JOIN_ORGANIZATION
 } from "../actions/actionTypes";
-import { dispatch } from "rxjs/internal/observable/pairs";
 import axios from "axios";
 import URL from "./AJAX_URL";
 export const getOrganizations = () => dispatch => {

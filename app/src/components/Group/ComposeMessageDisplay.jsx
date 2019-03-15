@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-
+// import DateTimePicker from "react-datetime-picker";
 import {
   sendMessage,
   getMessages,
@@ -9,16 +9,35 @@ import {
   updateInputMessage,
   deleteMessage
 } from "../../actions/messageActions";
-
+import { scheduleMessage } from "../../actions/scheduleActions";
 import Spinner from "../Spinner";
+import { lighten } from "polished";
 
 const StyledComposeMessageDisplay = styled.div`
-  background: lightgrey;
+  background: whitesmoke;
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 5px 5px;
+  button {
+    width: 150px;
+    height: 26px;
+    border-radius: 10px;
+    border: none;
+    background: #17bcff;
+    font-size: 13px;
+    color: #fff;
+    font-family: ’Source Sans Pro’, sans-serif;
+    font-weight: bold;
+    margin: 0 25px;
+    margin-top: 30px;
+
+    &:hover {
+      background: ${lighten(0.1, "#17bcff")};
+    }
+  }
   textarea {
     resize: none;
     height: 150px;
@@ -53,13 +72,32 @@ export function ComposeMessageDisplay(props) {
   }
   function handleSaveMessage() {
     props.draftMessage(props.messageInput, props.groupId);
+    if (props.isDraftingId) {
+      props.deleteMessage(props.isDraftingId);
+    }
   }
   function handleChangeTextArea(event) {
     props.updateInputMessage(event.target.value);
   }
+
+  // const [date, setDate] = useState(new Date());
+  // function handleScheduleMessage() {
+  //   const sendDate = {
+  //     hour: date.getHours(),
+  //     minute: date.getMinutes(),
+  //     dayOfWeek: date.getDay()
+  //   };
+  //   // lets schedule a message :)
+  //   props.scheduleMessage({
+  //     ...sendDate,
+  //     message: props.messageInput,
+  //     contact_ides: filterContacts(),
+  //     group_id: props.groupId
+  //   });
+  // }
   return (
     <StyledComposeMessageDisplay>
-      <h3>Message Composer</h3>
+      <h3>Create a New Message</h3>
       {props.draftingMessage || props.sendingMessage ? (
         <Spinner marginTop="30%" />
       ) : (
@@ -72,7 +110,7 @@ export function ComposeMessageDisplay(props) {
           />
           <div>
             <button onClick={handleSaveMessage}>Save message</button>
-            <button>Schedule</button>
+
             <button
               onClick={() => {
                 handleSendMessage();
@@ -80,6 +118,13 @@ export function ComposeMessageDisplay(props) {
             >
               Send message
             </button>
+            {/* <DateTimePicker
+              onChange={date => {
+                setDate(date);
+              }}
+              value={date}
+            />
+            <button onClick={handleScheduleMessage}>Schedule</button> */}
           </div>
         </>
       )}
@@ -101,5 +146,12 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { sendMessage, getMessages, draftMessage, updateInputMessage, deleteMessage }
+  {
+    sendMessage,
+    getMessages,
+    draftMessage,
+    updateInputMessage,
+    deleteMessage,
+    scheduleMessage
+  }
 )(ComposeMessageDisplay);

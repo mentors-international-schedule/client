@@ -4,14 +4,24 @@ import styled from "styled-components";
 import ProfileHeader from "./ProfileHeader";
 import OrganizationHeader from "./OrganizationHeader";
 import GroupsOwned from "./GroupsOwned";
-import GroupsJoined from "./GroupsJoined";
 import { connect } from "react-redux";
 import { createGroup, getGroups } from "../../actions/groupActions";
 import LogoutButton from "./LogoutButton";
 const StyledSideBar = styled.div`
-  padding-left: 30px;
-  border-right: 1px solid black;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 310px;
+  font-family: ’Source Sans Pro’, sans-serif;
+  padding: 0 20px;
+`;
+
+const SidebarTop = styled.div`
+  margin-top: 10px;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export function SideBar(props) {
@@ -30,11 +40,13 @@ export function SideBar(props) {
 
   return (
     <StyledSideBar>
-      <ProfileHeader imageURL={""} name={firstname} />
-      <LogoutButton />
+      <SidebarTop>
+        <ProfileHeader imageURL={""} name={firstname} />
+        <LogoutButton />
+      </SidebarTop>
       <OrganizationHeader imageURL={""} name={orgName} />
       <GroupsOwned groups={props.myGroups} />
-      <GroupsJoined />
+      {/* <GroupsJoined /> */}
     </StyledSideBar>
   );
 }

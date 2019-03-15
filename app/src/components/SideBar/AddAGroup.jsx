@@ -6,8 +6,19 @@ import { createGroup } from "../../actions/groupActions";
 const StyledAddAGroup = styled.div`
   display: flex;
   align-items: baseline;
+
+  input {
+    width: 230px;
+    height: 30px;
+    background: white;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 0 10px;
+  }
+
   div {
     padding-right: 10px;
+    margin-left: 15px;
   }
 `;
 export function AddAGroup(props) {
@@ -29,7 +40,7 @@ export function AddAGroup(props) {
       <input
         onChange={handleChange}
         value={inputValue}
-        placeholder="Make a group"
+        placeholder="Add a group.."
       />
     </StyledAddAGroup>
   );

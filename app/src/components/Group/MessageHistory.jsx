@@ -10,9 +10,8 @@ import MessageCard from "./MessageCard";
 import Spinner from "../Spinner";
 
 const StyledMessageHistory = styled.div`
-  height: 500px;
-  overflow-y: scroll;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
 `;
 
@@ -28,14 +27,10 @@ export function MessageHistory(props) {
   if (props.gettingMessages) {
     return <Spinner margin="0 auto" marginTop="40%" />;
   }
-
-  if (!props.messages.length) {
-    return <div>No messages on draft or sent</div>;
-  }
   return (
     <StyledMessageHistory>
-      {props.messages.reverse().map(message => (
-        <MessageCard message={message} setMessage={props.setMessage} />
+      {[...props.messages].reverse().map((message, index) => (
+        <MessageCard key={index} message={message} setMessage={props.setMessage} />
       ))}
     </StyledMessageHistory>
   );

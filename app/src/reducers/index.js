@@ -6,7 +6,7 @@ import { organizationsReducer } from "./organizationsReducer";
 import { memberBoxReducer } from "./memberBoxReducer";
 import { groupReducer } from "../reducers/groupReducer";
 import { messageReducer } from "./messageReducer";
-
+import {scheduleReducer} from  './scheduleReducer'
 // export all reducers as object
 export default {
   form,
@@ -16,5 +16,6 @@ export default {
   organizationsReducer,
   memberBoxReducer,
   groupReducer,
+  scheduleReducer
   
 };
