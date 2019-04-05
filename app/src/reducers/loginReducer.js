@@ -46,15 +46,13 @@ export function loginReducer(stateOfLogin = initState, action) {
         userSet: false
       };
     case SUCCESS_CREATE_ORGANIZATION:
+    debugger
       return {
         ...stateOfLogin, // need to set the name of organization in the user or get the payload to be a new user
         currentUser: {
           ...stateOfLogin.currentUser,
-          currentUser: {
-            ...stateOfLogin.currentUser,
             organization: action.payload
           }
-        }
       };
     case SUCCESS_JOIN_ORGANIZATION:
       return {
